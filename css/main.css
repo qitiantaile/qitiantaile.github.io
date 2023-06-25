@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f6e4ff;
+  background: #858bb3;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2149,6 +2149,13 @@ ul.breadcrumb li + li:last-child {
 .tag-cloud a:hover {
   color: var(--link-hover-color) !important;
 }
+mjx-container[jax="CHTML"][display="true"],
+.has-jax {
+  overflow: auto hidden;
+}
+mjx-container + br {
+  display: none;
+}
 .header {
   margin: 0 auto;
   position: relative;
@@ -2203,7 +2210,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 .content-wrap {
-  background: var(--content-bg-color);
+  background: rgba(255,255,255,0.9) none repeat scroll !important;
   border-radius: initial;
   box-shadow: initial;
   box-sizing: border-box;
@@ -2453,10 +2460,4 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
-}
-.content-wrap {
-  opacity: 0.8;
-}
-.post-block {
-  background: rgba(255,255,255,0.7) none repeat scroll !important;
 }
