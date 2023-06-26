@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626150513090.png">
 <meta property="article:published_time" content="2023-06-26T06:58:32.724Z">
-<meta property="article:modified_time" content="2023-06-26T08:55:04.383Z">
+<meta property="article:modified_time" content="2023-06-26T08:58:57.112Z">
 <meta property="article:author" content="qitiantaile">
 <meta property="article:tag" content="复习">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-06-26 14:58:32 / 修改时间：16:55:04" itemprop="dateCreated datePublished" datetime="2023-06-26T14:58:32+08:00">2023-06-26</time>
+              <time title="创建时间：2023-06-26 14:58:32 / 修改时间：16:58:57" itemprop="dateCreated datePublished" datetime="2023-06-26T14:58:32+08:00">2023-06-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,26 +239,16 @@
 <p><font color=red>复习重点：判定问题；图灵机构造和基本思想；什么是P、NP、NPC问题及NP问题之间的规约和常见的NPC问题；SAT、2SAT、3SAT问题；递归算法和非递归算法特点和区别；复杂度分析方法区别；会写素数判定的递归和非递归算法</font></p>
 <span id="more"></span>
 
-<h2 id="1-什么是可计算问题？什么是不可计算问题？"><a href="#1-什么是可计算问题？什么是不可计算问题？" class="headerlink" title="1.什么是可计算问题？什么是不可计算问题？"></a>1.什么是可计算问题？什么是不可计算问题？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当且仅当该问题可以在图灵机上经过有限步骤后可以得到正确的结果。相反地，不能由图灵机解决的问题叫做不可计算问题。</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-什么是计算复杂性？计算复杂性理论主要研究什么？"><a href="#2-什么是计算复杂性？计算复杂性理论主要研究什么？" class="headerlink" title="2.什么是计算复杂性？计算复杂性理论主要研究什么？"></a>2.什么是计算复杂性？计算复杂性理论主要研究什么？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">计算复杂性就是用计算机求解问题的难易程度，使用数学方法对计算中所需的各种资源消耗作定量的分析，并研究各类问题之间在计算复杂程度上的相互关系和性质。                                     主要研究计算问题时所需要的资源，比如时间和空间，以及如何尽可能的节省这些资源。</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-什么是算法？算法有哪些特点？"><a href="#3-什么是算法？算法有哪些特点？" class="headerlink" title="3.什么是算法？算法有哪些特点？"></a>3.什么是算法？算法有哪些特点？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">算法是对解决方案的准确而完整的描述。                                                 特点：有穷性，可行性，确定性，输入和输出</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-描述算法的方法有？"><a href="#4-描述算法的方法有？" class="headerlink" title="4.描述算法的方法有？"></a>4.描述算法的方法有？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">自然语言、流程图、N-S图、伪代码、程序设计语言</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-如何分析算法的效率？"><a href="#5-如何分析算法的效率？" class="headerlink" title="5.如何分析算法的效率？"></a><font color=red>5.如何分析算法的效率？</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">算法的效率分析指对算法在运行时间和存储空间这两种资源的利用效率进行研究。对于一般算法，关注其输入规模，运行时间的度量单位，增长效率和算法的最优最差平均效率；对于递归算法，则需要关注递归的深度，先对算法建立一个递归关系，设置初始条件，在求解分析。</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-渐进表达式O-g-n-，Θ-g-n-，Ω-g-n-的定义和表达含义？"><a href="#6-渐进表达式O-g-n-，Θ-g-n-，Ω-g-n-的定义和表达含义？" class="headerlink" title="6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？"></a><font color=red>6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">O(g(n))：如果函数t(n)包含在O(g(n))中，对于所有足够大的n，t(n)的上界由g(n)的常数倍确定，即存在大于0的常数和非负的整数n0使得对于所有的 n≥n0 ，有 cg(n)≥t(n)</span><br><span class="line">表达含义：g(n)≥该算法的时间复杂度</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Θ(g(n))：如果函数t包含在Θ(g(n))中，对于所有足够大的n，t(n)的上下界都由g的常数倍确定，即存在大于0的常数c1,c2和非负的整数n0使得所有 n≥n0 ，有 c1g(n)≥t(n)≥c2g(n)</span><br><span class="line">表达含义：g(n)=该算法的时间复杂度</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ω(g(n))：</span><br><span class="line">表达含义：该算法的时间复杂度≥g(n)</span><br></pre></td></tr></table></figure>
-
-<h2 id="7-递归和非递归算法时间效率的数学分析方法区别？"><a href="#7-递归和非递归算法时间效率的数学分析方法区别？" class="headerlink" title="7.递归和非递归算法时间效率的数学分析方法区别？"></a><font color=red>7.递归和非递归算法时间效率的数学分析方法区别？</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">见5</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-Fibonacci-numbers-F-N-x3D-F-N-1-F-N-2-的时间复杂度表达式？"><a href="#8-Fibonacci-numbers-F-N-x3D-F-N-1-F-N-2-的时间复杂度表达式？" class="headerlink" title="8.Fibonacci numbers F(N) &#x3D; F(N-1) + F(N-2)的时间复杂度表达式？"></a>8.Fibonacci numbers F(N) &#x3D; F(N-1) + F(N-2)的时间复杂度表达式？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">递归法：O(2^N)</span><br><span class="line">公式计算法：O(1)</span><br></pre></td></tr></table></figure>
-
+<h2 id="1-什么是可计算问题？什么是不可计算问题？"><a href="#1-什么是可计算问题？什么是不可计算问题？" class="headerlink" title="1.什么是可计算问题？什么是不可计算问题？"></a>1.什么是可计算问题？什么是不可计算问题？</h2><p>当且仅当该问题可以在图灵机上经过有限步骤后可以得到正确的结果。相反地，不能由图灵机解决的问题叫做不可计算问题。</p>
+<h2 id="2-什么是计算复杂性？计算复杂性理论主要研究什么？"><a href="#2-什么是计算复杂性？计算复杂性理论主要研究什么？" class="headerlink" title="2.什么是计算复杂性？计算复杂性理论主要研究什么？"></a>2.什么是计算复杂性？计算复杂性理论主要研究什么？</h2><p>计算复杂性就是用计算机求解问题的难易程度，使用数学方法对计算中所需的各种资源消耗作定量的分析，并研究各类问题之间在计算复杂程度上的相互关系和性质。                                     主要研究计算问题时所需要的资源，比如时间和空间，以及如何尽可能的节省这些资源。</p>
+<h2 id="3-什么是算法？算法有哪些特点？"><a href="#3-什么是算法？算法有哪些特点？" class="headerlink" title="3.什么是算法？算法有哪些特点？"></a>3.什么是算法？算法有哪些特点？</h2><p>算法是对解决方案的准确而完整的描述。                                                                                                              特点：有穷性，可行性，确定性，输入和输出</p>
+<h2 id="4-描述算法的方法有？"><a href="#4-描述算法的方法有？" class="headerlink" title="4.描述算法的方法有？"></a>4.描述算法的方法有？</h2><p>自然语言、流程图、N-S图、伪代码、程序设计语言</p>
+<h2 id="5-如何分析算法的效率？"><a href="#5-如何分析算法的效率？" class="headerlink" title="5.如何分析算法的效率？"></a><font color=red>5.如何分析算法的效率？</font></h2><p>算法的效率分析指对算法在运行时间和存储空间这两种资源的利用效率进行研究。对于一般算法，关注其输入规模，运行时间的度量单位，增长效率和算法的最优最差平均效率；对于递归算法，则需要关注递归的深度，先对算法建立一个递归关系，设置初始条件，在求解分析。</p>
+<h2 id="6-渐进表达式O-g-n-，Θ-g-n-，Ω-g-n-的定义和表达含义？"><a href="#6-渐进表达式O-g-n-，Θ-g-n-，Ω-g-n-的定义和表达含义？" class="headerlink" title="6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？"></a><font color=red>6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？</font></h2><p>O(g(n))：如果函数t(n)包含在O(g(n))中，对于所有足够大的n，t(n)的上界由g(n)的常数倍确定，即存在大于0的常数和非负的整数n0使得对于所有的 n≥n0 ，有 cg(n)≥t(n)<br>表达含义：g(n)≥该算法的时间复杂度</p>
+<p>Θ(g(n))：如果函数t包含在Θ(g(n))中，对于所有足够大的n，t(n)的上下界都由g的常数倍确定，即存在大于0的常数c1,c2和非负的整数n0使得所有 n≥n0 ，有 c1g(n)≥t(n)≥c2g(n)<br>表达含义：g(n)&#x3D;该算法的时间复杂度</p>
+<p>Ω(g(n))：<br>表达含义：该算法的时间复杂度≥g(n)</p>
+<h2 id="7-递归和非递归算法时间效率的数学分析方法区别？"><a href="#7-递归和非递归算法时间效率的数学分析方法区别？" class="headerlink" title="7.递归和非递归算法时间效率的数学分析方法区别？"></a><font color=red>7.递归和非递归算法时间效率的数学分析方法区别？</font></h2><p>见5</p>
+<h2 id="8-Fibonacci-numbers-F-N-x3D-F-N-1-F-N-2-的时间复杂度表达式？"><a href="#8-Fibonacci-numbers-F-N-x3D-F-N-1-F-N-2-的时间复杂度表达式？" class="headerlink" title="8.Fibonacci numbers F(N) &#x3D; F(N-1) + F(N-2)的时间复杂度表达式？"></a>8.Fibonacci numbers F(N) &#x3D; F(N-1) + F(N-2)的时间复杂度表达式？</h2><p>递归法：O(2^N)<br>公式计算法：O(1)</p>
 <h2 id="9-经典排序问题的算法时间复杂度下界？"><a href="#9-经典排序问题的算法时间复杂度下界？" class="headerlink" title="9.经典排序问题的算法时间复杂度下界？"></a>9.经典排序问题的算法时间复杂度下界？</h2><table>
 <thead>
 <tr>
@@ -359,17 +349,11 @@
 <td align="center">稳定</td>
 </tr>
 </tbody></table>
-<h2 id="10-算法性能提升的本质是什么？提升算法效率的四个层次是什么？"><a href="#10-算法性能提升的本质是什么？提升算法效率的四个层次是什么？" class="headerlink" title="10.算法性能提升的本质是什么？提升算法效率的四个层次是什么？"></a>10.算法性能提升的本质是什么？提升算法效率的四个层次是什么？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提升的本质：本质式效率，就是让计算机少做事情。效率=产出/所做的事，产出难提高，所做事情可以减少</span><br><span class="line">四个层次：正确性；易读性；健壮性；时空性。</span><br></pre></td></tr></table></figure>
-
-<h2 id="11-为什么超越多项式时间复杂度的精确算法一般是不可接受的？"><a href="#11-为什么超越多项式时间复杂度的精确算法一般是不可接受的？" class="headerlink" title="11.为什么超越多项式时间复杂度的精确算法一般是不可接受的？"></a><font color=red>11.为什么超越多项式时间复杂度的精确算法一般是不可接受的？</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度并不表示一个程序解决需要多少时间，而是当问题规模扩大后，程序需要的时间随规模的增长有多快。</span><br><span class="line">一个优化问题如果已经找到了多项式时间算法，称该问题为多项式时间可解问题，并将这类问题的集合记为P，即多项式时间可解问题为P类问题。</span><br><span class="line">一个问题没有找到多项式时间算法，在直觉上他是“难解”的，但又无法证明多项式时间算法的不存在性。一方面证明一个问题不存在多项式时间算法是困难的；另一方面，有越来越多的问题无法给出多项式时间算法。</span><br><span class="line">NP-完全性理论的核心思想：如果一个问题是NP类问题，并且存在一个能够在多项式时间内转换为该问题的解的算法，那么该问题就是NP-完全问题。一个问题是NP-完全问题意味着他是NP类问题中最困难的问题之一。其重要性在于：如果能够证明某个问题是NP-完全问题，那么就可以推导出其他许多问题也是NP-完全问题。</span><br></pre></td></tr></table></figure>
-
-<h2 id="12-什么是图灵机？什么是图灵测试？什么是图灵命题？"><a href="#12-什么是图灵机？什么是图灵测试？什么是图灵命题？" class="headerlink" title="12.什么是图灵机？什么是图灵测试？什么是图灵命题？"></a><font color=red>12.什么是图灵机？什么是图灵测试？什么是图灵命题？</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">图灵机：又称图灵计算机，指一种抽象的计算模型，即将人使用纸笔进行数学运算的过程进行抽象，由一个虚拟机器替代人类进行数学运算。</span><br><span class="line">其有一个无限长的纸带，纸带分成一个一个方格，每个方格有不同颜色，一个机器头在纸带上移动。机器头有一组内部状态和一些固定程序。每个时刻，机器头从当前纸带读入一个方格的信息，然后结合内部状态查找程序表，根据程序输出信息到纸带方格中，并转换自己的内部状态，进行移动。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">图灵测试：指测试者和被测试者隔开的情况下，通过一些装置向被测试者随意提问。进行多次测试后，如果机器让平均每个参与者做出了超过30%的误判，那么这台机器就通过了测试，并认为具有人类智能。</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">图灵命题：可计算性理论的基本论题，一个函数是可计算的当且仅当可由一部图灵机来计算它。</span><br></pre></td></tr></table></figure>
-</blockquote>
+<h2 id="10-算法性能提升的本质是什么？提升算法效率的四个层次是什么？"><a href="#10-算法性能提升的本质是什么？提升算法效率的四个层次是什么？" class="headerlink" title="10.算法性能提升的本质是什么？提升算法效率的四个层次是什么？"></a>10.算法性能提升的本质是什么？提升算法效率的四个层次是什么？</h2><p>提升的本质：本质式效率，就是让计算机少做事情。效率&#x3D;产出&#x2F;所做的事，产出难提高，所做事情可以减少<br>四个层次：正确性；易读性；健壮性；时空性。</p>
+<h2 id="11-为什么超越多项式时间复杂度的精确算法一般是不可接受的？"><a href="#11-为什么超越多项式时间复杂度的精确算法一般是不可接受的？" class="headerlink" title="11.为什么超越多项式时间复杂度的精确算法一般是不可接受的？"></a><font color=red>11.为什么超越多项式时间复杂度的精确算法一般是不可接受的？</font></h2><p>时间复杂度并不表示一个程序解决需要多少时间，而是当问题规模扩大后，程序需要的时间随规模的增长有多快。<br>一个优化问题如果已经找到了多项式时间算法，称该问题为多项式时间可解问题，并将这类问题的集合记为P，即多项式时间可解问题为P类问题。<br>一个问题没有找到多项式时间算法，在直觉上他是“难解”的，但又无法证明多项式时间算法的不存在性。一方面证明一个问题不存在多项式时间算法是困难的；另一方面，有越来越多的问题无法给出多项式时间算法。<br>NP-完全性理论的核心思想：如果一个问题是NP类问题，并且存在一个能够在多项式时间内转换为该问题的解的算法，那么该问题就是NP-完全问题。一个问题是NP-完全问题意味着他是NP类问题中最困难的问题之一。其重要性在于：如果能够证明某个问题是NP-完全问题，那么就可以推导出其他许多问题也是NP-完全问题。</p>
+<h2 id="12-什么是图灵机？什么是图灵测试？什么是图灵命题？"><a href="#12-什么是图灵机？什么是图灵测试？什么是图灵命题？" class="headerlink" title="12.什么是图灵机？什么是图灵测试？什么是图灵命题？"></a><font color=red>12.什么是图灵机？什么是图灵测试？什么是图灵命题？</font></h2><p>图灵机：又称图灵计算机，指一种抽象的计算模型，即将人使用纸笔进行数学运算的过程进行抽象，由一个虚拟机器替代人类进行数学运算。<br>其有一个无限长的纸带，纸带分成一个一个方格，每个方格有不同颜色，一个机器头在纸带上移动。机器头有一组内部状态和一些固定程序。每个时刻，机器头从当前纸带读入一个方格的信息，然后结合内部状态查找程序表，根据程序输出信息到纸带方格中，并转换自己的内部状态，进行移动。</p>
+<p>图灵测试：指测试者和被测试者隔开的情况下，通过一些装置向被测试者随意提问。进行多次测试后，如果机器让平均每个参与者做出了超过30%的误判，那么这台机器就通过了测试，并认为具有人类智能。</p>
+<p>图灵命题：可计算性理论的基本论题，一个函数是可计算的当且仅当可由一部图灵机来计算它。</p>
 <h2 id="13-图灵机的基本原理及组成部分？什么是格局？"><a href="#13-图灵机的基本原理及组成部分？什么是格局？" class="headerlink" title="13.图灵机的基本原理及组成部分？什么是格局？"></a><font color=red>13.图灵机的基本原理及组成部分？什么是格局？</font></h2>
     </div>
 
