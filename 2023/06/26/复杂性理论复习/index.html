@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626150513090.png">
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626195253002.png">
 <meta property="article:published_time" content="2023-06-26T06:58:32.724Z">
-<meta property="article:modified_time" content="2023-06-27T01:38:37.813Z">
+<meta property="article:modified_time" content="2023-06-27T02:12:59.567Z">
 <meta property="article:author" content="qitiantaile">
 <meta property="article:tag" content="复习">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-27 09:38:37" itemprop="dateModified" datetime="2023-06-27T09:38:37+08:00">2023-06-27</time>
+                <time title="修改时间：2023-06-27 10:12:59" itemprop="dateModified" datetime="2023-06-27T10:12:59+08:00">2023-06-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -437,7 +437,28 @@
 <li>这个过程可以继续，知道验证者对证明者的声称满意。</li>
 </ul>
 <p>除了该问题，交互式证明思想还用于素性测试(?)、证明性密码学等领域。</p>
-<h2 id="29-对角线方法思想？举例"><a href="#29-对角线方法思想？举例" class="headerlink" title="29.对角线方法思想？举例"></a>29.对角线方法思想？举例</h2><h2 id="30-三种基本算法设计范式"><a href="#30-三种基本算法设计范式" class="headerlink" title="30.三种基本算法设计范式"></a>30.三种基本算法设计范式</h2><ul>
+<h2 id="29-对角线方法思想？举例"><a href="#29-对角线方法思想？举例" class="headerlink" title="29.对角线方法思想？举例"></a>29.对角线方法思想？举例</h2><p><font color=pink>思想</font>：利用对角线上的值做反证法。</p>
+<p><font color=pink>证明 <strong>N !&#x3D; R</strong>,自然数集与实数集不存在一一对应</font>:</p>
+<ul>
+<li><p>假设：<font color=blue>自然数集N</font>和<font color=green>实数集R</font>之间，一定存在映射，即<strong>N</strong>可以进行一一列举出来，f(1)，f(2)….f(n),</p>
+<p>f(n)对应的是实数，将其限制在[0,1]之间；</p>
+<p>[0,1]之间的实数与整个实数集一定存在一一对应关系。</p>
+</li>
+<li><p>证明<font color=blue>自然数集N</font>和<font color=green>[0,1]区间内的实数</font>，不可能存在一一对应关系：</p>
+<p>f(n)是一个[0,1]区间内的实数，则可以写成</p>
+<p>f(1) &#x3D; 0.a11a12a13…</p>
+<p>f(2) &#x3D; 0.a21a22a23…</p>
+<p><strong>.</strong></p>
+<p><strong>.</strong></p>
+<p><strong>.</strong></p>
+<p>f(n) &#x3D; 0.an1an2…ann，其中a的值是0-9中的一个数字；</p>
+<p>假设存在一个f是从<font color=blue>自然数集N</font>和<font color=green>[0,1]区间内的实数</font>的一一映射，对于对角线上的元素a11，a22，…，ann</p>
+<p>设计一个实数 b &#x3D; b1b2…bn，其中要求：<font color=red>bi !&#x3D; aii</font></p>
+<p>如果<font color=blue>自然数集N</font>和<font color=green>[0,1]区间内的实数</font>是一一对应的，那么<font color=red>一定可以找到一个自然数k</font>，与实数b &#x3D; b1b2…bn对应，实数b一定等于f(k);</p>
+<p>与假设<font color=red>矛盾</font>，设计过程要求<font color=red>bk !&#x3D; akk</font>，<font color=red>而f(k)中第k个数值一定是akk</font>，因此两个值不可能相等。</p>
+</li>
+</ul>
+<h2 id="30-三种基本算法设计范式"><a href="#30-三种基本算法设计范式" class="headerlink" title="30.三种基本算法设计范式"></a>30.三种基本算法设计范式</h2><ul>
 <li><font color=pink>有理论保证的算法</font><ul>
 <li>精确算法</li>
 <li>近似算法</li>
@@ -614,7 +635,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共6.8k字</span>
+  <span class="post-count">全站共7.2k字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
