@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627211504443.png">
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627212725004.png">
 <meta property="article:published_time" content="2023-06-26T06:58:32.724Z">
-<meta property="article:modified_time" content="2023-06-27T14:04:07.605Z">
+<meta property="article:modified_time" content="2023-06-28T02:22:53.274Z">
 <meta property="article:author" content="qitiantaile">
 <meta property="article:tag" content="复习">
 <meta name="twitter:card" content="summary">
@@ -219,7 +219,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-27 22:04:07" itemprop="dateModified" datetime="2023-06-27T22:04:07+08:00">2023-06-27</time>
+                <time title="修改时间：2023-06-28 10:22:53" itemprop="dateModified" datetime="2023-06-28T10:22:53+08:00">2023-06-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -428,7 +428,7 @@
 <p>[注]：如果xi和 ¬xi属于同一强连通分量，即互相可达，肯定是矛盾式。</p>
 <p>构造一张有向图G，把其中的每个变量拆成两个节点<strong>2i</strong>和<strong>2i+1</strong>，分别表示<strong>xi</strong>为假和<strong>xi</strong>为真，最后要为每个变量选择其中一个节点打标记。对于“<strong>xi</strong>为假或<strong>xj</strong>为假”这样的条件，我们连一条有向边<br>$$<br>2i+1&#x3D;&gt;2j<br>$$<br>表示<strong>xi</strong>为真时<strong>xj</strong>必须为假，同理，还需要连一条有向边<br>$$<br>2j+1&#x3D;&gt;2i<br>$$<br>其他条件类似，每个条件对应两条“<strong>对称</strong>”的边，整张图实际上描述了一系列必须满足的关系，选择<strong>u</strong>的情况下必须选择它所能到的所有点。</p>
 <p>对于一个没有打标记的变量<strong>xi</strong>，我们先假定它为假，然后标记节点<strong>2i</strong>，并且沿着有向边标记所有能标记的节点。如果标记过程中发现某个变量对应的两个节点都被标记，则“<strong>xi</strong>为假”这个假定不成立，需要改成“<strong>xi</strong>为真，然后重新标记。整个算法没有回溯过程，如果当前考虑的变量不管赋值为真还是假都会引起矛盾，可以证明整个2SAT问题无解。</p>
-<h2 id="26-什么是随机算法？作用和意义？举例"><a href="#26-什么是随机算法？作用和意义？举例" class="headerlink" title="26.什么是随机算法？作用和意义？举例"></a><font color=red>26.什么是随机算法？作用和意义？举例</font></h2><p><font color=pink>随机算法</font>是一种使用概率和统计方法在其执行过程中对于下一计算步骤做出随机选择的算法。</p>
+<h2 id="26-什么是随机算法？作用和意义？举例"><a href="#26-什么是随机算法？作用和意义？举例" class="headerlink" title="26.什么是随机算法？作用和意义？举例"></a><font color=red>26.什么是随机算法？作用和意义？举例</font></h2><p><font color=pink>随机算法</font>是一种使用概率和统计方法在其执行过程中对于下一计算步骤做出随机选择的算法。通常包括：随机生成的随机数和根据这些随机数做出的决策</p>
 <p><font color=pink>作用和意义</font>：</p>
 <ul>
 <li>避免陷入局部最优解</li>
@@ -602,7 +602,13 @@
 <img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627211504443.png" alt="image-20230627211504443" style="zoom: 50%;" /></li>
 </ul>
 <h2 id="42-SAT、2SAT、3SAT"><a href="#42-SAT、2SAT、3SAT" class="headerlink" title="42.SAT、2SAT、3SAT"></a>42.SAT、2SAT、3SAT</h2><p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627212725004.png" alt="image-20230627212725004"></p>
-<h2 id="43-素数判定的递归和非递归算法"><a href="#43-素数判定的递归和非递归算法" class="headerlink" title="43.素数判定的递归和非递归算法"></a>43.素数判定的递归和非递归算法</h2><h2 id="44-为什么停机问题是不可判定的？"><a href="#44-为什么停机问题是不可判定的？" class="headerlink" title="44.为什么停机问题是不可判定的？"></a>44.为什么停机问题是不可判定的？</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liusiqian0209/article/details/49837447">(118条消息) NP完全性理论简介_np完整性_liusiqian0209的博客-CSDN博客</a></p>
+<h2 id="43-素数判定的递归和非递归算法"><a href="#43-素数判定的递归和非递归算法" class="headerlink" title="43.素数判定的递归和非递归算法"></a>43.素数判定的递归和非递归算法</h2><p>递归：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isPrime</span>(<span class="params">n,i</span>):</span><br><span class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">2</span>): <span class="keyword">return</span> n==<span class="number">2</span></span><br><span class="line">	<span class="keyword">if</span> n%i == <span class="number">0</span>: <span class="keyword">return</span> false</span><br><span class="line">	<span class="keyword">if</span> i*i&gt;n: <span class="keyword">return</span> true</span><br><span class="line">	<span class="keyword">return</span> isPrime(n,i+<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>非递归：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isPrime</span>(<span class="params">n</span>):</span><br><span class="line">	<span class="keyword">if</span> n&lt;=<span class="number">1</span>: <span class="keyword">return</span> false</span><br><span class="line">	<span class="keyword">for</span>(i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n**<span class="number">0.5</span>)+<span class="number">1</span>):</span><br><span class="line">		ifn%i == <span class="number">0</span>:<span class="keyword">return</span> false</span><br><span class="line">	<span class="keyword">return</span> ture</span><br></pre></td></tr></table></figure>
+
+<h2 id="44-为什么停机问题是不可判定的？"><a href="#44-为什么停机问题是不可判定的？" class="headerlink" title="44.为什么停机问题是不可判定的？"></a>44.为什么停机问题是不可判定的？</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liusiqian0209/article/details/49837447">(118条消息) NP完全性理论简介_np完整性_liusiqian0209的博客-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liusiqian0209/article/details/49837447">(118条消息) NP完全性理论简介_np完整性_liusiqian0209的博客-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/351638078">算法学习笔记(71): 2-SAT - 知乎 (zhihu.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.sciencenet.cn/blog-2322490-933277.html">科学网—什么是“判定问题”？（2）－悖论、停机问题与NP - 柳渝的博文 (sciencenet.cn)</a></p>
@@ -630,7 +636,10 @@
     <a href="/2023/06/25/Android%E7%BC%96%E7%A8%8B/" rel="prev" title="Android编程">
       <i class="fa fa-chevron-left"></i> Android编程
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/06/28/%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E6%B5%8B%E8%AF%95%E5%8D%B7/" rel="next" title="复杂性理论测试卷">
+      复杂性理论测试卷 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -705,7 +714,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -756,7 +765,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共9.9k字</span>
+  <span class="post-count">全站共11.6k字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
