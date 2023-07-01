@@ -50,8 +50,13 @@
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230630210323991.png">
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230630210633392.png">
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230630210955417.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701103303147.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701110348215.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701110853327.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701110907884.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701111631148.png">
 <meta property="article:published_time" content="2023-06-29T03:35:50.411Z">
-<meta property="article:modified_time" content="2023-06-30T13:36:55.565Z">
+<meta property="article:modified_time" content="2023-07-01T03:16:42.069Z">
 <meta property="article:author" content="qitiantaile">
 <meta property="article:tag" content="复习">
 <meta name="twitter:card" content="summary">
@@ -222,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-30 21:36:55" itemprop="dateModified" datetime="2023-06-30T21:36:55+08:00">2023-06-30</time>
+                <time title="修改时间：2023-07-01 11:16:42" itemprop="dateModified" datetime="2023-07-01T11:16:42+08:00">2023-07-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -664,26 +669,33 @@
 </li>
 </ul>
 <h3 id="c-拒绝服务攻击原理-x2F-防御机制"><a href="#c-拒绝服务攻击原理-x2F-防御机制" class="headerlink" title="c) 拒绝服务攻击原理&#x2F;防御机制"></a><strong>c)</strong> <font color=red>拒绝服务攻击原理&#x2F;防御机制</font></h3><h4 id="拒绝服务攻击"><a href="#拒绝服务攻击" class="headerlink" title="拒绝服务攻击"></a><font color=pink><strong>拒绝服务攻击</strong></font></h4><ul>
-<li>概念：攻击者通过某种手段，有意的造成计算机或网络不能正常运转从而不能像合法用户提供所需服务或者使服务质量降低<ul>
+<li><p>概念：攻击者通过某种手段，有意的造成计算机或网络不能正常运转从而不能像合法用户提供所需服务或者使服务质量降低</p>
+<ul>
 <li>服务：系统提供，用户使用受益</li>
 <li><font color=red>拒绝服务</font>：任何对服务的干涉如果使得器可用性降低或失去可用性成为拒绝服务，如：带宽耗尽</li>
 <li>攻击方式：消耗系统或网络资源；阻断访问路径；更改系统配置</li>
 <li>攻击目标：主要以网站、路由器、域名服务器等网络基础设施</li>
 </ul>
 </li>
-<li>分类：<ul>
-<li>按攻击方式：<ul>
+<li><p>分类：</p>
+<ul>
+<li><p>Dos（拒绝服务攻击）；DDos（分布拒绝攻击）</p>
+</li>
+<li><p>按攻击方式：</p>
+<ul>
 <li>资源破坏型Dos：耗尽资源</li>
 <li>物理破坏型Dos：摧毁主机或网络节点</li>
 <li>服务终止型Dos：攻击导致服务崩溃</li>
 </ul>
 </li>
-<li>按攻击是否针对受害者：<ul>
+<li><p>按攻击是否针对受害者：</p>
+<ul>
 <li>直接型Dos：</li>
 <li>间接型Dos：</li>
 </ul>
 </li>
-<li>按攻击机制：<ul>
+<li><p>按攻击机制：</p>
+<ul>
 <li>剧毒包型攻击：利用协议或软件漏洞发送异常数据包导致系统崩溃，对攻击者计算能力和网络带宽没有要求</li>
 <li>风暴型拒绝服务攻击：发送大量数据包导致系统崩溃，“带宽攻击”</li>
 <li>重定向攻击：修改网络参数攻击，<ul>
@@ -693,7 +705,8 @@
 </li>
 </ul>
 </li>
-<li>属性分类法<ul>
+<li><p>属性分类法</p>
+<ul>
 <li>攻击静态属性</li>
 <li>攻击动态属性</li>
 <li>攻击交互属性</li>
@@ -701,13 +714,105 @@
 </li>
 </ul>
 </li>
-<li>Dos攻击原理：<ul>
+<li><p>Dos攻击原理：</p>
+<ul>
 <li>剧毒包Dos：也叫漏洞攻击或协议攻击<ul>
-<li>WinNuke攻击</li>
-<li>泪滴攻击</li>
-<li>循环攻击</li>
+<li>WinNuke攻击<ul>
+<li>特征：以带外数据攻击目标端口，导致受害者处理带外数据时出现异常，从而使系统停止响应并显示蓝屏，也叫“带外攻击”、“蓝屏攻击”</li>
+<li>被攻击端口：139、138、137、113、53</li>
 </ul>
 </li>
+<li>Land攻击<ul>
+<li>特征：利用主机处理TCP连接请求的漏洞，构造特殊的TCP SYN包（第一步中用于发起TCP连接请求），<font color=red>该数据包的源地址和目标地址都被设置成受害者主机的IP地址</font>，导致收到数据包的主机向自己回复TCP SYN+ACK消息，同时主机又发回自己一个ACK消息创建一个空连接。</li>
+</ul>
+</li>
+<li>Ping of death攻击：<ul>
+<li>原理：利用协议实现时的漏洞，向受害者发送超长的Ping数据包，导致受害者系统异常早期路由器对包的最大尺寸有限制，如TCP&#x2F;IP协议栈规定ICMP包不能超过64KB，当加载的数据大小超过64KB上限时，出现内存分配错误，导致接收方死机</li>
+<li>别名：ssping</li>
+</ul>
+</li>
+<li>泪滴攻击</li>
+<li>循环攻击<ul>
+<li>两个都会产生输出的端口建立连接，第一个的输出可能是第二的输入同时又作为第一个的输入，进而导致大量数据包产生，导致拒绝服务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>风暴型Dos攻击：通过大量无用数据包占用资源达到拒绝服务目的，“带宽攻击”<ul>
+<li>直接风暴型攻击</li>
+<li>反射攻击（DRDos）：通过中间主机发起攻击</li>
+<li>成功的根本原因：网络带宽和系统资源是有限的</li>
+</ul>
+</li>
+<li>Dos攻击原理：攻击代理通常采用向目标主机发送大量的网络分组：<ul>
+<li>TCP洪流：向目标主机发送大量设置不同标志位的TCP分组</li>
+<li>ICMP Echo请求&#x2F;响应报文：向目标主机发送大量的ICMP分组</li>
+<li>UDP洪流：向目标主机发送大量各种基于UDP协议的应用协议包，</li>
+<li>应用层协议：向目标直接或间接发送大量特定应用协议数据包，常用攻击的协议又HTTP&#x2F;HTTPS、NTP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DDos攻击原理：</p>
+<ul>
+<li>攻击者寻找可入侵主机</li>
+<li>控制主机，用于放置后门等</li>
+<li>选出满足建立网络需要的主机，放置编译好的守护程序，对控制的计算机发出命令</li>
+<li>黑客发送控制命令给主控机，启动对目标系统的攻击</li>
+<li>主控机发送攻击信号给被控机，被控机开始对目标系统发动攻击</li>
+<li>目标系统被无数伪造的请求淹没，无法对合法用户进行响应。</li>
+</ul>
+</li>
+<li><p>防御机制：</p>
+<ul>
+<li>防御难点：<ul>
+<li>不容易定位攻击者的位置</li>
+</ul>
+</li>
+<li>依据DDoS攻击工具的特征检测：<ul>
+<li>特定端口</li>
+<li>标志位</li>
+<li>特定数据内容</li>
+</ul>
+</li>
+<li>统计检测</li>
+<li>主机网络连接特征检测</li>
+<li>根据异常流量检测<ul>
+<li>Dos工具产生的网络通信信息有控制信息和攻击时的网络通信。根据以下异常现象检测：<ul>
+<li>大量目标主机域名解析</li>
+<li>极限通信流量</li>
+<li>特大型的ICMP和UDP数据包</li>
+<li>不属于正常连接通信的TCP和UDP数据包</li>
+<li>数据段内容只含文字和数字的数据包</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>拒绝服务攻击响应技术：从原理上有四种：丢弃恶意分组、源端控制、追溯发起攻击端、路由器动态检测流量并控制<ul>
+<li>分组过滤：对特定的流量进行过滤</li>
+<li>源端控制：通常参与DoS攻击的分组的源IP地址都是假冒的，源端过滤可以减少或者消除假冒IP现象</li>
+<li>追溯：假定存在源地址假冒，试图在攻击的源头控制攻击：<ul>
+<li>IP追溯：路由器标记路过的分组</li>
+<li>ICMP追溯：路由器概率抽样标记转发分组</li>
+<li>链路测试：攻击进行时才有效</li>
+</ul>
+</li>
+<li>路由器动态检测和控制：在路由器上动态检测和控制Dos攻击引起的拥塞，攻击分组可能来源于多个流，但是存在某种共同特征。</li>
+</ul>
+</li>
+<li>对抗风暴型DDos：流量清洗<ul>
+<li>针对互联网数据中心或云服务的中大型用户</li>
+<li>对进入IDC或云的数据流量进行实时监控，及时发现包括DDos攻击在内的异常流量</li>
+<li>在不影响业务的前提下，清洗掉异常流量</li>
+<li>通常分成3个部分，攻击检测、攻击缓解、监控管理<ul>
+<li>攻击检测：对用户业务流量进行逐包检测，发现隐藏的非法流量。技术有静态漏洞攻击特征检查、动态规则过滤、异常流量限速、用户流量模型异常检测等</li>
+<li>攻击缓解：将可疑流量从原始网络路径中重定向到净化清洗中心上进行恶意流量的识别和剥离，还原出的合法流量被回注到原网络、</li>
+<li>监控管理：对流量清洗系统的设备进行集中管理配置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font color=red>拒绝服务攻击时最容易实现，同时也是最难防护的攻击手段</font></li>
 </ul>
 </li>
 </ul>
@@ -910,12 +1015,120 @@
 </ul>
 </li>
 </ul>
-<h2 id="IP与路由安全"><a href="#IP与路由安全" class="headerlink" title="IP与路由安全"></a>IP与路由安全</h2><p><strong>a)</strong> <font color=red>IPv4协议</font>,主要的安全问题</p>
-<p><strong>b)</strong><font color=red>IPSec安全策略，运行模式</font></p>
-<p>c) AH协议，定义及结构</p>
-<p>d) ESP协议，定义及结构</p>
-<p>e) 网络密钥交换，定义及结构</p>
-<h2 id="区块链安全"><a href="#区块链安全" class="headerlink" title="区块链安全"></a>区块链安全</h2><p><strong>a)</strong> <font color=red>区块链结构</font>，链式结构、哈希链、区块结构</p>
+<h2 id="IP与路由安全"><a href="#IP与路由安全" class="headerlink" title="IP与路由安全"></a>IP与路由安全</h2><h3 id="a-IPv4协议-主要的安全问题"><a href="#a-IPv4协议-主要的安全问题" class="headerlink" title="a) IPv4协议,主要的安全问题"></a><strong>a)</strong> <font color=red>IPv4协议</font>,主要的安全问题</h3><h4 id="IPV4协议"><a href="#IPV4协议" class="headerlink" title="IPV4协议"></a><font color=pink><strong><a href="#IPV4%E5%9C%B0%E5%9D%80">IPV4协议</a></strong></font></h4><ul>
+<li>安全性分析:<ul>
+<li>没有认证机制：<ul>
+<li>没有源地址认证：源地址假冒</li>
+<li>没有完整性认证：篡改</li>
+</ul>
+</li>
+<li>没有加密机制：<ul>
+<li>无机密性：监听应用数据</li>
+<li>泄露拓扑等信息：网络侦察</li>
+</ul>
+</li>
+<li>无带宽控制：<ul>
+<li>DDoS攻击</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="b-IPSec安全策略，运行模式"><a href="#b-IPSec安全策略，运行模式" class="headerlink" title="b)IPSec安全策略，运行模式"></a><strong>b)</strong><font color=red>IPSec安全策略，运行模式</font></h3><h4 id="IPsec"><a href="#IPsec" class="headerlink" title="IPsec"></a><font color=pink><strong>IPsec</strong></font></h4><ul>
+<li><p>端到端的确保IP同通信安全：认证、加密及密钥管理；为IPv6制定，支持IPv4</p>
+</li>
+<li><p>IP数据包通过IPsec隧道进行加密传输，有效保证数据在不安全的网络环境中传输的安全性。</p>
+</li>
+<li><p>标准内容：</p>
+<ul>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701103303147.png" alt="image-20230701103303147" style="zoom:67%;" /></li>
+<li>IPsec通过允许系统选择所需的安全协议(AH或ESP)，决定服务使用的加密或认证算法，提供任何服务需要的密钥来提供IP级的安全服务</li>
+<li>RFC4301列出的安全服务包括：访问控制、无连接完整性、数据源认证、拒绝重放包、保密性等</li>
+</ul>
+</li>
+<li><p>安全策略：基础是应用于每一个从源端到目的端传输的IP包上的安全策略，主要有两个交互的数据库安全关联数据库(SAD)，安全策略数据库(SPD)</p>
+<ul>
+<li>安全关联SA：指定由通信主机识别的安全属性；单个SA保护单一方向数据<ul>
+<li>一个SA：发送端和接收端之间的单向逻辑连接，为数据流提供安全服务；经过同一SA的数据流得到相同的安全服务；AH或ESP</li>
+<li>SA对：双向安全数据交换</li>
+<li>同时支持AH、ESP且双向：需要两队SA</li>
+<li>一个SA参数：<ul>
+<li>安全参数索引（SPI）：32位，接收方根据SPI选择合适的SA</li>
+<li>IP目的地址：仅单播</li>
+<li>安全协议标识：AH&#x2F;ESP</li>
+</ul>
+</li>
+<li>SAD定义了所有SA相关的参数：<ul>
+<li>安全参数索引</li>
+<li>序列号计算器</li>
+<li>序列计数器溢出</li>
+<li>反重放窗口</li>
+<li>AH信息</li>
+<li>ESP信息</li>
+<li>安全关联的生存期</li>
+<li>IPsec协议模式：隧道、传输或通配符</li>
+<li>最大传输单元路径</li>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701110348215.png" alt="image-20230701110348215" style="zoom:67%;" /></li>
+</ul>
+</li>
+<li>安全策略SP：指定对IP数据包提供何种保护，并以何种方式实施保护<ul>
+<li>根据源IP、目的IP、出入数据来标识</li>
+<li>用户设定自己的安全策略的粒度：IP地址，传输层协议等</li>
+<li>操作：Discard、Bypass、Protect</li>
+<li>SPD中每一条SP包括：<ul>
+<li>本地IP</li>
+<li>远程IP</li>
+<li>下一层协议</li>
+<li>名称</li>
+<li>本地或远程端口</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701110853327.png" alt="image-20230701110853327" style="zoom:67%;" /></li>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701110907884.png" alt="image-20230701110907884" style="zoom:67%;" /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>运行模式：传输模式和隧道模式</p>
+<ul>
+<li><p>区别：</p>
+<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230701111631148.png" alt="image-20230701111631148" style="zoom:67%;" />
+
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">传输模式SA</th>
+<th align="center">隧道模式SA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">AH</td>
+<td align="center">对IP载荷和IP首部的选中部分、IPv6的扩展首部进行认证</td>
+<td align="center">对整个内部IP包(内部首部和IP载荷)和外部IP首部的选中部分、外部IPv6的扩展首部进行认证</td>
+</tr>
+<tr>
+<td align="center">ESP</td>
+<td align="center">对IP载荷和跟在ESP首部后面的任何IPv6扩展首部进行加密</td>
+<td align="center">加密整个内部IP包</td>
+</tr>
+<tr>
+<td align="center">AH+ESP</td>
+<td align="center">对IP载荷和ESP首部后面任何的IPv6扩展首部进行加密，同时对IP载荷进行认证，但不认证IP首部</td>
+<td align="center">加密认证整个内部IP包</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>传输模式：常用在两台主机的安全通信</p>
+</li>
+<li><p>隧道模式(默认)：常用于网关之间，或在网关的终端站</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="c-AH协议，定义及结构"><a href="#c-AH协议，定义及结构" class="headerlink" title="c) AH协议，定义及结构"></a>c) AH协议，定义及结构</h3><h3 id="d-ESP协议，定义及结构"><a href="#d-ESP协议，定义及结构" class="headerlink" title="d) ESP协议，定义及结构"></a>d) ESP协议，定义及结构</h3><h3 id="e-网络密钥交换，定义及结构"><a href="#e-网络密钥交换，定义及结构" class="headerlink" title="e) 网络密钥交换，定义及结构"></a>e) 网络密钥交换，定义及结构</h3><h2 id="区块链安全"><a href="#区块链安全" class="headerlink" title="区块链安全"></a>区块链安全</h2><p><strong>a)</strong> <font color=red>区块链结构</font>，链式结构、哈希链、区块结构</p>
 <p><strong>b)</strong><font color=red>区块链主要协议</font>，共识协议、地址生成</p>
 <p>c) 节点运行机制，P2P点对点网络</p>
 <h2 id="传输层安全"><a href="#传输层安全" class="headerlink" title="传输层安全"></a>传输层安全</h2><p>a) 传输层协议，UDP协议、TCP协议</p>
@@ -1011,7 +1224,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">网络安全复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">计算机网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%92%8C%E7%BB%84%E6%88%90%EF%BC%8C%E5%85%B8%E5%9E%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%EF%BC%9B%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%8F%8A%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AE%EF%BC%9BIPv4%E5%9C%B0%E5%9D%80%E5%8F%8A%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.1.1.</span> <span class="nav-text">a) 计算机网络结构和组成，典型的网络体系结构；网络协议及封装协议；IPv4地址及端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%92%8C%E7%BB%84%E6%88%90%EF%BC%9A"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">计算机网络结构和组成：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%8F%8A%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">网络协议及封装协议:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPV4%E5%9C%B0%E5%9D%80%EF%BC%9A"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">IPV4地址：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%EF%BC%9A"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">端口：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%EF%BC%9A"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">信息安全：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E8%84%86%E5%BC%B1%E6%80%A7"><span class="nav-number">1.1.2.</span> <span class="nav-text">c) 网络安全模型，计算机网络的脆弱性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E8%84%86%E5%BC%B1%E6%80%A7%EF%BC%9A"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">计算机网络的脆弱性：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">网络安全模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.</span> <span class="nav-text">网络攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-%E4%B8%BB%E8%A6%81%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.1.</span> <span class="nav-text">a) 主要的定义及分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-%E5%97%85%E6%8E%A2%E6%94%BB%E5%87%BB%EF%BC%8C%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">b) 嗅探攻击，定义及原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%97%85%E6%8E%A2%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">嗅探攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%8E%E6%9E%9C"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">后果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%88%E6%B3%A8%E6%84%8F%E5%92%8C%E9%9B%86%E7%BA%BF%E5%99%A8%E7%9A%84%E5%9B%BE%E7%A4%BA%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="nav-number">1.2.2.1.4.</span> <span class="nav-text">交换机（注意和集线器的图示区别）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%97%85%E6%8E%A2%E6%94%BB%E5%87%BB%E9%98%B2%E5%BE%A1%EF%BC%9A"><span class="nav-number">1.2.2.1.5.</span> <span class="nav-text">嗅探攻击防御：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86-x2F-%E9%98%B2%E5%BE%A1%E6%9C%BA%E5%88%B6"><span class="nav-number">1.2.3.</span> <span class="nav-text">c) 拒绝服务攻击原理&#x2F;防御机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">拒绝服务攻击</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-%E6%88%AA%E8%8E%B7%E6%94%BB%E5%87%BB%EF%BC%8CMac%E5%9C%B0%E5%9D%80%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB%EF%BC%9BArp%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.</span> <span class="nav-text">d) 截获攻击，Mac地址欺骗攻击；Arp欺骗攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%AA%E8%8E%B7%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">截获攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">MAC地址欺骗攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">DHCP欺骗攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARP%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.4.</span> <span class="nav-text">ARP欺骗攻击</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-%E8%B7%AF%E7%94%B1%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB%EF%BC%8C%E5%8E%9F%E7%90%86%E5%8F%8A%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.5.</span> <span class="nav-text">e)路由欺骗攻击，原理及过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%A0%91%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">生成树欺骗攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">路由欺骗攻击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E4%B8%8E%E8%B7%AF%E7%94%B1%E5%AE%89%E5%85%A8"><span class="nav-number">1.3.</span> <span class="nav-text">IP与路由安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%89%E5%85%A8"><span class="nav-number">1.4.</span> <span class="nav-text">区块链安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%AE%89%E5%85%A8"><span class="nav-number">1.5.</span> <span class="nav-text">传输层安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS%E5%AE%89%E5%85%A8"><span class="nav-number">1.6.</span> <span class="nav-text">DNS安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E5%A4%9A%E6%96%B9%E8%AE%A1%E7%AE%97"><span class="nav-number">1.7.</span> <span class="nav-text">安全多方计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web%E5%AE%89%E5%85%A8"><span class="nav-number">1.8.</span> <span class="nav-text">Web安全</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">网络安全复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">计算机网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%92%8C%E7%BB%84%E6%88%90%EF%BC%8C%E5%85%B8%E5%9E%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%EF%BC%9B%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%8F%8A%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AE%EF%BC%9BIPv4%E5%9C%B0%E5%9D%80%E5%8F%8A%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.1.1.</span> <span class="nav-text">a) 计算机网络结构和组成，典型的网络体系结构；网络协议及封装协议；IPv4地址及端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%92%8C%E7%BB%84%E6%88%90%EF%BC%9A"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">计算机网络结构和组成：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%8F%8A%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">网络协议及封装协议:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPV4%E5%9C%B0%E5%9D%80%EF%BC%9A"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">IPV4地址：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%EF%BC%9A"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">端口：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%EF%BC%9A"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">信息安全：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E8%84%86%E5%BC%B1%E6%80%A7"><span class="nav-number">1.1.2.</span> <span class="nav-text">c) 网络安全模型，计算机网络的脆弱性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E8%84%86%E5%BC%B1%E6%80%A7%EF%BC%9A"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">计算机网络的脆弱性：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">网络安全模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.</span> <span class="nav-text">网络攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-%E4%B8%BB%E8%A6%81%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.1.</span> <span class="nav-text">a) 主要的定义及分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-%E5%97%85%E6%8E%A2%E6%94%BB%E5%87%BB%EF%BC%8C%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">b) 嗅探攻击，定义及原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%97%85%E6%8E%A2%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">嗅探攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%8E%E6%9E%9C"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">后果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%88%E6%B3%A8%E6%84%8F%E5%92%8C%E9%9B%86%E7%BA%BF%E5%99%A8%E7%9A%84%E5%9B%BE%E7%A4%BA%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="nav-number">1.2.2.1.4.</span> <span class="nav-text">交换机（注意和集线器的图示区别）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%97%85%E6%8E%A2%E6%94%BB%E5%87%BB%E9%98%B2%E5%BE%A1%EF%BC%9A"><span class="nav-number">1.2.2.1.5.</span> <span class="nav-text">嗅探攻击防御：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86-x2F-%E9%98%B2%E5%BE%A1%E6%9C%BA%E5%88%B6"><span class="nav-number">1.2.3.</span> <span class="nav-text">c) 拒绝服务攻击原理&#x2F;防御机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">拒绝服务攻击</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-%E6%88%AA%E8%8E%B7%E6%94%BB%E5%87%BB%EF%BC%8CMac%E5%9C%B0%E5%9D%80%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB%EF%BC%9BArp%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.</span> <span class="nav-text">d) 截获攻击，Mac地址欺骗攻击；Arp欺骗攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%AA%E8%8E%B7%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">截获攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">MAC地址欺骗攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">DHCP欺骗攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARP%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.4.4.</span> <span class="nav-text">ARP欺骗攻击</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-%E8%B7%AF%E7%94%B1%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB%EF%BC%8C%E5%8E%9F%E7%90%86%E5%8F%8A%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.5.</span> <span class="nav-text">e)路由欺骗攻击，原理及过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%A0%91%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">生成树欺骗攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">路由欺骗攻击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E4%B8%8E%E8%B7%AF%E7%94%B1%E5%AE%89%E5%85%A8"><span class="nav-number">1.3.</span> <span class="nav-text">IP与路由安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-IPv4%E5%8D%8F%E8%AE%AE-%E4%B8%BB%E8%A6%81%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.1.</span> <span class="nav-text">a) IPv4协议,主要的安全问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IPV4%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">IPV4协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-IPSec%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%EF%BC%8C%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.3.2.</span> <span class="nav-text">b)IPSec安全策略，运行模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IPsec"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">IPsec</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-AH%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%AE%9A%E4%B9%89%E5%8F%8A%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.3.</span> <span class="nav-text">c) AH协议，定义及结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-ESP%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%AE%9A%E4%B9%89%E5%8F%8A%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.4.</span> <span class="nav-text">d) ESP协议，定义及结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-%E7%BD%91%E7%BB%9C%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%EF%BC%8C%E5%AE%9A%E4%B9%89%E5%8F%8A%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.5.</span> <span class="nav-text">e) 网络密钥交换，定义及结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%89%E5%85%A8"><span class="nav-number">1.4.</span> <span class="nav-text">区块链安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%AE%89%E5%85%A8"><span class="nav-number">1.5.</span> <span class="nav-text">传输层安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS%E5%AE%89%E5%85%A8"><span class="nav-number">1.6.</span> <span class="nav-text">DNS安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E5%A4%9A%E6%96%B9%E8%AE%A1%E7%AE%97"><span class="nav-number">1.7.</span> <span class="nav-text">安全多方计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web%E5%AE%89%E5%85%A8"><span class="nav-number">1.8.</span> <span class="nav-text">Web安全</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1078,7 +1291,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共19.9k字</span>
+  <span class="post-count">全站共22k字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
