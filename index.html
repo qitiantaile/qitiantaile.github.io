@@ -165,6 +165,801 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/15/Games101/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="qitiantaile">
+      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="七天太乐">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/07/15/Games101/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-07-15 16:23:09 / 修改时间：16:15:37" itemprop="dateCreated datePublished" datetime="2024-07-15T16:23:09+08:00">2024-07-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Games101"><a href="#Games101" class="headerlink" title="Games101"></a>Games101</h1><h2 id="Transformation"><a href="#Transformation" class="headerlink" title="Transformation"></a>Transformation</h2><ul>
+<li><p>What is transformation？</p>
+<ul>
+<li>类比照相<ul>
+<li>model trans(摆物体)</li>
+<li>view trans(找角度)(改变的是相机)</li>
+<li>projection trans(投影，变成照片)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="View-Transformation-x2F-Model"><a href="#View-Transformation-x2F-Model" class="headerlink" title="View Transformation&#x2F;Model"></a>View Transformation&#x2F;Model</h3><img src="C:/Users/HP/AppData/Roaming/Typora/typora-user-images/image-20240714114117582.png" alt="image-20240714114117582" style="zoom: 33%;" />
+
+<ul>
+<li><p>Define the camera</p>
+<ul>
+<li>position</li>
+<li>gaze direction</li>
+<li>up direction</li>
+</ul>
+</li>
+<li><p>camera：The orgin；up at Y；look at -Z</p>
+</li>
+<li><p>Transform camera by M<del>view</del></p>
+<ul>
+<li>Trans e to origin</li>
+<li>Rotate g to -Z</li>
+<li>Rotate t to Y</li>
+<li>Rotate (g x t) to X</li>
+</ul>
+</li>
+<li><p>$$<br>M_{view} &#x3D; R_{view}T_{view}<br>$$</p>
+</li>
+<li><p>Trans e to origin</p>
+<ul>
+<li>$$<br>T_{view} &#x3D; \left[\begin{matrix} 1 &amp; 0 &amp;0&amp;-x_e\<br>0 &amp; 1 &amp; 0 &amp; -y_e\<br>0 &amp; 0 &amp; 1 &amp; -z_e\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>$$</li>
+</ul>
+</li>
+<li><p>Rotate R<del>view</del></p>
+<ul>
+<li>Rotate g to -Z … is hard </li>
+<li>inverse is easy  eg: X to(g x t) </li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p>$$<br>R_{view}^{-1} &#x3D; \left[\begin{matrix}<br>x_{gxt} &amp; x_t &amp; x_{-g} &amp; 0\<br>y_{gxt} &amp; y_t &amp; y_{-g} &amp; 0\<br>z_{gxt} &amp; z_t &amp; z_{-g} &amp; 0\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>$$</p>
+<ul>
+<li><p>旋转矩阵是正交矩阵</p>
+<ul>
+<li>$$<br>R_{view} &#x3D; \left[\begin{matrix}<br>x_{gxt} &amp; y_{gxt} &amp; z_{gxt} &amp; 0\<br>x_t &amp; y_t &amp; z_t  &amp; 0\<br>x_{-g} &amp; y_{-g} &amp; z_{-g} &amp; 0\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="Projection-Transformation"><a href="#Projection-Transformation" class="headerlink" title="Projection Transformation"></a>Projection Transformation</h3><ul>
+<li>Perspective projection vs. orthographic projection<ul>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240715140153873.png" alt="image-20240715140153873" style="zoom:50%;" /></li>
+</ul>
+</li>
+</ul>
+<h4 id="Orthographic-Projection"><a href="#Orthographic-Projection" class="headerlink" title="Orthographic Projection"></a>Orthographic Projection</h4><ul>
+<li><p>simple understand</p>
+<ul>
+<li>camera pos (at origin; look at -Z; up at Y)</li>
+<li>Drop Z coordinate</li>
+<li>Translate and scale [-1,1]</li>
+</ul>
+</li>
+<li><p>general</p>
+<ul>
+<li><p>a cuboid [l,r] x [b,t] x [f,n]</p>
+</li>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240715140720302.png" alt="image-20240715140720302" style="zoom:33%;" /></li>
+<li><p>沿-Z方向看，远小于近(n &gt; f)</p>
+</li>
+<li><p>map to cannonical cube [-1,1]^3^</p>
+<ul>
+<li>translate</li>
+<li>scale</li>
+</ul>
+</li>
+<li><p>Transform matrix</p>
+<ul>
+<li>$$<br>R_{ortho} &#x3D; \left[\begin{matrix}<br>\frac{2}{r - l} &amp; 0 &amp; 0 &amp; 0\<br>0 &amp; \frac{2}{t - b} &amp; 0 &amp; 0\<br>0 &amp; 0 &amp; \frac{2}{n - f} &amp; 0\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>\left[\begin{matrix}<br>1 &amp; 0 &amp; 0 &amp; -\frac{r + l}{2}\<br>0 &amp; 1 &amp; 0 &amp; -\frac{t + b}{2}\<br>0 &amp; 0 &amp; 1 &amp; -\frac{n + f}{2}\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Perspective-Projection"><a href="#Perspective-Projection" class="headerlink" title="Perspective Projection"></a>Perspective Projection</h4><ul>
+<li><p>近大远小</p>
+</li>
+<li><p>平行线不再相交</p>
+</li>
+<li><p>(x, y, z, 1) 与 (kx, ky, kz, k) 在空间中表示的是同一个点</p>
+</li>
+<li><p>How to do perspective projection</p>
+<ul>
+<li>First squish the frustum to cubiod (n -&gt; n; f -&gt; f)&#x3D;&#x3D;M<del>persp-&gt;ortho</del>&#x3D;&#x3D;</li>
+<li>Do orthographic projection &#x3D;&#x3D;M<del>ortho</del>&#x3D;&#x3D;(already konw)</li>
+</ul>
+</li>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240715144147046.png" alt="image-20240715144147046" style="zoom:33%;" />
+
+<center><p>侧视图</p></center>
+
+<ul>
+<li><p>$$<br>y’ &#x3D; \frac{n}{z}y\<br>x’ &#x3D; \frac{n}{z}x<br>$$</p>
+</li>
+<li><p>$$<br>\left[\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}\right] \Longrightarrow<br>\left[\begin{matrix}<br>\frac{nx}{z}\<br>\frac{nx}{y}\<br>unkonwn\<br>1\<br>\end{matrix}\right] \stackrel{\mathrm{minus; z}}{&#x3D;&#x3D;}<br>\left[\begin{matrix}<br>nx\<br>ny\<br>still; unkown\<br>z\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>so<br>$$<br>M_{persp-&gt;ortho}^{(4; x; 4)}<br>\left[\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}\right] &#x3D;<br>\left[\begin{matrix}<br>nx\<br>ny\<br>still; unkown\<br>z\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>figure out<br>$$<br>M_{persp-&gt;ortho} &#x3D;<br>\left[\begin{matrix}<br>n &amp; 0 &amp; 0 &amp; 0\<br>0 &amp; n &amp; 0 &amp; 0\<br>? &amp; ? &amp; ? &amp; ?\<br>0 &amp; 0 &amp; 1 &amp; 0\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>$$<br>M_{persp-&gt;ortho}^{(4; x; 4)}<br>\left[\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}\right] &#x3D;<br>\left[\begin{matrix}<br>nx\<br>ny\<br>still; unkown\<br>z\<br>\end{matrix}\right]<br>$$</p>
+<center><p>结果最后一个值需要是z</p></center>
+</li>
+<li><p>近平面的点不会发生任何变化</p>
+<ul>
+<li><p>replace z with n (<strong>keep z</strong>)</p>
+</li>
+<li><p>$$<br>\left[\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}\right] \Longrightarrow<br>\left[\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}\right] \stackrel{}{&#x3D;&#x3D;}<br>\left[\begin{matrix}<br>nx\<br>ny\<br>n^2\<br>n\<br>\end{matrix}\right]<br>$$</p>
+<center><p>→ 指代变换</p></center>
+</li>
+<li><p>n^2^与 x 和 y 无关，有：</p>
+</li>
+<li><p>$$<br>\left(\begin{matrix}<br>0 &amp; 0 &amp; A &amp; B<br>\end{matrix}\right)<br>\left(\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}\right) &#x3D;; n^2<br>$$</p>
+</li>
+<li><p>$$<br>An + B &#x3D; n^2<br>$$</p>
+</li>
+</ul>
+</li>
+<li><p>远平面的点Z不会发生任何变化</p>
+<ul>
+<li><p>远平面特殊点：中心点</p>
+</li>
+<li><p><strong>keep z</strong></p>
+</li>
+<li><p>$$<br>\left[\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}\right] \Longrightarrow<br>\left[\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}\right] \stackrel{}{&#x3D;&#x3D;}<br>\left[\begin{matrix}<br>0\<br>0\<br>f^2\<br>f\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>$$<br>Af + B &#x3D; f^2<br>$$</p>
+</li>
+</ul>
+</li>
+<li><p>Solve A and B</p>
+<ul>
+<li>$$<br>An + B &#x3D; n^2\qquad A &#x3D; n + f\<br>Af + B &#x3D; f^2\qquad\space B &#x3D; -nf<br>$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>M<del>persp-&gt;ortho</del> has solved !</p>
+</li>
+<li><p>$$<br>M_{persp-&gt;ortho} &#x3D;<br>\left[\begin{matrix}<br>n &amp; 0 &amp; 0 &amp; 0\<br>0 &amp; n &amp; 0 &amp; 0\<br>0 &amp; 0 &amp; n+f &amp; -nf\<br>0 &amp; 0 &amp; 1 &amp; 0\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>Next : </p>
+<ul>
+<li><p>Do orthographic projection</p>
+</li>
+<li><p>$$<br>M_{persp} &#x3D; M_{ortho}M_{persp-&gt;ortho}<br>$$</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/24/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="qitiantaile">
+      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="七天太乐">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/24/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-24 11:41:25" itemprop="dateCreated datePublished" datetime="2024-03-24T11:41:25+08:00">2024-03-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-28 22:33:26" itemprop="dateModified" datetime="2024-03-28T22:33:26+08:00">2024-03-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h1><p>Good morning,dear distinguished professors! It is my honor to be here to take this interview.</p>
+<p>First,please let me introduce myself.My name is zzb.I come from Shijiazhuang,the capital of HeBei Province. I graduate form the Cyberspace Security of Jinan University in July,2024.Now all my hard work has got a result since i have the chance to be interviewed by you.</p>
+<p>After four years of undergraduate study, i have gained qualified professional knowledge for future learning. In a large body of courses, I very enjoy the practical courses. These course designs can make me to combine the knowledge with reality to complete a subject During the process, I learned some basic skills about the mindset on how to solve a problem and how to write an paper, which fosters the cornerstone for research.</p>
+<p>I am open-minded,quick in thought and very fond of comic.In my spare time,i have broad interests like many other youngsters, such as excercise, especially playing ping-pong ball.I have already passed CET band four and band six,and i am capable of reading English literature.In addition,during my college years, i participated in research projects related to virtual reality.And i found out that i was really interested in them.</p>
+<p>I always believe that one will easily lag behind unless he keeps on learning.Of course,if i am given a chance to study  in the famous University,i will learn more  advanced technology and make 100 percent efforts to improve my academic techniques and cooperate with my tutor and my team to make new achievements in the fields.</p>
+<h1 id="questions"><a href="#questions" class="headerlink" title="questions"></a>questions</h1><h2 id="为什么要考研？"><a href="#为什么要考研？" class="headerlink" title="为什么要考研？"></a>为什么要考研？</h2><p>Thank you for your question. The reason why i am determined to take the postgraduate entrance examination is that i firmly believe in the idiom of Knowledge is infinite. Insisting on learning will let us have a broader life and more opportunities. The second is because I think if i do not consolidate and deepen what i learned during my undergraduate course, I may gradually forget it in the future. Third, I also need to learn more to enhance my scientific research ability. I hope I can achieve something in a certain field. Thank you.</p>
+<h2 id="你的研究方向-VR介绍"><a href="#你的研究方向-VR介绍" class="headerlink" title="你的研究方向(VR介绍)"></a>你的研究方向(VR介绍)</h2><p>My favourite research direction is virtual reality. The virtue reality tech provide a new way to interact with digital world. The applications of VR technology are very extensive, not limited to games and entertainment, but also involving education and training, tourism and sightseeing, healthcare, art, culture, and many other fields. With the increasing maturity of technology, the VR content market is also constantly enriching. What we should know is that when people use the VR equipments,their immersion goes first. So we study to find more simple interaction mode to enhance users immersion, which can help people interact with digital world better.</p>
+<h2 id="介绍一个你熟悉的项目"><a href="#介绍一个你熟悉的项目" class="headerlink" title="介绍一个你熟悉的项目"></a>介绍一个你熟悉的项目</h2><p>Project name</p>
+<p>I am familiar with XXX, a system design aimed at finding a secure authentication system,which can able to resist bystander and MITR attack. We employed quantitative research,  analyzing participators behavior data from useability,memoryability and secureability. The experiment mainly use the between-subjects design. We also study about participators preference. Key finding is that hiding input surely gets a high security ability. What i do in the project is about coding 、studying project design and building the project environment.</p>
+<h2 id="规划类问题"><a href="#规划类问题" class="headerlink" title="规划类问题"></a>规划类问题</h2><p>Thank you for your question. I think I am good at organizing things, whether in study or life. With good time management and muti-task management ability, I can classify and summarize tasks,which enables me to have a more intuitive understanding of the importance, urgency and difficulty of things, and enable me to complete tasks in a leisurely and unhurried manner. Improve my daily study and life work efficiency. I have developed the habit of making a list of plans and completing them.</p>
+<h2 id="VR与Cyberspace-关系"><a href="#VR与Cyberspace-关系" class="headerlink" title="VR与Cyberspace 关系"></a>VR与Cyberspace 关系</h2><p>In my opinion, VR and cyberspace security are just different direction of digital world. The two are mutually reinforcing, but they are not synonymous. What does cyberspace do is to keep the digital world safe, just like the police officer in the real world. Besides,VR wants to make full use of digital world or create a digital world. Virtue reality makes more security themes come out, meanwhile, cyberspace security keep VR developing.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/05/leetcode%E5%88%B7%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="qitiantaile">
+      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="七天太乐">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/05/leetcode%E5%88%B7%E9%A2%98/" class="post-title-link" itemprop="url">Leetcode刷题</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-05 09:55:50" itemprop="dateCreated datePublished" datetime="2024-03-05T09:55:50+08:00">2024-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-21 11:16:33" itemprop="dateModified" datetime="2024-03-21T11:16:33+08:00">2024-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="leetcode刷题"><a href="#leetcode刷题" class="headerlink" title="leetcode刷题"></a>leetcode刷题</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="简单"><a href="#简单" class="headerlink" title="简单"></a>简单</h3><h4 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1.两数之和"></a>1.两数之和</h4><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240305100410526.png" alt="image-20240305100410526" style="zoom:67%;" />
+
+<h5 id="我的算法思想："><a href="#我的算法思想：" class="headerlink" title="我的算法思想："></a>我的算法思想：</h5><p>通过遍历两次数组计算每两个元素的和，找到一对与target相等的元素返回即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n^2)</span><br></pre></td></tr></table></figure>
+
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans; </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>;j &lt; nums.<span class="built_in">size</span>();j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i] + nums[j] == target)</span><br><span class="line">                &#123;</span><br><span class="line">                    ans = &#123;i,j&#125;;</span><br><span class="line">                    <span class="keyword">return</span> ans;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="学习："><a href="#学习：" class="headerlink" title="学习："></a>学习：</h5><h6 id="1-Vector作为C-中的动态数组容器，可以容纳多种数据类型，支持随机存储；定义及初始化操作："><a href="#1-Vector作为C-中的动态数组容器，可以容纳多种数据类型，支持随机存储；定义及初始化操作：" class="headerlink" title="1.Vector作为C++中的动态数组容器，可以容纳多种数据类型，支持随机存储；定义及初始化操作："></a>1.Vector作为C++中的动态数组容器，可以容纳多种数据类型，支持随机存储；定义及初始化操作：</h6><table>
+<thead>
+<tr>
+<th align="center">vector<T> v1</th>
+<th align="center">v1是一个元素类型为T的空容器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">vector<T> v2(v1)</td>
+<td align="center">使用v1中的元素初始化v2</td>
+</tr>
+<tr>
+<td align="center">vector<T> v2 &#x3D; v1</td>
+<td align="center">同上</td>
+</tr>
+<tr>
+<td align="center">vector<T> v3(n,val)</td>
+<td align="center">v3中包含n个值为val的元素</td>
+</tr>
+<tr>
+<td align="center">vector<T> v4 {a,b,c…}</td>
+<td align="center">使用a,b,c…初始化v4</td>
+</tr>
+<tr>
+<td align="center">vector&lt;vector<int>&gt; matrix(M,vector<int>(N))</td>
+<td align="center">二维数组初始化</td>
+</tr>
+<tr>
+<td align="center">vector<T> v5(n)</td>
+<td align="center">v5中包含n个默认值的初始化元素</td>
+</tr>
+</tbody></table>
+<p>常用操作：</p>
+<table>
+<thead>
+<tr>
+<th align="center">v1 &#x3D; {a,b,c…}</th>
+<th align="center">用元素{a,b,c….}替代v1中元素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h6 id="2-寻找更优的算法："><a href="#2-寻找更优的算法：" class="headerlink" title="2.寻找更优的算法："></a>2.寻找更优的算法：</h6><p>利用哈希表可以将寻找 target - x 的时间从O(N)降到O(1);</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; nums.<span class="built_in">size</span>();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.<span class="built_in">find</span>(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(it != hashtable.<span class="built_in">end</span>())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second,i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>注意：C++中哈希表find()函数是以key键值作为参数寻找哈希表中元素，对于本题应该将x的值作为key，对应index索引值作为指向值。</p>
+<h4 id="26-删除有序数组中的重复项"><a href="#26-删除有序数组中的重复项" class="headerlink" title="26.删除有序数组中的重复项"></a>26.删除有序数组中的重复项</h4><h5 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h5><p>利用两个指针遍历有序数组，如果快指针与慢指针值相同，快指针后移；不同，则将快指针指向的值赋给慢指针，然后慢指针后移，直到快指针走到最后。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt; nums.<span class="built_in">size</span>();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] != nums[index])</span><br><span class="line">            &#123;</span><br><span class="line">                nums[++index] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>1.题目中提示有判断结果的方式，根据算法的返回值来比对对应长度的数组是否相同，不需要将数组重复元素删除，将重复元素后移返回对应长度即可。</p>
+<p>2.思考二：可以调用Unique方法，但本质还是上述思想，将非重复元素前移。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">auto</span> pos = <span class="built_in">unique</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">distance</span>(nums.<span class="built_in">begin</span>(),pos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="27移除元素"><a href="#27移除元素" class="headerlink" title="27移除元素"></a>27移除元素</h4><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240309095109888.png" alt="image-20240309095109888" style="zoom:67%;" />
+
+<h5 id="我的算法思想：双指针法-头尾指针-："><a href="#我的算法思想：双指针法-头尾指针-：" class="headerlink" title="我的算法思想：双指针法(头尾指针)："></a>我的算法思想：双指针法(头尾指针)：</h5><p>从头尾同时遍历数组，根据题目要求，数组前半部分元素 !&#x3D; val值，后半部分 &#x3D;&#x3D; val值，故当头指针指向元素的值 &#x3D;&#x3D; val，与尾指针对应元素交换，尾指针前移；当不等时，头指针后移。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span> &amp;&amp; nums[<span class="number">0</span>] == val)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>,j = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt;= j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == val)</span><br><span class="line">            &#123;</span><br><span class="line">                nums[i] = nums[j--];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>改进：头指针的值等于结果数组的长度；将尾指针初始位置后移一位，不用再单独判断n &#x3D; 1的情况，同时while截至条件不需要等于。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>,j = n;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == val)</span><br><span class="line">            &#123;</span><br><span class="line">                nums[i] = nums[j<span class="number">-1</span>];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="思想二：双指针法-头头指针"><a href="#思想二：双指针法-头头指针" class="headerlink" title="思想二：双指针法(头头指针)"></a>思想二：双指针法(头头指针)</h5><p>设置两个头指针，只要保证结果数组中左半部分的正确性即可，故令两个指针速度不同，慢指针指向左半数组应当填充元素位置，快指针用于遍历整个数组，当快指针指向元素 !&#x3D; val，将其加入慢指针指向位置，同时快慢指针后移；否则快指针后移。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> fast = <span class="number">0</span>;fast &lt; n;fast++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[fast] != val)</span><br><span class="line">            &#123;</span><br><span class="line">                nums[slow++] = nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="35搜索插入位置"><a href="#35搜索插入位置" class="headerlink" title="35搜索插入位置"></a>35搜索插入位置</h4><p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240319112848606.png" alt="image-20240319112848606"></p>
+<h5 id="我的算法思想：二分查找"><a href="#我的算法思想：二分查找" class="headerlink" title="我的算法思想：二分查找"></a>我的算法思想：二分查找</h5><p>由于题目要求时间复杂度必须为O(log n)，所以首先想到二分查找的方法，如果找到目标值就返回mid索引，未找到目标值代表最终结果时low &gt; high；只有两种情况：</p>
+<p>1.nums[mid] &gt; target：high前移，low指向应该插入位置</p>
+<p>2.nums[mid] &lt; target：low后移，low指向应该插入位置</p>
+<p>其中low永远指向第一个小于target的后一元素</p>
+<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240319114339183.png" alt="image-20240319114339183" style="zoom: 80%;" />
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">searchInsert</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> high = nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> mid = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">            mid = (low+high)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] == target)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; target)</span><br><span class="line">            &#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h6 id="采用移位计算mid防止溢出"><a href="#采用移位计算mid防止溢出" class="headerlink" title="采用移位计算mid防止溢出"></a>采用移位计算mid防止溢出</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> mid = ((right - left) &gt;&gt; <span class="number">1</span>) + left;</span><br></pre></td></tr></table></figure>
+
+<h5 id="思想二：递归"><a href="#思想二：递归" class="headerlink" title="思想二：递归"></a>思想二：递归</h5><h4 id="66-加一"><a href="#66-加一" class="headerlink" title="66.加一"></a>66.加一</h4><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240320112513928.png" alt="image-20240320112513928" style="zoom:80%;" />
+
+<h5 id="我的思想："><a href="#我的思想：" class="headerlink" title="我的思想："></a>我的思想：</h5><p>从最后一位开始判断是否是9，如果是9，需要化0然后进位；否则加1返回数组即可；同时需要注意如果直到第一位也需要进位需要扩大数组长度；</p>
+<p>采用递归</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">Binary</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; digits,<span class="type">int</span> index)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(digits[index] == <span class="number">9</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            digits[index] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(index == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                digits.<span class="built_in">insert</span>(digits.<span class="built_in">begin</span>(),<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">Binary</span>(digits,index - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            digits[index] += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">plusOne</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = digits.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Binary</span>(digits,n<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="改进：直接遍历判断即可"><a href="#改进：直接遍历判断即可" class="headerlink" title="改进：直接遍历判断即可"></a>改进：直接遍历判断即可</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">plusOne</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = digits.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = n - <span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(++digits[i] &lt; <span class="number">10</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span>(digits[<span class="number">0</span>] == <span class="number">0</span>)&#123;</span><br><span class="line">                    digits.<span class="built_in">insert</span>(digits.<span class="built_in">begin</span>(),<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>再提速：循环内只判断是否等于9，如果可以从循环退出，意味第一位需要进位。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">plusOne</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = digits.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = n - <span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(++digits[i] &lt; <span class="number">10</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        digits.<span class="built_in">insert</span>(digits.<span class="built_in">begin</span>(),<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="88-合并两个有序数组"><a href="#88-合并两个有序数组" class="headerlink" title="88.合并两个有序数组"></a>88.合并两个有序数组</h4><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240321110052483.png" alt="image-20240321110052483" style="zoom:80%;" />
+
+<h5 id="我的思想：双指针"><a href="#我的思想：双指针" class="headerlink" title="我的思想：双指针"></a>我的思想：双指针</h5><p>分别从头遍历两个数组，按照输入案例，需要保证有序性，即相等元素nums1在前；同时由于vector特性，需要特殊处理空数组情况</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, <span class="type">int</span> m, vector&lt;<span class="type">int</span>&gt;&amp; nums2, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(m + n == n)&#123;</span><br><span class="line">            nums1 = nums2;</span><br><span class="line">        &#125;</span><br><span class="line">         <span class="keyword">while</span>(i&lt;m &amp;&amp; j&lt;n)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums1[i]&lt;=nums2[j])</span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                nums1.<span class="built_in">insert</span>(nums1.<span class="built_in">begin</span>()+i,nums2[j]);</span><br><span class="line">                nums1.<span class="built_in">pop_back</span>();</span><br><span class="line">                m++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;n)&#123;</span><br><span class="line">            nums1[i++] = nums2[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意插入到nums1中的元素不能覆盖原有元素；</p>
+<h5 id="双指针改进：逆双指针"><a href="#双指针改进：逆双指针" class="headerlink" title="双指针改进：逆双指针"></a>双指针改进：逆双指针</h5><p>由于nums1数组后n位都是0，故可以从后遍历，每次选取较大的值放入；</p>
+<h5 id="内置函数法："><a href="#内置函数法：" class="headerlink" title="内置函数法："></a>内置函数法：</h5><p>1.先将两个数组合并，再sort</p>
+<p>2.直接merge（merge要求两个待合并排序的数组排序规则相同）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将[first,first+len1)和[second,second+len2)默认升序合并到result</span></span><br><span class="line"><span class="built_in">merge</span>(first.<span class="built_in">begin</span>(),first.<span class="built_in">begin</span>()+len1,second.<span class="built_in">begin</span>(),second.<span class="built_in">begin</span>()+len2,result.<span class="built_in">begin</span>());</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/30/%E6%9C%89%E9%99%90%E5%9F%9F%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="qitiantaile">
+      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="七天太乐">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/12/30/%E6%9C%89%E9%99%90%E5%9F%9F%E5%A4%8D%E4%B9%A0/" class="post-title-link" itemprop="url">有限域</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-12-30 20:22:17 / 修改时间：21:12:41" itemprop="dateCreated datePublished" datetime="2023-12-30T20:22:17+08:00">2023-12-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">大学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E5%9B%9B%E4%B8%8A/" itemprop="url" rel="index"><span itemprop="name">大四上</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E5%9B%9B%E4%B8%8A/%E6%9C%89%E9%99%90%E5%9F%9F/" itemprop="url" rel="index"><span itemprop="name">有限域</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="有限域"><a href="#有限域" class="headerlink" title="有限域"></a>有限域</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/12/30/%E6%9C%89%E9%99%90%E5%9F%9F%E5%A4%8D%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/22/TA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="qitiantaile">
+      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="七天太乐">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/22/TA/" class="post-title-link" itemprop="url">TA学习</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-22 10:00:13" itemprop="dateCreated datePublished" datetime="2023-08-22T10:00:13+08:00">2023-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-17 10:44:49" itemprop="dateModified" datetime="2024-04-17T10:44:49+08:00">2024-04-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/TA/" itemprop="url" rel="index"><span itemprop="name">TA</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/TA/Unreal/" itemprop="url" rel="index"><span itemprop="name">Unreal</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="TA"><a href="#TA" class="headerlink" title="TA"></a>TA</h1><h2 id="我应该学点什么？"><a href="#我应该学点什么？" class="headerlink" title="我应该学点什么？"></a>我应该学点什么？</h2><h3 id="基础内容"><a href="#基础内容" class="headerlink" title="基础内容"></a>基础内容</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> Games101</li>
+<li><input disabled="" type="checkbox"> Games202</li>
+<li><input disabled="" type="checkbox"> 虎书</li>
+<li><input disabled="" type="checkbox"> 龙书</li>
+<li><input disabled="" type="checkbox"> DirectX</li>
+<li><input disabled="" type="checkbox"> Unreal学习</li>
+<li><input disabled="" type="checkbox"> UnityShader入门精要</li>
+<li><input disabled="" type="checkbox"> Blender学习</li>
+<li><input disabled="" type="checkbox"> Substance</li>
+<li><input disabled="" type="checkbox"> 作品集</li>
+<li><input disabled="" type="checkbox"> 美术发展？个人风格化？油墨？</li>
+<li><input disabled="" type="checkbox"> 动画向？渲染向？</li>
+<li><input disabled="" type="checkbox"> 镜头？关键帧？动作骨骼设置与绑定？</li>
+</ul>
+<h3 id="Book"><a href="#Book" class="headerlink" title="Book"></a>Book</h3><p>​       </p>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/08/VR%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="qitiantaile">
+      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="七天太乐">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/08/VR%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">VR_Learing</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-08 15:25:45" itemprop="dateCreated datePublished" datetime="2023-08-08T15:25:45+08:00">2023-08-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-11 19:21:35" itemprop="dateModified" datetime="2023-09-11T19:21:35+08:00">2023-09-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/VR/" itemprop="url" rel="index"><span itemprop="name">VR</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Unity-VR-Pico开发问题"><a href="#Unity-VR-Pico开发问题" class="headerlink" title="Unity VR Pico开发问题"></a>Unity VR Pico开发问题</h1><p>1.配置完成后打包测试会闪退。</p>
+<ul>
+<li>解决方案：使用官方自带的demo，测试发现去掉<font color=red>&lt;PXR_Manager</font>组件后可以正常打包测试。</li>
+</ul>
+<p>2.Pico眼动实现</p>
+<h2 id="开发日志"><a href="#开发日志" class="headerlink" title="开发日志"></a>开发日志</h2><p>2023&#x2F;8&#x2F;15      Unity版本：2021.3.27f1c2        成功实现眼动，可以正常导出，但是手柄使用会和眼动冲突；</p>
+<p><font color=red>问题</font>：PicoSdk需要一直输入</p>
+<p>2023&#x2F;8&#x2F;18     眼动不是很精准？协程用不了？之前实现变色的逻辑？</p>
+<p>2023&#x2F;8&#x2F;22</p>
+<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/5.1026.png" alt="_images/5.1026.png" style="zoom:50%;" />
+
+<h1 id="TODO："><a href="#TODO：" class="headerlink" title="TODO："></a>TODO：</h1><ul>
+<li><input checked="" disabled="" type="checkbox"> 登录实现</li>
+<li><input checked="" disabled="" type="checkbox"> 完整流程</li>
+<li><input checked="" disabled="" type="checkbox"> Txt存储信息(Excel实现)</li>
+<li><input checked="" disabled="" type="checkbox"> UI界面</li>
+<li><input disabled="" type="checkbox"> 量尺寸</li>
+<li><input checked="" disabled="" type="checkbox"> 坐标提示</li>
+<li><input disabled="" type="checkbox"> 分组测试</li>
+<li><input disabled="" type="checkbox"> 每个人流程：</li>
+<li><input disabled="" type="checkbox"> 1.usability：预实验+任何变量5次(每个变量注册一次，登录成功5次+失败次数)每人5(6)次  ，长度（4） 强度（1234）      预计30min </li>
+<li><input disabled="" type="checkbox"> 2 复现图像</li>
+<li><input disabled="" type="checkbox"> 3.security：（2组，surf，mitr）</li>
+<li><input disabled="" type="checkbox"> <ol start="4">
+<li>（一周后）mem：成功还是次数 usability</li>
+</ol>
+</li>
+<li><input disabled="" type="checkbox"> 流程：注册———&gt;确认注册，确认失败重新注册—————&gt;登录5次，登录限时————–&gt;规定时间内复现图像——————-&gt;选一个分组，看视频，猜测密码——————&gt;一段时间后重新登录测试，只做一次看是否记住密钥？</li>
+<li><input disabled="" type="checkbox"> 每次均保存在不同的txt中</li>
+<li><input checked="" disabled="" type="checkbox"> 实验结束汇总在一起</li>
+<li><input checked="" disabled="" type="checkbox"> 姓名</li>
+<li><input checked="" disabled="" type="checkbox"> 密钥长度？2&#x2F;3</li>
+<li><input checked="" disabled="" type="checkbox"> 输入方式（手柄&#x2F;摇杆）</li>
+<li><input checked="" disabled="" type="checkbox"> mark类型</li>
+<li><input checked="" disabled="" type="checkbox"> 输入时间</li>
+<li><input checked="" disabled="" type="checkbox"> 映射点位置</li>
+<li><input checked="" disabled="" type="checkbox"> 成功次数</li>
+<li><input checked="" disabled="" type="checkbox"> 读取数据验证memory</li>
+<li><input checked="" disabled="" type="checkbox"> 错过率？</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/29/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -197,7 +992,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-07-02 19:13:40" itemprop="dateModified" datetime="2023-07-02T19:13:40+08:00">2023-07-02</time>
+                <time title="修改时间：2023-07-03 20:07:15" itemprop="dateModified" datetime="2023-07-03T20:07:15+08:00">2023-07-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -525,165 +1320,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/25/Android%E7%BC%96%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="qitiantaile">
-      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="七天太乐">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/06/25/Android%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">Android编程</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-06-25 19:43:08 / 修改时间：20:14:07" itemprop="dateCreated datePublished" datetime="2023-06-25T19:43:08+08:00">2023-06-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/test/" itemprop="url" rel="index"><span itemprop="name">test</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/test/test1/" itemprop="url" rel="index"><span itemprop="name">test1</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Android编程"><a href="#Android编程" class="headerlink" title="Android编程"></a>Android编程</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/06/25/Android%E7%BC%96%E7%A8%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="qitiantaile">
-      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="七天太乐">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/06/03/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-06-03 14:53:14" itemprop="dateCreated datePublished" datetime="2023-06-03T14:53:14+08:00">2023-06-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-30 16:36:27" itemprop="dateModified" datetime="2023-06-30T16:36:27+08:00">2023-06-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/06/03/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -750,20 +1391,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -790,7 +1431,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -801,7 +1442,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共31.6k字</span>
+  <span class="post-count">全站共35.2k字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

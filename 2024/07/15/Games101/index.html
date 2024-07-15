@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/xxw/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/xxw/pace/pace-theme-minimal.min.css">
+  <script src="/xxw/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Games101Transformation What is transformation？  类比照相 model trans(摆物体) view trans(找角度)(改变的是相机) projection trans(投影，变成照片)      View Transformation&#x2F;Model   Define the camera  position gaze direction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="七天太乐">
+<meta property="og:url" content="http://example.com/2024/07/15/Games101/index.html">
+<meta property="og:site_name" content="七天太乐">
+<meta property="og:description" content="Games101Transformation What is transformation？  类比照相 model trans(摆物体) view trans(找角度)(改变的是相机) projection trans(投影，变成照片)      View Transformation&#x2F;Model   Define the camera  position gaze direction">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/HP/AppData/Roaming/Typora/typora-user-images/image-20240714114117582.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240715140153873.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240715140720302.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240715144147046.png">
+<meta property="article:published_time" content="2024-07-15T08:23:09.482Z">
+<meta property="article:modified_time" content="2024-07-15T08:15:37.516Z">
+<meta property="article:author" content="qitiantaile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/HP/AppData/Roaming/Typora/typora-user-images/image-20240714114117582.png">
+
+<link rel="canonical" href="http://example.com/2024/07/15/Games101/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 七天太乐</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="七天太乐" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">七天太乐</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/15/Games101/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="qitiantaile">
+      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="七天太乐">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-07-15 16:23:09 / 修改时间：16:15:37" itemprop="dateCreated datePublished" datetime="2024-07-15T16:23:09+08:00">2024-07-15</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Games101"><a href="#Games101" class="headerlink" title="Games101"></a>Games101</h1><h2 id="Transformation"><a href="#Transformation" class="headerlink" title="Transformation"></a>Transformation</h2><ul>
+<li><p>What is transformation？</p>
+<ul>
+<li>类比照相<ul>
+<li>model trans(摆物体)</li>
+<li>view trans(找角度)(改变的是相机)</li>
+<li>projection trans(投影，变成照片)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="View-Transformation-x2F-Model"><a href="#View-Transformation-x2F-Model" class="headerlink" title="View Transformation&#x2F;Model"></a>View Transformation&#x2F;Model</h3><img src="C:/Users/HP/AppData/Roaming/Typora/typora-user-images/image-20240714114117582.png" alt="image-20240714114117582" style="zoom: 33%;" />
+
+<ul>
+<li><p>Define the camera</p>
+<ul>
+<li>position</li>
+<li>gaze direction</li>
+<li>up direction</li>
+</ul>
+</li>
+<li><p>camera：The orgin；up at Y；look at -Z</p>
+</li>
+<li><p>Transform camera by M<del>view</del></p>
+<ul>
+<li>Trans e to origin</li>
+<li>Rotate g to -Z</li>
+<li>Rotate t to Y</li>
+<li>Rotate (g x t) to X</li>
+</ul>
+</li>
+<li><p>$$<br>M_{view} &#x3D; R_{view}T_{view}<br>$$</p>
+</li>
+<li><p>Trans e to origin</p>
+<ul>
+<li>$$<br>T_{view} &#x3D; \left[\begin{matrix} 1 &amp; 0 &amp;0&amp;-x_e\<br>0 &amp; 1 &amp; 0 &amp; -y_e\<br>0 &amp; 0 &amp; 1 &amp; -z_e\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>$$</li>
+</ul>
+</li>
+<li><p>Rotate R<del>view</del></p>
+<ul>
+<li>Rotate g to -Z … is hard </li>
+<li>inverse is easy  eg: X to(g x t) </li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p>$$<br>R_{view}^{-1} &#x3D; \left[\begin{matrix}<br>x_{gxt} &amp; x_t &amp; x_{-g} &amp; 0\<br>y_{gxt} &amp; y_t &amp; y_{-g} &amp; 0\<br>z_{gxt} &amp; z_t &amp; z_{-g} &amp; 0\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>$$</p>
+<ul>
+<li><p>旋转矩阵是正交矩阵</p>
+<ul>
+<li>$$<br>R_{view} &#x3D; \left[\begin{matrix}<br>x_{gxt} &amp; y_{gxt} &amp; z_{gxt} &amp; 0\<br>x_t &amp; y_t &amp; z_t  &amp; 0\<br>x_{-g} &amp; y_{-g} &amp; z_{-g} &amp; 0\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="Projection-Transformation"><a href="#Projection-Transformation" class="headerlink" title="Projection Transformation"></a>Projection Transformation</h3><ul>
+<li>Perspective projection vs. orthographic projection<ul>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240715140153873.png" alt="image-20240715140153873" style="zoom:50%;" /></li>
+</ul>
+</li>
+</ul>
+<h4 id="Orthographic-Projection"><a href="#Orthographic-Projection" class="headerlink" title="Orthographic Projection"></a>Orthographic Projection</h4><ul>
+<li><p>simple understand</p>
+<ul>
+<li>camera pos (at origin; look at -Z; up at Y)</li>
+<li>Drop Z coordinate</li>
+<li>Translate and scale [-1,1]</li>
+</ul>
+</li>
+<li><p>general</p>
+<ul>
+<li><p>a cuboid [l,r] x [b,t] x [f,n]</p>
+</li>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240715140720302.png" alt="image-20240715140720302" style="zoom:33%;" /></li>
+<li><p>沿-Z方向看，远小于近(n &gt; f)</p>
+</li>
+<li><p>map to cannonical cube [-1,1]^3^</p>
+<ul>
+<li>translate</li>
+<li>scale</li>
+</ul>
+</li>
+<li><p>Transform matrix</p>
+<ul>
+<li>$$<br>R_{ortho} &#x3D; \left[\begin{matrix}<br>\frac{2}{r - l} &amp; 0 &amp; 0 &amp; 0\<br>0 &amp; \frac{2}{t - b} &amp; 0 &amp; 0\<br>0 &amp; 0 &amp; \frac{2}{n - f} &amp; 0\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>\left[\begin{matrix}<br>1 &amp; 0 &amp; 0 &amp; -\frac{r + l}{2}\<br>0 &amp; 1 &amp; 0 &amp; -\frac{t + b}{2}\<br>0 &amp; 0 &amp; 1 &amp; -\frac{n + f}{2}\<br>0 &amp; 0 &amp; 0 &amp; 1\<br>\end{matrix}\right]<br>$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Perspective-Projection"><a href="#Perspective-Projection" class="headerlink" title="Perspective Projection"></a>Perspective Projection</h4><ul>
+<li><p>近大远小</p>
+</li>
+<li><p>平行线不再相交</p>
+</li>
+<li><p>(x, y, z, 1) 与 (kx, ky, kz, k) 在空间中表示的是同一个点</p>
+</li>
+<li><p>How to do perspective projection</p>
+<ul>
+<li>First squish the frustum to cubiod (n -&gt; n; f -&gt; f)&#x3D;&#x3D;M<del>persp-&gt;ortho</del>&#x3D;&#x3D;</li>
+<li>Do orthographic projection &#x3D;&#x3D;M<del>ortho</del>&#x3D;&#x3D;(already konw)</li>
+</ul>
+</li>
+<li><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240715144147046.png" alt="image-20240715144147046" style="zoom:33%;" />
+
+<center><p>侧视图</p></center>
+
+<ul>
+<li><p>$$<br>y’ &#x3D; \frac{n}{z}y\<br>x’ &#x3D; \frac{n}{z}x<br>$$</p>
+</li>
+<li><p>$$<br>\left[\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}\right] \Longrightarrow<br>\left[\begin{matrix}<br>\frac{nx}{z}\<br>\frac{nx}{y}\<br>unkonwn\<br>1\<br>\end{matrix}\right] \stackrel{\mathrm{minus; z}}{&#x3D;&#x3D;}<br>\left[\begin{matrix}<br>nx\<br>ny\<br>still; unkown\<br>z\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>so<br>$$<br>M_{persp-&gt;ortho}^{(4; x; 4)}<br>\left[\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}\right] &#x3D;<br>\left[\begin{matrix}<br>nx\<br>ny\<br>still; unkown\<br>z\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>figure out<br>$$<br>M_{persp-&gt;ortho} &#x3D;<br>\left[\begin{matrix}<br>n &amp; 0 &amp; 0 &amp; 0\<br>0 &amp; n &amp; 0 &amp; 0\<br>? &amp; ? &amp; ? &amp; ?\<br>0 &amp; 0 &amp; 1 &amp; 0\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>$$<br>M_{persp-&gt;ortho}^{(4; x; 4)}<br>\left[\begin{matrix}<br>x\<br>y\<br>z\<br>1\<br>\end{matrix}\right] &#x3D;<br>\left[\begin{matrix}<br>nx\<br>ny\<br>still; unkown\<br>z\<br>\end{matrix}\right]<br>$$</p>
+<center><p>结果最后一个值需要是z</p></center>
+</li>
+<li><p>近平面的点不会发生任何变化</p>
+<ul>
+<li><p>replace z with n (<strong>keep z</strong>)</p>
+</li>
+<li><p>$$<br>\left[\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}\right] \Longrightarrow<br>\left[\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}\right] \stackrel{}{&#x3D;&#x3D;}<br>\left[\begin{matrix}<br>nx\<br>ny\<br>n^2\<br>n\<br>\end{matrix}\right]<br>$$</p>
+<center><p>→ 指代变换</p></center>
+</li>
+<li><p>n^2^与 x 和 y 无关，有：</p>
+</li>
+<li><p>$$<br>\left(\begin{matrix}<br>0 &amp; 0 &amp; A &amp; B<br>\end{matrix}\right)<br>\left(\begin{matrix}<br>x\<br>y\<br>n\<br>1\<br>\end{matrix}\right) &#x3D;; n^2<br>$$</p>
+</li>
+<li><p>$$<br>An + B &#x3D; n^2<br>$$</p>
+</li>
+</ul>
+</li>
+<li><p>远平面的点Z不会发生任何变化</p>
+<ul>
+<li><p>远平面特殊点：中心点</p>
+</li>
+<li><p><strong>keep z</strong></p>
+</li>
+<li><p>$$<br>\left[\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}\right] \Longrightarrow<br>\left[\begin{matrix}<br>0\<br>0\<br>f\<br>1\<br>\end{matrix}\right] \stackrel{}{&#x3D;&#x3D;}<br>\left[\begin{matrix}<br>0\<br>0\<br>f^2\<br>f\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>$$<br>Af + B &#x3D; f^2<br>$$</p>
+</li>
+</ul>
+</li>
+<li><p>Solve A and B</p>
+<ul>
+<li>$$<br>An + B &#x3D; n^2\qquad A &#x3D; n + f\<br>Af + B &#x3D; f^2\qquad\space B &#x3D; -nf<br>$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>M<del>persp-&gt;ortho</del> has solved !</p>
+</li>
+<li><p>$$<br>M_{persp-&gt;ortho} &#x3D;<br>\left[\begin{matrix}<br>n &amp; 0 &amp; 0 &amp; 0\<br>0 &amp; n &amp; 0 &amp; 0\<br>0 &amp; 0 &amp; n+f &amp; -nf\<br>0 &amp; 0 &amp; 1 &amp; 0\<br>\end{matrix}\right]<br>$$</p>
+</li>
+<li><p>Next : </p>
+<ul>
+<li><p>Do orthographic projection</p>
+</li>
+<li><p>$$<br>M_{persp} &#x3D; M_{ortho}M_{persp-&gt;ortho}<br>$$</p>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+ 
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/03/24/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Games101"><span class="nav-number">1.</span> <span class="nav-text">Games101</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Transformation"><span class="nav-number">1.1.</span> <span class="nav-text">Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Transformation-x2F-Model"><span class="nav-number">1.1.1.</span> <span class="nav-text">View Transformation&#x2F;Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Projection-Transformation"><span class="nav-number">1.1.2.</span> <span class="nav-text">Projection Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Orthographic-Projection"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Orthographic Projection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Perspective-Projection"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Perspective Projection</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qitiantaile"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">qitiantaile</p>
+  <div class="site-description" itemprop="description">七天都要快乐 (★≧▽^))★☆</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qitiantaile</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共35.2k字</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv"><span class="post-meta-divider">|</span>总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 0;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/xxw/anime.min.js"></script>
+  <script src="/xxw/velocity/velocity.min.js"></script>
+  <script src="/xxw/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+   <!-- 多级目录 -->
+  <script type="text/javascript" src="/js/category.js"></script>
+</body>
+</html>

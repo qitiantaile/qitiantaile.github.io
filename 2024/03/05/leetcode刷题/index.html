@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/xxw/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/xxw/pace/pace-theme-minimal.min.css">
+  <script src="/xxw/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="leetcode刷题数组简单1.两数之和  我的算法思想：通过遍历两次数组计算每两个元素的和，找到一对与target相等的元素返回即可。 1时间复杂度：O(n^2)  代码： 123456789101112131415161718class Solution &amp;#123;public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode刷题">
+<meta property="og:url" content="http://example.com/2024/03/05/leetcode%E5%88%B7%E9%A2%98/index.html">
+<meta property="og:site_name" content="七天太乐">
+<meta property="og:description" content="leetcode刷题数组简单1.两数之和  我的算法思想：通过遍历两次数组计算每两个元素的和，找到一对与target相等的元素返回即可。 1时间复杂度：O(n^2)  代码： 123456789101112131415161718class Solution &amp;#123;public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240305100410526.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240309095109888.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240319112848606.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240319114339183.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240320112513928.png">
+<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240321110052483.png">
+<meta property="article:published_time" content="2024-03-05T01:55:50.710Z">
+<meta property="article:modified_time" content="2024-03-21T03:16:33.091Z">
+<meta property="article:author" content="qitiantaile">
+<meta property="article:tag" content="Code">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240305100410526.png">
+
+<link rel="canonical" href="http://example.com/2024/03/05/leetcode%E5%88%B7%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Leetcode刷题 | 七天太乐</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="七天太乐" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">七天太乐</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/05/leetcode%E5%88%B7%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="qitiantaile">
+      <meta itemprop="description" content="七天都要快乐 (★≧▽^))★☆">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="七天太乐">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode刷题
+        </h1>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-05 09:55:50" itemprop="dateCreated datePublished" datetime="2024-03-05T09:55:50+08:00">2024-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-21 11:16:33" itemprop="dateModified" datetime="2024-03-21T11:16:33+08:00">2024-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="leetcode刷题"><a href="#leetcode刷题" class="headerlink" title="leetcode刷题"></a>leetcode刷题</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="简单"><a href="#简单" class="headerlink" title="简单"></a>简单</h3><h4 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1.两数之和"></a>1.两数之和</h4><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240305100410526.png" alt="image-20240305100410526" style="zoom:67%;" />
+
+<h5 id="我的算法思想："><a href="#我的算法思想：" class="headerlink" title="我的算法思想："></a>我的算法思想：</h5><p>通过遍历两次数组计算每两个元素的和，找到一对与target相等的元素返回即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n^2)</span><br></pre></td></tr></table></figure>
+
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans; </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>;j &lt; nums.<span class="built_in">size</span>();j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i] + nums[j] == target)</span><br><span class="line">                &#123;</span><br><span class="line">                    ans = &#123;i,j&#125;;</span><br><span class="line">                    <span class="keyword">return</span> ans;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="学习："><a href="#学习：" class="headerlink" title="学习："></a>学习：</h5><h6 id="1-Vector作为C-中的动态数组容器，可以容纳多种数据类型，支持随机存储；定义及初始化操作："><a href="#1-Vector作为C-中的动态数组容器，可以容纳多种数据类型，支持随机存储；定义及初始化操作：" class="headerlink" title="1.Vector作为C++中的动态数组容器，可以容纳多种数据类型，支持随机存储；定义及初始化操作："></a>1.Vector作为C++中的动态数组容器，可以容纳多种数据类型，支持随机存储；定义及初始化操作：</h6><table>
+<thead>
+<tr>
+<th align="center">vector<T> v1</th>
+<th align="center">v1是一个元素类型为T的空容器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">vector<T> v2(v1)</td>
+<td align="center">使用v1中的元素初始化v2</td>
+</tr>
+<tr>
+<td align="center">vector<T> v2 &#x3D; v1</td>
+<td align="center">同上</td>
+</tr>
+<tr>
+<td align="center">vector<T> v3(n,val)</td>
+<td align="center">v3中包含n个值为val的元素</td>
+</tr>
+<tr>
+<td align="center">vector<T> v4 {a,b,c…}</td>
+<td align="center">使用a,b,c…初始化v4</td>
+</tr>
+<tr>
+<td align="center">vector&lt;vector<int>&gt; matrix(M,vector<int>(N))</td>
+<td align="center">二维数组初始化</td>
+</tr>
+<tr>
+<td align="center">vector<T> v5(n)</td>
+<td align="center">v5中包含n个默认值的初始化元素</td>
+</tr>
+</tbody></table>
+<p>常用操作：</p>
+<table>
+<thead>
+<tr>
+<th align="center">v1 &#x3D; {a,b,c…}</th>
+<th align="center">用元素{a,b,c….}替代v1中元素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h6 id="2-寻找更优的算法："><a href="#2-寻找更优的算法：" class="headerlink" title="2.寻找更优的算法："></a>2.寻找更优的算法：</h6><p>利用哈希表可以将寻找 target - x 的时间从O(N)降到O(1);</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; nums.<span class="built_in">size</span>();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = hashtable.<span class="built_in">find</span>(target - nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(it != hashtable.<span class="built_in">end</span>())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;it-&gt;second,i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>注意：C++中哈希表find()函数是以key键值作为参数寻找哈希表中元素，对于本题应该将x的值作为key，对应index索引值作为指向值。</p>
+<h4 id="26-删除有序数组中的重复项"><a href="#26-删除有序数组中的重复项" class="headerlink" title="26.删除有序数组中的重复项"></a>26.删除有序数组中的重复项</h4><h5 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h5><p>利用两个指针遍历有序数组，如果快指针与慢指针值相同，快指针后移；不同，则将快指针指向的值赋给慢指针，然后慢指针后移，直到快指针走到最后。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt; nums.<span class="built_in">size</span>();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] != nums[index])</span><br><span class="line">            &#123;</span><br><span class="line">                nums[++index] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>1.题目中提示有判断结果的方式，根据算法的返回值来比对对应长度的数组是否相同，不需要将数组重复元素删除，将重复元素后移返回对应长度即可。</p>
+<p>2.思考二：可以调用Unique方法，但本质还是上述思想，将非重复元素前移。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">auto</span> pos = <span class="built_in">unique</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">distance</span>(nums.<span class="built_in">begin</span>(),pos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="27移除元素"><a href="#27移除元素" class="headerlink" title="27移除元素"></a>27移除元素</h4><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240309095109888.png" alt="image-20240309095109888" style="zoom:67%;" />
+
+<h5 id="我的算法思想：双指针法-头尾指针-："><a href="#我的算法思想：双指针法-头尾指针-：" class="headerlink" title="我的算法思想：双指针法(头尾指针)："></a>我的算法思想：双指针法(头尾指针)：</h5><p>从头尾同时遍历数组，根据题目要求，数组前半部分元素 !&#x3D; val值，后半部分 &#x3D;&#x3D; val值，故当头指针指向元素的值 &#x3D;&#x3D; val，与尾指针对应元素交换，尾指针前移；当不等时，头指针后移。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span> &amp;&amp; nums[<span class="number">0</span>] == val)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>,j = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt;= j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == val)</span><br><span class="line">            &#123;</span><br><span class="line">                nums[i] = nums[j--];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>改进：头指针的值等于结果数组的长度；将尾指针初始位置后移一位，不用再单独判断n &#x3D; 1的情况，同时while截至条件不需要等于。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>,j = n;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == val)</span><br><span class="line">            &#123;</span><br><span class="line">                nums[i] = nums[j<span class="number">-1</span>];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="思想二：双指针法-头头指针"><a href="#思想二：双指针法-头头指针" class="headerlink" title="思想二：双指针法(头头指针)"></a>思想二：双指针法(头头指针)</h5><p>设置两个头指针，只要保证结果数组中左半部分的正确性即可，故令两个指针速度不同，慢指针指向左半数组应当填充元素位置，快指针用于遍历整个数组，当快指针指向元素 !&#x3D; val，将其加入慢指针指向位置，同时快慢指针后移；否则快指针后移。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> fast = <span class="number">0</span>;fast &lt; n;fast++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[fast] != val)</span><br><span class="line">            &#123;</span><br><span class="line">                nums[slow++] = nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="35搜索插入位置"><a href="#35搜索插入位置" class="headerlink" title="35搜索插入位置"></a>35搜索插入位置</h4><p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240319112848606.png" alt="image-20240319112848606"></p>
+<h5 id="我的算法思想：二分查找"><a href="#我的算法思想：二分查找" class="headerlink" title="我的算法思想：二分查找"></a>我的算法思想：二分查找</h5><p>由于题目要求时间复杂度必须为O(log n)，所以首先想到二分查找的方法，如果找到目标值就返回mid索引，未找到目标值代表最终结果时low &gt; high；只有两种情况：</p>
+<p>1.nums[mid] &gt; target：high前移，low指向应该插入位置</p>
+<p>2.nums[mid] &lt; target：low后移，low指向应该插入位置</p>
+<p>其中low永远指向第一个小于target的后一元素</p>
+<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240319114339183.png" alt="image-20240319114339183" style="zoom: 80%;" />
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">searchInsert</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> high = nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> mid = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">            mid = (low+high)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] == target)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; target)</span><br><span class="line">            &#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h6 id="采用移位计算mid防止溢出"><a href="#采用移位计算mid防止溢出" class="headerlink" title="采用移位计算mid防止溢出"></a>采用移位计算mid防止溢出</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> mid = ((right - left) &gt;&gt; <span class="number">1</span>) + left;</span><br></pre></td></tr></table></figure>
+
+<h5 id="思想二：递归"><a href="#思想二：递归" class="headerlink" title="思想二：递归"></a>思想二：递归</h5><h4 id="66-加一"><a href="#66-加一" class="headerlink" title="66.加一"></a>66.加一</h4><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240320112513928.png" alt="image-20240320112513928" style="zoom:80%;" />
+
+<h5 id="我的思想："><a href="#我的思想：" class="headerlink" title="我的思想："></a>我的思想：</h5><p>从最后一位开始判断是否是9，如果是9，需要化0然后进位；否则加1返回数组即可；同时需要注意如果直到第一位也需要进位需要扩大数组长度；</p>
+<p>采用递归</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">Binary</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; digits,<span class="type">int</span> index)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(digits[index] == <span class="number">9</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            digits[index] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(index == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                digits.<span class="built_in">insert</span>(digits.<span class="built_in">begin</span>(),<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">Binary</span>(digits,index - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            digits[index] += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">plusOne</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = digits.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Binary</span>(digits,n<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="改进：直接遍历判断即可"><a href="#改进：直接遍历判断即可" class="headerlink" title="改进：直接遍历判断即可"></a>改进：直接遍历判断即可</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">plusOne</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = digits.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = n - <span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(++digits[i] &lt; <span class="number">10</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span>(digits[<span class="number">0</span>] == <span class="number">0</span>)&#123;</span><br><span class="line">                    digits.<span class="built_in">insert</span>(digits.<span class="built_in">begin</span>(),<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>再提速：循环内只判断是否等于9，如果可以从循环退出，意味第一位需要进位。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">plusOne</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = digits.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = n - <span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(++digits[i] &lt; <span class="number">10</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        digits.<span class="built_in">insert</span>(digits.<span class="built_in">begin</span>(),<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="88-合并两个有序数组"><a href="#88-合并两个有序数组" class="headerlink" title="88.合并两个有序数组"></a>88.合并两个有序数组</h4><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20240321110052483.png" alt="image-20240321110052483" style="zoom:80%;" />
+
+<h5 id="我的思想：双指针"><a href="#我的思想：双指针" class="headerlink" title="我的思想：双指针"></a>我的思想：双指针</h5><p>分别从头遍历两个数组，按照输入案例，需要保证有序性，即相等元素nums1在前；同时由于vector特性，需要特殊处理空数组情况</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, <span class="type">int</span> m, vector&lt;<span class="type">int</span>&gt;&amp; nums2, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(m + n == n)&#123;</span><br><span class="line">            nums1 = nums2;</span><br><span class="line">        &#125;</span><br><span class="line">         <span class="keyword">while</span>(i&lt;m &amp;&amp; j&lt;n)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums1[i]&lt;=nums2[j])</span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                nums1.<span class="built_in">insert</span>(nums1.<span class="built_in">begin</span>()+i,nums2[j]);</span><br><span class="line">                nums1.<span class="built_in">pop_back</span>();</span><br><span class="line">                m++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;n)&#123;</span><br><span class="line">            nums1[i++] = nums2[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意插入到nums1中的元素不能覆盖原有元素；</p>
+<h5 id="双指针改进：逆双指针"><a href="#双指针改进：逆双指针" class="headerlink" title="双指针改进：逆双指针"></a>双指针改进：逆双指针</h5><p>由于nums1数组后n位都是0，故可以从后遍历，每次选取较大的值放入；</p>
+<h5 id="内置函数法："><a href="#内置函数法：" class="headerlink" title="内置函数法："></a>内置函数法：</h5><p>1.先将两个数组合并，再sort</p>
+<p>2.直接merge（merge要求两个待合并排序的数组排序规则相同）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将[first,first+len1)和[second,second+len2)默认升序合并到result</span></span><br><span class="line"><span class="built_in">merge</span>(first.<span class="built_in">begin</span>(),first.<span class="built_in">begin</span>()+len1,second.<span class="built_in">begin</span>(),second.<span class="built_in">begin</span>()+len2,result.<span class="built_in">begin</span>());</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Code/" rel="tag"># Code</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/12/30/%E6%9C%89%E9%99%90%E5%9F%9F%E5%A4%8D%E4%B9%A0/" rel="prev" title="有限域">
+      <i class="fa fa-chevron-left"></i> 有限域
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/03/24/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode%E5%88%B7%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">leetcode刷题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">简单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.两数之和</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%EF%BC%9A"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">我的算法思想：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%EF%BC%9A"><span class="nav-number">1.1.1.1.2.</span> <span class="nav-text">学习：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Vector%E4%BD%9C%E4%B8%BAC-%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84%E5%AE%B9%E5%99%A8%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%AE%B9%E7%BA%B3%E5%A4%9A%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E6%94%AF%E6%8C%81%E9%9A%8F%E6%9C%BA%E5%AD%98%E5%82%A8%EF%BC%9B%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%88%9D%E5%A7%8B%E5%8C%96%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-number">1.1.1.1.2.1.</span> <span class="nav-text">1.Vector作为C++中的动态数组容器，可以容纳多种数据类型，支持随机存储；定义及初始化操作：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%AF%BB%E6%89%BE%E6%9B%B4%E4%BC%98%E7%9A%84%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="nav-number">1.1.1.1.2.2.</span> <span class="nav-text">2.寻找更优的算法：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">26.删除有序数组中的重复项</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.1.2.1.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="nav-number">1.1.1.2.2.</span> <span class="nav-text">注意：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">27移除元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95-%E5%A4%B4%E5%B0%BE%E6%8C%87%E9%92%88-%EF%BC%9A"><span class="nav-number">1.1.1.3.1.</span> <span class="nav-text">我的算法思想：双指针法(头尾指针)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E6%83%B3%E4%BA%8C%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95-%E5%A4%B4%E5%A4%B4%E6%8C%87%E9%92%88"><span class="nav-number">1.1.1.3.2.</span> <span class="nav-text">思想二：双指针法(头头指针)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#35%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">35搜索插入位置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%EF%BC%9A%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">1.1.1.4.1.</span> <span class="nav-text">我的算法思想：二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%87%87%E7%94%A8%E7%A7%BB%E4%BD%8D%E8%AE%A1%E7%AE%97mid%E9%98%B2%E6%AD%A2%E6%BA%A2%E5%87%BA"><span class="nav-number">1.1.1.4.1.1.</span> <span class="nav-text">采用移位计算mid防止溢出</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E6%83%B3%E4%BA%8C%EF%BC%9A%E9%80%92%E5%BD%92"><span class="nav-number">1.1.1.4.2.</span> <span class="nav-text">思想二：递归</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#66-%E5%8A%A0%E4%B8%80"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">66.加一</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E6%83%B3%EF%BC%9A"><span class="nav-number">1.1.1.5.1.</span> <span class="nav-text">我的思想：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%EF%BC%9A%E7%9B%B4%E6%8E%A5%E9%81%8D%E5%8E%86%E5%88%A4%E6%96%AD%E5%8D%B3%E5%8F%AF"><span class="nav-number">1.1.1.5.2.</span> <span class="nav-text">改进：直接遍历判断即可</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">88.合并两个有序数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E6%83%B3%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">1.1.1.6.1.</span> <span class="nav-text">我的思想：双指针</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%94%B9%E8%BF%9B%EF%BC%9A%E9%80%86%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">1.1.1.6.2.</span> <span class="nav-text">双指针改进：逆双指针</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%E6%B3%95%EF%BC%9A"><span class="nav-number">1.1.1.6.3.</span> <span class="nav-text">内置函数法：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qitiantaile"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">qitiantaile</p>
+  <div class="site-description" itemprop="description">七天都要快乐 (★≧▽^))★☆</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qitiantaile</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共35.2k字</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv"><span class="post-meta-divider">|</span>总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 0;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/xxw/anime.min.js"></script>
+  <script src="/xxw/velocity/velocity.min.js"></script>
+  <script src="/xxw/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+   <!-- 多级目录 -->
+  <script type="text/javascript" src="/js/category.js"></script>
+</body>
+</html>
