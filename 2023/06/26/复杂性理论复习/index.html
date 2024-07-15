@@ -22,16 +22,14 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="复杂性理论复习综述理论计算机的核心目标： 把计算任务按照其本质难度进行分类                                                      复习重点：判定问题；图灵机构造和基本思想；什么是P、NP、NPC问题及NP问题之间的规约和常见的NPC问题；SAT、2SAT、3SAT问题；递归算法和非递归算法特点和区别；复杂度分析方法区别；会写素数判定的递归和非递归">
+  <meta name="description" content="复杂性理论复习综述理论计算机的核心目标： 把计算任务按照其本质难度进行分类                                                     ![image-20230626150513090](https:&#x2F;&#x2F;qitiantaile.oss-cn-guangzhou.aliyuncs.com&#x2F;blog&#x2F;image-20230626150513090.png)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="复杂性理论复习">
 <meta property="og:url" content="http://example.com/2023/06/26/%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="七天太乐">
-<meta property="og:description" content="复杂性理论复习综述理论计算机的核心目标： 把计算任务按照其本质难度进行分类                                                      复习重点：判定问题；图灵机构造和基本思想；什么是P、NP、NPC问题及NP问题之间的规约和常见的NPC问题；SAT、2SAT、3SAT问题；递归算法和非递归算法特点和区别；复杂度分析方法区别；会写素数判定的递归和非递归">
+<meta property="og:description" content="复杂性理论复习综述理论计算机的核心目标： 把计算任务按照其本质难度进行分类                                                     ![image-20230626150513090](https:&#x2F;&#x2F;qitiantaile.oss-cn-guangzhou.aliyuncs.com&#x2F;blog&#x2F;image-20230626150513090.png)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626150513090.png">
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626195253002.png">
-<meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627212515843.png">
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627213831778.png">
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627213850389.png">
 <meta property="og:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627213943465.png">
@@ -52,7 +50,7 @@
 <meta property="article:author" content="qitiantaile">
 <meta property="article:tag" content="复习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626150513090.png">
+<meta name="twitter:image" content="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626195253002.png">
 
 <link rel="canonical" href="http://example.com/2023/06/26/%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E5%A4%8D%E4%B9%A0/">
 
@@ -258,235 +256,285 @@
 
       
         <h1 id="复杂性理论复习综述"><a href="#复杂性理论复习综述" class="headerlink" title="复杂性理论复习综述"></a>复杂性理论复习综述</h1><p><strong>理论计算机的核心目标：</strong></p>
-<p><font color=red>把计算任务按照其本质难度进行分类</font>                                                     <img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626150513090.png" alt="image-20230626150513090"></p>
-<p><font color=red>复习重点：判定问题；图灵机构造和基本思想；什么是P、NP、NPC问题及NP问题之间的规约和常见的NPC问题；SAT、2SAT、3SAT问题；递归算法和非递归算法特点和区别；复杂度分析方法区别；会写素数判定的递归和非递归算法</font></p>
-<span id="more"></span>
+<font color=red>把计算任务按照其本质难度进行分类</font>                                                     ![image-20230626150513090](https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626150513090.png)
 
-<h2 id="1-什么是可计算问题？什么是不可计算问题？"><a href="#1-什么是可计算问题？什么是不可计算问题？" class="headerlink" title="1.什么是可计算问题？什么是不可计算问题？"></a>1.什么是可计算问题？什么是不可计算问题？</h2><p><font color=pink>可计算问题</font>当且仅当该问题可以在图灵机上经过有限步骤后可以得到正确的结果。相反地，不能由图灵机解决的问题叫做<font color=pink>不可计算问题</font>。</p>
-<h2 id="2-什么是计算复杂性？计算复杂性理论主要研究什么？"><a href="#2-什么是计算复杂性？计算复杂性理论主要研究什么？" class="headerlink" title="2.什么是计算复杂性？计算复杂性理论主要研究什么？"></a>2.什么是计算复杂性？计算复杂性理论主要研究什么？</h2><p><font color=pink>计算复杂性</font>就是用计算机求解问题的难易程度，使用数学方法对计算中所需的各种资源消耗作定量的分析，并研究各类问题之间在计算复杂程度上的相互关系和性质。                                                                                                                      <font color=pink>主要研究</font>计算问题时所需要的资源，比如时间和空间，以及如何尽可能的节省这些资源。</p>
-<h2 id="3-什么是算法？算法有哪些特点？"><a href="#3-什么是算法？算法有哪些特点？" class="headerlink" title="3.什么是算法？算法有哪些特点？"></a>3.什么是算法？算法有哪些特点？</h2><p><font color=pink>算法</font>是对解决方案的准确而完整的描述。                                                                                                                                          <font color=pink>特点</font>：有穷性，可行性，确定性，输入和输出</p>
-<h2 id="4-描述算法的方法有？"><a href="#4-描述算法的方法有？" class="headerlink" title="4.描述算法的方法有？"></a>4.描述算法的方法有？</h2><p>自然语言、流程图、N-S图、伪代码、程序设计语言</p>
-<h2 id="5-如何分析算法的效率？"><a href="#5-如何分析算法的效率？" class="headerlink" title="5.如何分析算法的效率？"></a><font color=red>5.如何分析算法的效率？</font></h2><p>算法的效率分析指对算法在运行时间和存储空间这两种资源的利用效率进行研究。对于一般算法，关注其输入规模，运行时间的度量单位，增长效率和算法的最优最差平均效率；对于递归算法，则需要关注递归的深度，先对算法建立一个递归关系，设置初始条件，再求解分析。</p>
-<h2 id="6-渐进表达式O-g-n-，Θ-g-n-，Ω-g-n-的定义和表达含义？"><a href="#6-渐进表达式O-g-n-，Θ-g-n-，Ω-g-n-的定义和表达含义？" class="headerlink" title="6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？"></a><font color=red>6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？</font></h2><p><font color=pink>O(g(n))</font>：如果函数t(n)包含在O(g(n))中，对于所有足够大的n，t(n)的上界由g(n)的常数倍确定，即存在大于0的常数和非负的整数n0使得对于所有的 n≥n0 ，有 cg(n)≥t(n)<br>表达含义：g(n)≥该算法的时间复杂度</p>
-<p><font color=pink>Θ(g(n))</font>：如果函数t包含在Θ(g(n))中，对于所有足够大的n，t(n)的上下界都由g的常数倍确定，即存在大于0的常数c1,c2和非负的整数n0使得所有 n≥n0 ，有 c1g(n)≥t(n)≥c2g(n)<br>表达含义：g(n)&#x3D;该算法的时间复杂度</p>
-<p><font color=pink>Ω(g(n))</font>：<br>表达含义：该算法的时间复杂度≥g(n)</p>
-<h2 id="7-递归和非递归算法时间效率的数学分析方法区别？"><a href="#7-递归和非递归算法时间效率的数学分析方法区别？" class="headerlink" title="7.递归和非递归算法时间效率的数学分析方法区别？"></a><font color=red>7.递归和非递归算法时间效率的数学分析方法区别？</font></h2><p>见5</p>
+
+
+<font color=red>复习重点：判定问题；图灵机构造和基本思想；什么是P、NP、NPC问题及NP问题之间的规约和常见的NPC问题；SAT、2SAT、3SAT问题；递归算法和非递归算法特点和区别；复杂度分析方法区别；会写素数判定的递归和非递归算法</font>
+
+<span id="more"></span>
+<h2 id="1-什么是可计算问题？什么是不可计算问题？"><a href="#1-什么是可计算问题？什么是不可计算问题？" class="headerlink" title="1.什么是可计算问题？什么是不可计算问题？"></a>1.什么是可计算问题？什么是不可计算问题？</h2><font color=pink>可计算问题</font>当且仅当该问题可以在图灵机上经过有限步骤后可以得到正确的结果。相反地，不能由图灵机解决的问题叫做<font color=pink>不可计算问题</font>。
+
+## 2.什么是计算复杂性？计算复杂性理论主要研究什么？
+
+<font color=pink>计算复杂性</font>就是用计算机求解问题的难易程度，使用数学方法对计算中所需的各种资源消耗作定量的分析，并研究各类问题之间在计算复杂程度上的相互关系和性质。                                                                                                                      <font color=pink>主要研究</font>计算问题时所需要的资源，比如时间和空间，以及如何尽可能的节省这些资源。
+
+## 3.什么是算法？算法有哪些特点？
+
+<font color=pink>算法</font>是对解决方案的准确而完整的描述。                                                                                                                                          <font color=pink>特点</font>：有穷性，可行性，确定性，输入和输出
+
+## 4.描述算法的方法有？
+
+自然语言、流程图、N-S图、伪代码、程序设计语言
+
+## <font color=red>5.如何分析算法的效率？</font>
+
+<p>算法的效率分析指对算法在运行时间和存储空间这两种资源的利用效率进行研究。对于一般算法，关注其输入规模，运行时间的度量单位，增长效率和算法的最优最差平均效率；对于递归算法，则需要关注递归的深度，先对算法建立一个递归关系，设置初始条件，再求解分析。</p>
+<h2 id="6-渐进表达式O-g-n-，Θ-g-n-，Ω-g-n-的定义和表达含义？"><a href="#6-渐进表达式O-g-n-，Θ-g-n-，Ω-g-n-的定义和表达含义？" class="headerlink" title="6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？"></a><font color=red>6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？</font></h2><font color=pink>O(g(n))</font>：如果函数t(n)包含在O(g(n))中，对于所有足够大的n，t(n)的上界由g(n)的常数倍确定，即存在大于0的常数和非负的整数n0使得对于所有的 n≥n0 ，有 cg(n)≥t(n)
+表达含义：g(n)≥该算法的时间复杂度
+
+<font color=pink>Θ(g(n))</font>：如果函数t包含在Θ(g(n))中，对于所有足够大的n，t(n)的上下界都由g的常数倍确定，即存在大于0的常数c1,c2和非负的整数n0使得所有 n≥n0 ，有 c1g(n)≥t(n)≥c2g(n)
+表达含义：g(n)=该算法的时间复杂度
+
+<font color=pink>Ω(g(n))</font>：
+表达含义：该算法的时间复杂度≥g(n)
+
+## <font color=red>7.递归和非递归算法时间效率的数学分析方法区别？</font>
+
+<p>见5</p>
 <ul>
 <li>思维方式：递归通过将一个复杂问题层层转化为一个与原问题规模更小的同类问题，通过不断缩小问题规模，最终到达基本情况，再将各个小问题的解合起来得到整体解决方案。非递归则是从问题的初始状态逐步迭代到最终解的思维方式。</li>
 <li>实现方式：递归的实现方式是通过函数自身的调用来解决问题。非递归通常使用循环结构，通过迭代更新变量来逐步解决问题。</li>
 <li>空间和时间复杂度：递归在某些情况下会导致大量的函数调用和堆栈空间的使用，可能会占用更多的内存空间，非递归在空间上会更加高效；时间上的效率取决于具体实现的方式和算法。</li>
 </ul>
-<h2 id="8-Fibonacci-numbers-F-N-x3D-F-N-1-F-N-2-的时间复杂度表达式？"><a href="#8-Fibonacci-numbers-F-N-x3D-F-N-1-F-N-2-的时间复杂度表达式？" class="headerlink" title="8.Fibonacci numbers F(N) &#x3D; F(N-1) + F(N-2)的时间复杂度表达式？"></a>8.Fibonacci numbers F(N) &#x3D; F(N-1) + F(N-2)的时间复杂度表达式？</h2><p><font color=pink>递归法</font>：O(2^N)<br><font color=pink>公式计算法</font>：O(1)</p>
-<h2 id="9-经典排序问题的算法时间复杂度下界？"><a href="#9-经典排序问题的算法时间复杂度下界？" class="headerlink" title="9.经典排序问题的算法时间复杂度下界？"></a>9.经典排序问题的算法时间复杂度下界？</h2><table>
-<thead>
-<tr>
-<th align="center">排序方法</th>
-<th align="center">时间复杂度(平均)</th>
-<th align="center">时间复杂度(最坏)</th>
-<th align="center">时间复杂度(最好)</th>
-<th align="center">空间复杂度</th>
-<th align="center">稳定性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">插入排序</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(n)</td>
-<td align="center">O(1)</td>
-<td align="center">稳定</td>
-</tr>
-<tr>
-<td align="center">希尔排序</td>
-<td align="center">O(n^1.3)</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(n)</td>
-<td align="center">O(1)</td>
-<td align="center">不稳定</td>
-</tr>
-<tr>
-<td align="center">选择排序</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(1)</td>
-<td align="center">不稳定</td>
-</tr>
-<tr>
-<td align="center">堆排序</td>
-<td align="center">O(nlogn)</td>
-<td align="center">O(nlogn)</td>
-<td align="center">O(nlogn)</td>
-<td align="center">O(1)</td>
-<td align="center">不稳定</td>
-</tr>
-<tr>
-<td align="center">快速排序</td>
-<td align="center">O(nlogn)</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(nlogn)</td>
-<td align="center">O(logn)</td>
-<td align="center">不稳定</td>
-</tr>
-<tr>
-<td align="center">冒泡排序</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(n)</td>
-<td align="center">O(n)</td>
-<td align="center">稳定</td>
-</tr>
-<tr>
-<td align="center">归并排序</td>
-<td align="center">O(nlogn)</td>
-<td align="center">O(nlogn)</td>
-<td align="center">O(nlogn)</td>
-<td align="center">O(n)</td>
-<td align="center">稳定</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">基数排序</td>
-<td align="center">O(n*k)</td>
-<td align="center">O(n*k)</td>
-<td align="center">O(n*k)</td>
-<td align="center">O(n+k)</td>
-<td align="center">稳定</td>
-</tr>
-<tr>
-<td align="center">计数排序</td>
-<td align="center">O(n+k)</td>
-<td align="center">O(n+k)</td>
-<td align="center">O(n+k)</td>
-<td align="center">O(n+k)</td>
-<td align="center">稳定</td>
-</tr>
-<tr>
-<td align="center">桶排序</td>
-<td align="center">O(n+k)</td>
-<td align="center">O(n^2)</td>
-<td align="center">O(n)</td>
-<td align="center">O(n+k)</td>
-<td align="center">稳定</td>
-</tr>
-</tbody></table>
-<h2 id="10-算法性能提升的本质是什么？提升算法效率的四个层次是什么？"><a href="#10-算法性能提升的本质是什么？提升算法效率的四个层次是什么？" class="headerlink" title="10.算法性能提升的本质是什么？提升算法效率的四个层次是什么？"></a>10.算法性能提升的本质是什么？提升算法效率的四个层次是什么？</h2><p><font color=pink>提升的本质</font>：本质是效率，就是让计算机少做事情。效率&#x3D;产出&#x2F;所做的事，产出难提高，所做事情可以减少<br><font color=pink>四个层次</font>：正确性；易读性；健壮性；时空性。</p>
-<h2 id="11-为什么超越多项式时间复杂度的精确算法一般是不可接受的？"><a href="#11-为什么超越多项式时间复杂度的精确算法一般是不可接受的？" class="headerlink" title="11.为什么超越多项式时间复杂度的精确算法一般是不可接受的？"></a><font color=red>11.为什么超越多项式时间复杂度的精确算法一般是不可接受的？</font></h2><p><font color=pink>时间复杂度并不表示一个程序解决需要多少时间，而是当问题规模扩大后，程序需要的时间随规模的增长有多快。</font><br>一个优化问题如果已经找到了多项式时间算法，称该问题为多项式时间可解问题，并将这类问题的集合记为P，即<font color=pink>多项式时间可解问题</font>为P类问题。<br>一个问题没有找到多项式时间算法，在直觉上他是“难解”的，但又无法证明多项式时间算法的不存在性。一方面证明一个问题不存在多项式时间算法是困难的；另一方面，有越来越多的问题无法给出多项式时间算法。<br><font color=pink>NP-完全性理论的核心思想</font>：如果一个问题是NP类问题，并且存在一个能够在多项式时间内转换为该问题的解的算法，那么该问题就是NP-完全问题。<font color=pink>一个问题是NP-完全问题意味着他是NP类问题中最困难的问题之一</font>。其重要性在于：<font color=red>如果能够证明某个问题是NP-完全问题，那么就可以推导出其他许多问题也是NP-完全问题</font>。</p>
-<h2 id="12-什么是图灵机？什么是图灵测试？什么是图灵命题？"><a href="#12-什么是图灵机？什么是图灵测试？什么是图灵命题？" class="headerlink" title="12.什么是图灵机？什么是图灵测试？什么是图灵命题？"></a><font color=red>12.什么是图灵机？什么是图灵测试？什么是图灵命题？</font></h2><p><font color=pink>图灵机</font>：又称图灵计算机，指一种抽象的计算模型，即将人使用纸笔进行数学运算的过程进行抽象，由一个虚拟机器替代人类进行数学运算。<br>其有一个无限长的纸带，纸带分成一个一个方格，每个方格有不同颜色，一个机器头在纸带上移动。机器头有一组内部状态和一些固定程序。每个时刻，机器头从当前纸带读入一个方格的信息，然后结合内部状态查找程序表，根据程序输出信息到纸带方格中，并转换自己的内部状态，进行移动。</p>
-<p><font color=pink>图灵测试</font>：指测试者和被测试者隔开的情况下，通过一些装置向被测试者随意提问。进行多次测试后，如果机器让平均每个参与者做出了超过30%的误判，那么这台机器就通过了测试，并认为具有人类智能。</p>
-<p><font color=pink>图灵命题</font>：可计算性理论的基本论题，一个函数是可计算的当且仅当可由一部图灵机来计算它。</p>
-<h2 id="13-图灵机的基本原理及组成部分？什么是格局？"><a href="#13-图灵机的基本原理及组成部分？什么是格局？" class="headerlink" title="13.图灵机的基本原理及组成部分？什么是格局？"></a><font color=red>13.图灵机的基本原理及组成部分？什么是格局？</font></h2><p><font color=pink>图灵机基本原理</font>：其有一条无限长的纸带，纸带分成一个一个小方格，每个方格有不同的颜色。一个机器头在纸带上移动。机器头有一组内部状态和一些固定程序。每个时刻，机器头从当前纸带读入一个方格的信息，然后结合内部状态查找程序表，根据程序输出信息到纸带方格中，并转换自己的内部状态，进行移动。<br><font color=pink>组成部分</font>：</p>
-<p>a.纸带，被分成许多个方格，符号可以写入或者读出；</p>
-<p>b.可以移动的读写头，能从纸带读取或写入符号；</p>
-<p>c.指示读写头下一步如何操作的一组规则。</p>
-<p>d.状态寄存器：保存图灵机当前的状态。</p>
-<p><font color=pink>格局</font>：格局是图灵机的一个快照。将图灵机计算过程每一个步骤都找一份快照，通过轨迹将这些快照联系在一起，就可以得到一个数据结构。包括纸带内容，读写头位置和控制机状态。</p>
-<h2 id="14-为什么说所有计算或算法都可以由一台图灵机来执行？"><a href="#14-为什么说所有计算或算法都可以由一台图灵机来执行？" class="headerlink" title="14.为什么说所有计算或算法都可以由一台图灵机来执行？"></a><font color=red>14.为什么说所有计算或算法都可以由一台图灵机来执行？</font></h2><p>邱奇-图灵论题最基本的观点表明，所有计算或算法都可以由一台图灵机来执行。以任何常规编程语言编写的计算机程序都可以翻译成一台图灵机，反之任何一台图灵机也都可以翻译成大部分编程语言的程序，所以该论题和一下说法等价：常规的编程语言可以足够有效地来表达任何算法。该论题被普遍认定为真。</p>
-<h2 id="15-如何从图灵机视角看待算法的时间复杂度和空间复杂度？"><a href="#15-如何从图灵机视角看待算法的时间复杂度和空间复杂度？" class="headerlink" title="15.如何从图灵机视角看待算法的时间复杂度和空间复杂度？"></a><font color=red>15.如何从图灵机视角看待算法的时间复杂度和空间复杂度？</font></h2><p><font color=pink>图灵机程序的复杂度</font>由外部的输入和输出来决定图灵机内部的算法的时间和空间的复杂度。<br><font color=pink>图灵机的时间复杂度T(n)</font>是它处理所有长度为n的输入所需要的最大计算步数。如果对于某个长度为n的输入，图灵机不停机，则T(n)对这个值无定义。<br><font color=pink>图灵机的空间复杂性S(n)</font>是它处理所有长度为n的输入时，在纸带上所使用过的方格总数。如果某个读写头无限的向右移动而不停机，S(n)也无定义。</p>
-<h2 id="16-什么是确定性图灵机、非确定性图灵机和概率图灵机？"><a href="#16-什么是确定性图灵机、非确定性图灵机和概率图灵机？" class="headerlink" title="16.什么是确定性图灵机、非确定性图灵机和概率图灵机？"></a><font color=red>16.什么是确定性图灵机、非确定性图灵机和概率图灵机？</font></h2><p><font color=pink>确定性图灵机(DTM)</font>：在DTM中，其控制规则规定了在任何给定的情况下最多只能执行一个动作。确定性图灵机具有转换功能，对于磁带头下的给定状态和符号，该转换功能指定了三件事：要写入磁带的符号，头部应移动的方向，以及有限控制的后续状态。<br><font color=pink>非确定性图灵机(NDTM)</font>：在理论计算机科学中，非确定性图灵机是一种理论计算模型，其控制规则在某些给定情况下指定了多个可能的动作。NDTM的下一个状态不是完全由其动作和它所看到的当前符号决定的。<br><font color=pink>概率图灵机(PTM)</font>：一种非确定型图灵机，每走一步在两个转移函数之间随机地选取一个。概率图灵机是依照随机带上写下的0和1来决定下一步怎么走。</p>
-<h2 id="17-什么是识别问题？什么是判定问题？什么是PT验证器？"><a href="#17-什么是识别问题？什么是判定问题？什么是PT验证器？" class="headerlink" title="17.什么是识别问题？什么是判定问题？什么是PT验证器？"></a>17.什么是识别问题？<font color=red>什么是判定问题？什么是PT验证器？</font></h2><p><font color=pink>识别问题</font>：当且仅当图灵机接受字符串时，当提供的输入位于语言中时，语言才是可识别的。此外，如果TM终止并拒绝字符串或根本不终止，则可以识别语言。这意味着当提供的输入不在语言中时，TM继续计算。然而，当且仅当由一台机器在提供的输入位于该语言中时接受字符串并在提供的输入不在该语言中时拒绝该字符串，该语言才是可判定的。<br><font color=pink>判定问题</font>：有些语言可被判定器判定。如果存在不可判定语言，那么必然存在不可识别语言。就是无法构造一个图灵机，接受这个语言的每一个字符串。所以如果一个语言不可判定，必然它或者它的补是不可识别的。不可识别的语言是存在的。一个不可判定的语言就是一个不可计算的问题。那是一个超出了计算机能力的问题，一个不能被任何有步骤的、确定性的算法所能解决的问题。<font color=pink>即不用求解，判定是否是解</font>,<font color=red>判定比识别要更加严格</font><br><font color=pink>PT验证器</font>：多项式图灵机</p>
-<h2 id="18-什么是P，NP，NPC，NP-hard？"><a href="#18-什么是P，NP，NPC，NP-hard？" class="headerlink" title="18.什么是P，NP，NPC，NP-hard？"></a><font color=red>18.什么是P，NP，NPC，NP-hard？</font></h2><p><font color=pink>P</font>：一个问题如果在图灵机上所需时间不会超过一个确定的多项式，称此类问题的集合为P，通俗来讲，P问题就是多项式时间可解的问题；<br><font color=pink>NP</font>：可以在非确定型图灵机上在多项式时间内找出解的问题的集合。如果一个问题，可以在多项式时间内验证它的解是否正确，则该问题是一个NP问题。显然 P∈NP(注：到目前为止，P!&#x3D;NP)<br><font color=pink>NPC(NP-Complete)</font>：一个决定性问题C若是NPC，则代表它对NP是完备的，这表示：</p>
+<h2 id="8-Fibonacci-numbers-F-N-F-N-1-F-N-2-的时间复杂度表达式？"><a href="#8-Fibonacci-numbers-F-N-F-N-1-F-N-2-的时间复杂度表达式？" class="headerlink" title="8.Fibonacci numbers F(N) = F(N-1) + F(N-2)的时间复杂度表达式？"></a>8.Fibonacci numbers F(N) = F(N-1) + F(N-2)的时间复杂度表达式？</h2><font color=pink>递归法</font>：O(2^N)
+<font color=pink>公式计算法</font>：O(1)
+
+## 9.经典排序问题的算法时间复杂度下界？
+
+| 排序方法 | 时间复杂度(平均) | 时间复杂度(最坏) | 时间复杂度(最好) | 空间复杂度 | 稳定性 |
+| :------: | :--------------: | :--------------: | :--------------: | :--------: | :----: |
+| 插入排序 |      O(n^2)      |      O(n^2)      |       O(n)       |    O(1)    |  稳定  |
+| 希尔排序 |     O(n^1.3)     |      O(n^2)      |       O(n)       |    O(1)    | 不稳定 |
+| 选择排序 |      O(n^2)      |      O(n^2)      |      O(n^2)      |    O(1)    | 不稳定 |
+|  堆排序  |     O(nlogn)     |     O(nlogn)     |     O(nlogn)     |    O(1)    | 不稳定 |
+| 快速排序 |     O(nlogn)     |      O(n^2)      |     O(nlogn)     |  O(logn)   | 不稳定 |
+| 冒泡排序 |      O(n^2)      |      O(n^2)      |       O(n)       |    O(n)    |  稳定  |
+| 归并排序 |     O(nlogn)     |     O(nlogn)     |     O(nlogn)     |    O(n)    |  稳定  |
+|          |                  |                  |                  |            |        |
+| 基数排序 |      O(n*k)      |      O(n*k)      |      O(n*k)      |   O(n+k)   |  稳定  |
+| 计数排序 |      O(n+k)      |      O(n+k)      |      O(n+k)      |   O(n+k)   |  稳定  |
+|  桶排序  |      O(n+k)      |      O(n^2)      |       O(n)       |   O(n+k)   |  稳定  |
+
+## 10.算法性能提升的本质是什么？提升算法效率的四个层次是什么？
+
+<font color=pink>提升的本质</font>：本质是效率，就是让计算机少做事情。效率=产出/所做的事，产出难提高，所做事情可以减少
+<font color=pink>四个层次</font>：正确性；易读性；健壮性；时空性。
+
+## <font color=red>11.为什么超越多项式时间复杂度的精确算法一般是不可接受的？</font>
+
+<font color=pink>时间复杂度并不表示一个程序解决需要多少时间，而是当问题规模扩大后，程序需要的时间随规模的增长有多快。</font>
+一个优化问题如果已经找到了多项式时间算法，称该问题为多项式时间可解问题，并将这类问题的集合记为P，即<font color=pink>多项式时间可解问题</font>为P类问题。
+一个问题没有找到多项式时间算法，在直觉上他是“难解”的，但又无法证明多项式时间算法的不存在性。一方面证明一个问题不存在多项式时间算法是困难的；另一方面，有越来越多的问题无法给出多项式时间算法。
+<font color=pink>NP-完全性理论的核心思想</font>：如果一个问题是NP类问题，并且存在一个能够在多项式时间内转换为该问题的解的算法，那么该问题就是NP-完全问题。<font color=pink>一个问题是NP-完全问题意味着他是NP类问题中最困难的问题之一</font>。其重要性在于：<font color=red>如果能够证明某个问题是NP-完全问题，那么就可以推导出其他许多问题也是NP-完全问题</font>。
+
+## <font color=red>12.什么是图灵机？什么是图灵测试？什么是图灵命题？</font>
+
+<font color=pink>图灵机</font>：又称图灵计算机，指一种抽象的计算模型，即将人使用纸笔进行数学运算的过程进行抽象，由一个虚拟机器替代人类进行数学运算。
+其有一个无限长的纸带，纸带分成一个一个方格，每个方格有不同颜色，一个机器头在纸带上移动。机器头有一组内部状态和一些固定程序。每个时刻，机器头从当前纸带读入一个方格的信息，然后结合内部状态查找程序表，根据程序输出信息到纸带方格中，并转换自己的内部状态，进行移动。
+
+<font color=pink>图灵测试</font>：指测试者和被测试者隔开的情况下，通过一些装置向被测试者随意提问。进行多次测试后，如果机器让平均每个参与者做出了超过30%的误判，那么这台机器就通过了测试，并认为具有人类智能。
+
+<font color=pink>图灵命题</font>：可计算性理论的基本论题，一个函数是可计算的当且仅当可由一部图灵机来计算它。
+
+## <font color=red>13.图灵机的基本原理及组成部分？什么是格局？</font>
+
+<font color=pink>图灵机基本原理</font>：其有一条无限长的纸带，纸带分成一个一个小方格，每个方格有不同的颜色。一个机器头在纸带上移动。机器头有一组内部状态和一些固定程序。每个时刻，机器头从当前纸带读入一个方格的信息，然后结合内部状态查找程序表，根据程序输出信息到纸带方格中，并转换自己的内部状态，进行移动。
+<font color=pink>组成部分</font>：
+
+a.纸带，被分成许多个方格，符号可以写入或者读出；
+
+b.可以移动的读写头，能从纸带读取或写入符号；
+
+c.指示读写头下一步如何操作的一组规则。
+
+d.状态寄存器：保存图灵机当前的状态。
+
+<font color=pink>格局</font>：格局是图灵机的一个快照。将图灵机计算过程每一个步骤都找一份快照，通过轨迹将这些快照联系在一起，就可以得到一个数据结构。包括纸带内容，读写头位置和控制机状态。
+
+## <font color=red>14.为什么说所有计算或算法都可以由一台图灵机来执行？</font>
+
+<p>邱奇-图灵论题最基本的观点表明，所有计算或算法都可以由一台图灵机来执行。以任何常规编程语言编写的计算机程序都可以翻译成一台图灵机，反之任何一台图灵机也都可以翻译成大部分编程语言的程序，所以该论题和一下说法等价：常规的编程语言可以足够有效地来表达任何算法。该论题被普遍认定为真。</p>
+<h2 id="15-如何从图灵机视角看待算法的时间复杂度和空间复杂度？"><a href="#15-如何从图灵机视角看待算法的时间复杂度和空间复杂度？" class="headerlink" title="15.如何从图灵机视角看待算法的时间复杂度和空间复杂度？"></a><font color=red>15.如何从图灵机视角看待算法的时间复杂度和空间复杂度？</font></h2><font color=pink>图灵机程序的复杂度</font>由外部的输入和输出来决定图灵机内部的算法的时间和空间的复杂度。
+<font color=pink>图灵机的时间复杂度T(n)</font>是它处理所有长度为n的输入所需要的最大计算步数。如果对于某个长度为n的输入，图灵机不停机，则T(n)对这个值无定义。
+<font color=pink>图灵机的空间复杂性S(n)</font>是它处理所有长度为n的输入时，在纸带上所使用过的方格总数。如果某个读写头无限的向右移动而不停机，S(n)也无定义。
+
+## <font color=red>16.什么是确定性图灵机、非确定性图灵机和概率图灵机？</font>
+
+<font color=pink>确定性图灵机(DTM)</font>：在DTM中，其控制规则规定了在任何给定的情况下最多只能执行一个动作。确定性图灵机具有转换功能，对于磁带头下的给定状态和符号，该转换功能指定了三件事：要写入磁带的符号，头部应移动的方向，以及有限控制的后续状态。
+<font color=pink>非确定性图灵机(NDTM)</font>：在理论计算机科学中，非确定性图灵机是一种理论计算模型，其控制规则在某些给定情况下指定了多个可能的动作。NDTM的下一个状态不是完全由其动作和它所看到的当前符号决定的。
+<font color=pink>概率图灵机(PTM)</font>：一种非确定型图灵机，每走一步在两个转移函数之间随机地选取一个。概率图灵机是依照随机带上写下的0和1来决定下一步怎么走。
+
+## 17.什么是识别问题？<font color=red>什么是判定问题？什么是PT验证器？</font>
+
+<font color=pink>识别问题</font>：当且仅当图灵机接受字符串时，当提供的输入位于语言中时，语言才是可识别的。此外，如果TM终止并拒绝字符串或根本不终止，则可以识别语言。这意味着当提供的输入不在语言中时，TM继续计算。然而，当且仅当由一台机器在提供的输入位于该语言中时接受字符串并在提供的输入不在该语言中时拒绝该字符串，该语言才是可判定的。
+<font color=pink>判定问题</font>：有些语言可被判定器判定。如果存在不可判定语言，那么必然存在不可识别语言。就是无法构造一个图灵机，接受这个语言的每一个字符串。所以如果一个语言不可判定，必然它或者它的补是不可识别的。不可识别的语言是存在的。一个不可判定的语言就是一个不可计算的问题。那是一个超出了计算机能力的问题，一个不能被任何有步骤的、确定性的算法所能解决的问题。<font color=pink>即不用求解，判定是否是解</font>,<font color=red>判定比识别要更加严格</font>
+<font color=pink>PT验证器</font>：多项式图灵机
+
+## <font color=red>18.什么是P，NP，NPC，NP-hard？</font>
+
+<font color=pink>P</font>：一个问题如果在图灵机上所需时间不会超过一个确定的多项式，称此类问题的集合为P，通俗来讲，P问题就是多项式时间可解的问题；
+<font color=pink>NP</font>：可以在非确定型图灵机上在多项式时间内找出解的问题的集合。如果一个问题，可以在多项式时间内验证它的解是否正确，则该问题是一个NP问题。显然 P∈NP(注：到目前为止，P!=NP)
+<font color=pink>NPC(NP-Complete)</font>：一个决定性问题C若是NPC，则代表它对NP是完备的，这表示：
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.该问题是一个NP问题</span><br><span class="line">b.所有属于NP的问题都可以归约成该问题</span><br></pre></td></tr></table></figure>
 
-<p>对于一个NPC问题，我们不可能尝试将所有的NP规约到它，所以通常采用一下方法证明一个问题是NPC问题：</p>
+对于一个NPC问题，我们不可能尝试将所有的NP规约到它，所以通常采用一下方法证明一个问题是NPC问题：
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.证明给定问题的一个解，可以在多项式时间验证该问题</span><br><span class="line">b.可以将一个已知的NPC问题归约到该问题</span><br></pre></td></tr></table></figure>
 
-<p>在计算复杂度理论中，第一个被证明的NPC问题是布尔可满足性问题。所以</p>
+在计算复杂度理论中，第一个被证明的NPC问题是布尔可满足性问题。所以
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可满足问题属于NPC问题。</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可满足性问题(SAT)：</span><br><span class="line">可满足问题是判断仍以给定的一个布尔表达式是否存在一个真赋值，存在则称该布尔表达式可满足</span><br></pre></td></tr></table></figure>
 
-<p><font color=pink>NP-hard</font>:相较于NPC问题，NP-hard问题只满足条件2</p>
+<font color=pink>NP-hard</font>:相较于NPC问题，NP-hard问题只满足条件2
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">即所有的NP问题都可以归约到NP-hard问题，即NPC问题可以归约到NP-hard</span><br><span class="line">其次他不一定是NP问题，如下图所示</span><br><span class="line">通常通过将一个已知的NPC问题归约到该问题证明NP-Hard</span><br></pre></td></tr></table></figure>
 
 <img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230626195253002.png" alt="image-20230626195253002" style="zoom:60%;" />
 
-<h2 id="19-为什么说计算复杂性理论的首要问题是P-x3D-NP？它的内涵是什么？为什么说P-x3D-NP不可思议？"><a href="#19-为什么说计算复杂性理论的首要问题是P-x3D-NP？它的内涵是什么？为什么说P-x3D-NP不可思议？" class="headerlink" title="19.为什么说计算复杂性理论的首要问题是P&#x3D;NP？它的内涵是什么？为什么说P&#x3D;NP不可思议？"></a><font color=red>19.为什么说计算复杂性理论的首要问题是P&#x3D;NP？它的内涵是什么？为什么说P&#x3D;NP不可思议？</font></h2><p><font color=pink>a</font>.自从P&#x3D;NP问题被正式提出后，有NP完备理论赋予其在实践上的重要性，有证明复杂性理论赋予其纯数学理论上的重要性，有PCP理论和NP完备理论赋予其算法理论上的重要性。这些理论从根本上依赖P与NP关系问题的某些假设，或者本身就是试图去理解NP和P关系问题而发展出来的。计算复杂性理论的基本的主题之一是算法所需资源的下界。<br><font color=pink>b</font>.“P&#x2F;NP”问题，这里的P指多项式时间，假如NP问题能找到算法使其在多项式时间内解决，也就证明了P&#x3D;NP<br><font color=pink>c</font>.如果P&#x3D;NP，那么每个答案很容易得到验证的问题也同样可以轻松求解，这将对计算机安全构成巨大威胁。目前加密系统的破解就相当于要将一个整数分解成几个因数的乘积，正是其求解过程的繁琐，才能杜绝黑客入侵。如果证明了P&#x3D;NP，那么依据计算复杂性的密码就没有用途。如果P&#x3D;NP，那么所有的NP问题都存在有效的解决方案，而对于NP-hard问题，及时P&#x3D;NP，也不一定有解。同时如果证明了P!&#x3D;NP，那么大素数的分解还是不是NPC的？证明RSA、DES等密码的安全性比证明P&#x2F;NP还困难。</p>
-<h2 id="20-简述Cook-Levin定理，为什么该定理如此重要？"><a href="#20-简述Cook-Levin定理，为什么该定理如此重要？" class="headerlink" title="20.简述Cook-Levin定理，为什么该定理如此重要？"></a>20.简述Cook-Levin定理，为什么该定理如此重要？</h2><p><font color=pink>Cook-Levin定理</font>：表明布尔可满足问题是NPC的。也就是说，NP中的任何问题都可以通过DTM在多项式时间内减少到确定布尔公式是否可满足的问题。如果可以在多项式时间内通过非确定性算法求解，则决策问题在NP中。<br><font color=pink>为什么如此重要</font>：给定NP中的任何决策问题，构造一个在多项式时间内解决它的非确定性机器。然后，对于该机器的每个输入，构建一个布尔表达式，表示输入传递给机器，机器正确运行并停止回答“是”。证明表明NP中的任何问题都可以在多项式时间中减少到布尔可满足问题的实例。这意味着如果布尔可满足问题可以通过确定性图灵机在多项式时间内解决，则NP中的所有问题都可以在多项式时间内求解，因此证明P&#x3D;NP</p>
-<h2 id="21-什么是归约？常见的归约方法？"><a href="#21-什么是归约？常见的归约方法？" class="headerlink" title="21.什么是归约？常见的归约方法？"></a><font color=red>21.什么是归约？常见的归约方法？</font></h2><p><font color=pink>归约</font>：一个问题A可以归约到一个问题B的含义是可以用解决B的方法解决A，也就是说找到了解决A的方法。因此可知，问题A不一定比问题B难，<font color=pink>即B更难</font>至少两个问题是同样难度的。<br><font color=pink>详细定义</font>：</p>
+## <font color=red>19.为什么说计算复杂性理论的首要问题是P=NP？它的内涵是什么？为什么说P=NP不可思议？</font>
+
+<font color=pink>a</font>.自从P=NP问题被正式提出后，有NP完备理论赋予其在实践上的重要性，有证明复杂性理论赋予其纯数学理论上的重要性，有PCP理论和NP完备理论赋予其算法理论上的重要性。这些理论从根本上依赖P与NP关系问题的某些假设，或者本身就是试图去理解NP和P关系问题而发展出来的。计算复杂性理论的基本的主题之一是算法所需资源的下界。
+<font color=pink>b</font>.“P/NP”问题，这里的P指多项式时间，假如NP问题能找到算法使其在多项式时间内解决，也就证明了P=NP
+<font color=pink>c</font>.如果P=NP，那么每个答案很容易得到验证的问题也同样可以轻松求解，这将对计算机安全构成巨大威胁。目前加密系统的破解就相当于要将一个整数分解成几个因数的乘积，正是其求解过程的繁琐，才能杜绝黑客入侵。如果证明了P=NP，那么依据计算复杂性的密码就没有用途。如果P=NP，那么所有的NP问题都存在有效的解决方案，而对于NP-hard问题，及时P=NP，也不一定有解。同时如果证明了P!=NP，那么大素数的分解还是不是NPC的？证明RSA、DES等密码的安全性比证明P/NP还困难。
+
+## 20.简述Cook-Levin定理，为什么该定理如此重要？
+
+<font color=pink>Cook-Levin定理</font>：表明布尔可满足问题是NPC的。也就是说，NP中的任何问题都可以通过DTM在多项式时间内减少到确定布尔公式是否可满足的问题。如果可以在多项式时间内通过非确定性算法求解，则决策问题在NP中。
+<font color=pink>为什么如此重要</font>：给定NP中的任何决策问题，构造一个在多项式时间内解决它的非确定性机器。然后，对于该机器的每个输入，构建一个布尔表达式，表示输入传递给机器，机器正确运行并停止回答“是”。证明表明NP中的任何问题都可以在多项式时间中减少到布尔可满足问题的实例。这意味着如果布尔可满足问题可以通过确定性图灵机在多项式时间内解决，则NP中的所有问题都可以在多项式时间内求解，因此证明P=NP
+
+## <font color=red>21.什么是归约？常见的归约方法？</font>
+
+<font color=pink>归约</font>：一个问题A可以归约到一个问题B的含义是可以用解决B的方法解决A，也就是说找到了解决A的方法。因此可知，问题A不一定比问题B难，<font color=pink>即B更难</font>至少两个问题是同样难度的。
+<font color=pink>详细定义</font>：
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于问题A和问题B，如果存在一个可计算的函数f，使得对于任意问题A的实例x有：</span><br></pre></td></tr></table></figure>
 
-<p>$$<br>A(x) &#x3D; B(f(x))<br>$$</p>
+$$
+A(x) = B(f(x))
+$$
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">我们就说问题A可以被归约到问题B</span><br><span class="line">归约方法：Many-one归约，图灵归约，Karp归约，Levin归约，Cook归约</span><br></pre></td></tr></table></figure>
 
-<h2 id="22-如何判定一个问题是NPC问题？"><a href="#22-如何判定一个问题是NPC问题？" class="headerlink" title="22.如何判定一个问题是NPC问题？"></a><font color=red>22.如何判定一个问题是NPC问题？</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.是一个NP问题</span><br><span class="line">b.所有NP问题都可归约到它</span><br><span class="line">（见18）</span><br></pre></td></tr></table></figure>
+## <font color=red>22.如何判定一个问题是NPC问题？</font>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.是一个NP问题</span><br><span class="line">b.所有NP问题都可归约到它</span><br><span class="line">（见18）</span><br></pre></td></tr></table></figure>
 <h2 id="23-什么是停机判定问题？其哲学思想是什么？"><a href="#23-什么是停机判定问题？其哲学思想是什么？" class="headerlink" title="23.什么是停机判定问题？其哲学思想是什么？"></a><font color=red>23.什么是停机判定问题？其哲学思想是什么？</font></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">停机判定：给定一个图灵机T和一个任意语言集合S，T是否会最终停机于每一个s∈S。</span><br><span class="line">        即判定一个程序是否会在有限的时间内结束运行。</span><br><span class="line">意义：其意义相同与可确定语言。显然任意有限S是可判定性的，可列S也是停机的。</span><br><span class="line">     即所有能行和计算的算法都是可以得到确定性答案而停机；或</span><br><span class="line">     不存在可以解决问题的确定性算法。</span><br></pre></td></tr></table></figure>
+<font color=brown>注：“停机问题”不可判定意味着“可计算的”机器不能肯定自己的“可计算性”，停机问题这种悖论式解释判定问题只会让问题更难。</font>
 
-<p><font color=brown>注：“停机问题”不可判定意味着“可计算的”机器不能肯定自己的“可计算性”，停机问题这种悖论式解释判定问题只会让问题更难。</font></p>
 <h2 id="24-求解NP问题的一般方法？"><a href="#24-求解NP问题的一般方法？" class="headerlink" title="24.求解NP问题的一般方法？"></a>24.求解NP问题的一般方法？</h2><p>a.<font color=pink>动态规划法与分支界限法</font>：对于许多NPC问题来说，用此方法可以得到较高的解题效率？<br>b.<font color=pink>概率分析</font>：对于许多NPC问题，其困难实例出现概率小，平均性能好<br>c.<font color=pink>近似算法</font>：近似解代替最优解<br>d.<font color=pink>启发式算法</font>：别的方法不奏效</p>
-<h2 id="25-2SAT为什么是P问题？"><a href="#25-2SAT为什么是P问题？" class="headerlink" title="25.2SAT为什么是P问题？"></a><font color=red>25.2SAT为什么是P问题？</font></h2><p><font color=pink>2SAT</font>问题之所以属于P问题，是因为存在一种多项式时间复杂度的算法来解决它，也就是<font color=pink>强连通分量算法</font>。其将2SAT问题转化为<font color=pink>有向图问题</font>，并查找图中的强连通分量。此算法可以在多项式时间内完成。</p>
-<p><font color=pink>证明如下</font>：</p>
-<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627212515843.png" alt="image-20230627212515843"></p>
-<p>[注]：如果xi和 ¬xi属于同一强连通分量，即互相可达，肯定是矛盾式。</p>
-<p>构造一张有向图G，把其中的每个变量拆成两个节点<strong>2i</strong>和<strong>2i+1</strong>，分别表示<strong>xi</strong>为假和<strong>xi</strong>为真，最后要为每个变量选择其中一个节点打标记。对于“<strong>xi</strong>为假或<strong>xj</strong>为假”这样的条件，我们连一条有向边<br>$$<br>2i+1&#x3D;&gt;2j<br>$$<br>表示<strong>xi</strong>为真时<strong>xj</strong>必须为假，同理，还需要连一条有向边<br>$$<br>2j+1&#x3D;&gt;2i<br>$$<br>其他条件类似，每个条件对应两条“<strong>对称</strong>”的边，整张图实际上描述了一系列必须满足的关系，选择<strong>u</strong>的情况下必须选择它所能到的所有点。</p>
-<p>对于一个没有打标记的变量<strong>xi</strong>，我们先假定它为假，然后标记节点<strong>2i</strong>，并且沿着有向边标记所有能标记的节点。如果标记过程中发现某个变量对应的两个节点都被标记，则“<strong>xi</strong>为假”这个假定不成立，需要改成“<strong>xi</strong>为真，然后重新标记。整个算法没有回溯过程，如果当前考虑的变量不管赋值为真还是假都会引起矛盾，可以证明整个2SAT问题无解。</p>
-<h2 id="26-什么是随机算法？作用和意义？举例"><a href="#26-什么是随机算法？作用和意义？举例" class="headerlink" title="26.什么是随机算法？作用和意义？举例"></a><font color=red>26.什么是随机算法？作用和意义？举例</font></h2><p><font color=pink>随机算法</font>是一种使用概率和统计方法在其执行过程中对于下一计算步骤做出随机选择的算法。通常包括：随机生成的随机数和根据这些随机数做出的决策</p>
-<p><font color=pink>作用和意义</font>：</p>
-<ul>
-<li>避免陷入局部最优解</li>
-<li>探索解空间</li>
-<li>增加解多样性</li>
-<li>提高效率举例</li>
-</ul>
-<p><font color=pink>举例</font>：数值概率算法、蒙特卡洛算法、拉斯维加斯算法、舍伍德算法；</p>
-<ul>
-<li><p>蒙特卡洛算法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用于求问题的准确解</span><br><span class="line">对于许多问题来说，近似解无意义，如判定问题；</span><br><span class="line">但所得到的解不一定正确</span><br><span class="line">求得正确解的概率依赖于算法所用的时间，时间越多，概率越大</span><br><span class="line">缺点：无法有效地判别解的正确性</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>拉斯维加斯算法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">拉斯维加斯算法会得到正确的解；</span><br><span class="line">但算法有时会找不到解</span><br><span class="line">多次求解可减小求解失效的概率</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>舍伍德算法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">算法总能求得解，并且解是正确的</span><br><span class="line">当一个确定性算法</span><br><span class="line">在最坏情况下的计算复杂性与其在平均情况下的计算复杂性有较大差别时，</span><br><span class="line">可在这个确定性算法中引入随机性；</span><br><span class="line">将其改造为舍伍德算法，减少差别</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="27-单向函数的意义及作用？举例"><a href="#27-单向函数的意义及作用？举例" class="headerlink" title="27.单向函数的意义及作用？举例"></a>27.单向函数的意义及作用？举例</h2><p><font color=pink>单向函数</font>：</p>
+<h2 id="25-2SAT为什么是P问题？"><a href="#25-2SAT为什么是P问题？" class="headerlink" title="25.2SAT为什么是P问题？"></a><font color=red>25.2SAT为什么是P问题？</font></h2><font color=pink>2SAT</font>问题之所以属于P问题，是因为存在一种多项式时间复杂度的算法来解决它，也就是<font color=pink>强连通分量算法</font>。其将2SAT问题转化为<font color=pink>有向图问题</font>，并查找图中的强连通分量。此算法可以在多项式时间内完成。
+
+<font color=pink>证明如下</font>：
+
+![image-20230627212515843](https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627212515843.png)
+
+[注]：如果xi和 ¬xi属于同一强连通分量，即互相可达，肯定是矛盾式。
+
+构造一张有向图G，把其中的每个变量拆成两个节点**2i**和**2i+1**，分别表示**xi**为假和**xi**为真，最后要为每个变量选择其中一个节点打标记。对于“**xi**为假或**xj**为假”这样的条件，我们连一条有向边
+$$
+2i+1=>2j
+$$
+表示**xi**为真时**xj**必须为假，同理，还需要连一条有向边
+$$
+2j+1=>2i
+$$
+其他条件类似，每个条件对应两条“**对称**”的边，整张图实际上描述了一系列必须满足的关系，选择**u**的情况下必须选择它所能到的所有点。
+
+对于一个没有打标记的变量**xi**，我们先假定它为假，然后标记节点**2i**，并且沿着有向边标记所有能标记的节点。如果标记过程中发现某个变量对应的两个节点都被标记，则“**xi**为假”这个假定不成立，需要改成“**xi**为真，然后重新标记。整个算法没有回溯过程，如果当前考虑的变量不管赋值为真还是假都会引起矛盾，可以证明整个2SAT问题无解。
+
+## <font color=red>26.什么是随机算法？作用和意义？举例</font>
+
+<font color=pink>随机算法</font>是一种使用概率和统计方法在其执行过程中对于下一计算步骤做出随机选择的算法。通常包括：随机生成的随机数和根据这些随机数做出的决策
+
+<font color=pink>作用和意义</font>：
+
++ 避免陷入局部最优解
++ 探索解空间
++ 增加解多样性
++ 提高效率举例
+
+<font color=pink>举例</font>：数值概率算法、蒙特卡洛算法、拉斯维加斯算法、舍伍德算法；
+
++ 蒙特卡洛算法
+
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用于求问题的准确解</span><br><span class="line">对于许多问题来说，近似解无意义，如判定问题；</span><br><span class="line">但所得到的解不一定正确</span><br><span class="line">求得正确解的概率依赖于算法所用的时间，时间越多，概率越大</span><br><span class="line">缺点：无法有效地判别解的正确性</span><br></pre></td></tr></table></figure>
+
++ 拉斯维加斯算法
+
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">拉斯维加斯算法会得到正确的解；</span><br><span class="line">但算法有时会找不到解</span><br><span class="line">多次求解可减小求解失效的概率</span><br></pre></td></tr></table></figure>
+
++ 舍伍德算法
+
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">算法总能求得解，并且解是正确的</span><br><span class="line">当一个确定性算法</span><br><span class="line">在最坏情况下的计算复杂性与其在平均情况下的计算复杂性有较大差别时，</span><br><span class="line">可在这个确定性算法中引入随机性；</span><br><span class="line">将其改造为舍伍德算法，减少差别</span><br></pre></td></tr></table></figure>
+
+## 27.单向函数的意义及作用？举例
+
+<font color=pink>单向函数</font>：
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对于每一个输入，函数值在多项式时间内可解；</span><br><span class="line">对于随机的函数值，无法在多项式时间内使用确定性图灵机计算；</span><br></pre></td></tr></table></figure>
 
-<p><font color=pink>意义和作用</font>：</p>
+<font color=pink>意义和作用</font>：
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">作用：单向函数一般用于产生消息摘要、密钥加密等，常见有MD5，SHA；</span><br><span class="line">提供数据的保密性、完整性和认证性。</span><br><span class="line">它们为密码学和信息安全领域提供了可靠的工具，使得加密和安全通信成为可能。</span><br><span class="line"></span><br><span class="line">意义：如果单向函数存在，将证明复杂性类P/NP问题中，P不等于NP。</span><br></pre></td></tr></table></figure>
 
-<h2 id="28-交互式证明思想和方法？举例"><a href="#28-交互式证明思想和方法？举例" class="headerlink" title="28.交互式证明思想和方法？举例"></a><font color=red>28.交互式证明思想和方法？举例</font></h2><p><font color=pink>完备性</font>：如果x∈L，则存在一个证明者P使得验证者V能以多项式时间接受x（且接受的概率大于2&#x2F;3）</p>
-<p><font color=pink>可靠性</font>：如果x∉L，对于所有的证明者P，V接受x的概率不会超过1&#x2F;3</p>
-<p>能被交互式系统解决的问题记为IP类问题，可以证明NP ⊆ IP</p>
-<p><font color=pink>应用</font>：对典型的实际应用就是<font color=pink>零知识证明</font></p>
-<p><font color=pink>图的三色问题</font>：为一个无向图的每个节点涂色(红、绿、蓝)，使得相邻节点颜色不同、在交互式证明中，证明者可以声称找到了一个图的有效的三色方案，并于验证者进行交互验证方案的正确性。交互过程如下：</p>
-<ul>
-<li>验证者随机选择图的一些节点，并要求证明者提供这些节点的颜色方案。</li>
-<li>证明者根据自己的声称方案提供节点的颜色，并将这些颜色发给验证者。</li>
-<li>验证者检查证明者提供的颜色方案是否满足相邻节点颜色不同的条件。</li>
-<li>如果这个验证者发现任何错误，他可以指正并要求证明者提供更多的证据或者修正错误。</li>
-<li>这个过程可以继续，知道验证者对证明者的声称满意。</li>
-</ul>
-<p>除了该问题，交互式证明思想还用于素性测试(?)、证明性密码学等领域。</p>
-<h2 id="29-对角线方法思想？举例"><a href="#29-对角线方法思想？举例" class="headerlink" title="29.对角线方法思想？举例"></a>29.对角线方法思想？举例</h2><p><font color=pink>思想</font>：利用对角线上的值做反证法。</p>
-<p><font color=pink>证明 <strong>N !&#x3D; R</strong>,自然数集与实数集不存在一一对应</font>:</p>
-<ul>
-<li><p>假设：<font color=blue>自然数集N</font>和<font color=green>实数集R</font>之间，一定存在映射，即<strong>N</strong>可以进行一一列举出来，f(1)，f(2)….f(n),</p>
-<p>f(n)对应的是实数，将其限制在[0,1]之间；</p>
-<p>[0,1]之间的实数与整个实数集一定存在一一对应关系。</p>
-</li>
-<li><p>证明<font color=blue>自然数集N</font>和<font color=green>[0,1]区间内的实数</font>，不可能存在一一对应关系：</p>
-<p>f(n)是一个[0,1]区间内的实数，则可以写成</p>
-<p>f(1) &#x3D; 0.a11a12a13…</p>
-<p>f(2) &#x3D; 0.a21a22a23…</p>
-<p><strong>.</strong></p>
-<p><strong>.</strong></p>
-<p><strong>.</strong></p>
-<p>f(n) &#x3D; 0.an1an2…ann，其中a的值是0-9中的一个数字；</p>
-<p>假设存在一个f是从<font color=blue>自然数集N</font>和<font color=green>[0,1]区间内的实数</font>的一一映射，对于对角线上的元素a11，a22，…，ann</p>
-<p>设计一个实数 b &#x3D; b1b2…bn，其中要求：<font color=red>bi !&#x3D; aii</font></p>
-<p>如果<font color=blue>自然数集N</font>和<font color=green>[0,1]区间内的实数</font>是一一对应的，那么<font color=red>一定可以找到一个自然数k</font>，与实数b &#x3D; b1b2…bn对应，实数b一定等于f(k);</p>
-<p>与假设<font color=red>矛盾</font>，设计过程要求<font color=red>bk !&#x3D; akk</font>，<font color=red>而f(k)中第k个数值一定是akk</font>，因此两个值不可能相等。</p>
-</li>
-</ul>
+## <font color=red>28.交互式证明思想和方法？举例</font>
+
+<font color=pink>完备性</font>：如果x∈L，则存在一个证明者P使得验证者V能以多项式时间接受x（且接受的概率大于2/3）
+
+<font color=pink>可靠性</font>：如果x∉L，对于所有的证明者P，V接受x的概率不会超过1/3
+
+能被交互式系统解决的问题记为IP类问题，可以证明NP ⊆ IP
+
+<font color=pink>应用</font>：对典型的实际应用就是<font color=pink>零知识证明</font>
+
+<font color=pink>图的三色问题</font>：为一个无向图的每个节点涂色(红、绿、蓝)，使得相邻节点颜色不同、在交互式证明中，证明者可以声称找到了一个图的有效的三色方案，并于验证者进行交互验证方案的正确性。交互过程如下：
+
++ 验证者随机选择图的一些节点，并要求证明者提供这些节点的颜色方案。
++ 证明者根据自己的声称方案提供节点的颜色，并将这些颜色发给验证者。
++ 验证者检查证明者提供的颜色方案是否满足相邻节点颜色不同的条件。
++ 如果这个验证者发现任何错误，他可以指正并要求证明者提供更多的证据或者修正错误。
++ 这个过程可以继续，知道验证者对证明者的声称满意。
+
+除了该问题，交互式证明思想还用于素性测试(?)、证明性密码学等领域。
+
+## 29.对角线方法思想？举例
+
+<font color=pink>思想</font>：利用对角线上的值做反证法。
+
+<font color=pink>证明 **N != R**,自然数集与实数集不存在一一对应</font>:
+
++ 假设：<font color=blue>自然数集N</font>和<font color=green>实数集R</font>之间，一定存在映射，即**N**可以进行一一列举出来，f(1)，f(2)....f(n),
+
+  f(n)对应的是实数，将其限制在[0,1]之间；
+
+  [0,1]之间的实数与整个实数集一定存在一一对应关系。
+
++ 证明<font color=blue>自然数集N</font>和<font color=green>[0,1]区间内的实数</font>，不可能存在一一对应关系：
+
+  f(n)是一个[0,1]区间内的实数，则可以写成
+
+  f(1) = 0.a11a12a13...
+
+  f(2) = 0.a21a22a23...
+
+  **.**
+
+  **.**
+
+  **.**
+
+  f(n) = 0.an1an2...ann，其中a的值是0-9中的一个数字；
+
+  假设存在一个f是从<font color=blue>自然数集N</font>和<font color=green>[0,1]区间内的实数</font>的一一映射，对于对角线上的元素a11，a22，...，ann
+
+  设计一个实数 b = b1b2...bn，其中要求：<font color=red>bi != aii</font>
+
+<p>  如果<font color=blue>自然数集N</font>和<font color=green>[0,1]区间内的实数</font>是一一对应的，那么<font color=red>一定可以找到一个自然数k</font>，与实数b = b1b2…bn对应，实数b一定等于f(k);</p>
+<p>  与假设<font color=red>矛盾</font>，设计过程要求<font color=red>bk != akk</font>，<font color=red>而f(k)中第k个数值一定是akk</font>，因此两个值不可能相等。</p>
 <h2 id="30-三种基本算法设计范式"><a href="#30-三种基本算法设计范式" class="headerlink" title="30.三种基本算法设计范式"></a>30.三种基本算法设计范式</h2><ul>
 <li><font color=pink>有理论保证的算法</font><ul>
 <li>精确算法</li>
@@ -523,10 +571,17 @@
 <h2 id="34-简述素数问题PRIME及其复杂性分析？"><a href="#34-简述素数问题PRIME及其复杂性分析？" class="headerlink" title="34.简述素数问题PRIME及其复杂性分析？"></a>34.简述素数问题PRIME及其复杂性分析？</h2><blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给定M，求[0,M]中素数的个数</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><font color=orange>复杂性分析</font>：<br><font color=pink>穷举法</font>：<br>$$<br>O(N^2)<br>$$<br><font color=pink>检测到根号N</font>：<br>$$<br>O(根号N)<br>$$<br><font color=pink>埃拉托色尼筛选算法</font>：<br>$$<br>O(根号N&#x2F;logN)<br>$$<br><font color=pink>欧拉筛选法</font>：<br>$$<br>O(N)<br>$$</p>
-<h2 id="35-简述零知识证明的基本思想"><a href="#35-简述零知识证明的基本思想" class="headerlink" title="35.简述零知识证明的基本思想"></a>35.简述零知识证明的基本思想</h2><p>证明者能够在不向验证者提供任何新知识的情况下，使验证者相信某个断言或定理的真实性。</p>
+<p><font color=orange>复杂性分析</font>：</p>
+<p><font color=pink>穷举法</font>：</p>
+<script type="math/tex; mode=display">
+O(N^2)</script><p><font color=pink>检测到根号N</font>：</p>
+<script type="math/tex; mode=display">
+O(根号N)</script><p><font color=pink>埃拉托色尼筛选算法</font>：</p>
+<script type="math/tex; mode=display">
+O(根号N/logN)</script><p><font color=pink>欧拉筛选法</font>：</p>
+<script type="math/tex; mode=display">
+O(N)</script><h2 id="35-简述零知识证明的基本思想"><a href="#35-简述零知识证明的基本思想" class="headerlink" title="35.简述零知识证明的基本思想"></a>35.简述零知识证明的基本思想</h2><p>证明者能够在不向验证者提供任何新知识的情况下，使验证者相信某个断言或定理的真实性。</p>
 <h2 id="36-一个算法问题交给你后，应该怎么处理？"><a href="#36-一个算法问题交给你后，应该怎么处理？" class="headerlink" title="36.一个算法问题交给你后，应该怎么处理？"></a>36.一个算法问题交给你后，应该怎么处理？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a.建模：对输入参数和解给出形式化或半形式化的描述</span><br><span class="line">b.设计算法：采用什么算法设计</span><br><span class="line">	 正确性：是否所有实例均有正确解</span><br><span class="line">c.分析：分析算法效率</span><br></pre></td></tr></table></figure>
-
 <h2 id="37-计算复杂性理论的认识？对今后学习的启发？"><a href="#37-计算复杂性理论的认识？对今后学习的启发？" class="headerlink" title="37.计算复杂性理论的认识？对今后学习的启发？"></a>37.计算复杂性理论的认识？对今后学习的启发？</h2><p>计算复杂性理论是计算机科学的一个重要分支，它研究计算问题的难解性和可解性。通过分析问题的复杂性，计算复杂性理论可以帮助我们理解何时可以期望找到高效算法来解决问题，以及何时问题可能是困难甚至是不可解的。</p>
 <p>对于今后的学习，计算复杂性理论给我们带来了以下几个方面的启发：</p>
 <ol>
@@ -554,16 +609,11 @@
 <p>综上所述，计算复杂性理论为云计算、大数据、物联网和人工智能安全提供了思考和指导。它可以帮助我们评估问题的复杂性和可解性，设计高效的算法和安全方案，以保护数据和系统的安全性。</p>
 <h2 id="39-N个乒乓球中有一个和其他的质量不同，用天平最少几次能称出来？"><a href="#39-N个乒乓球中有一个和其他的质量不同，用天平最少几次能称出来？" class="headerlink" title="39.N个乒乓球中有一个和其他的质量不同，用天平最少几次能称出来？"></a>39.N个乒乓球中有一个和其他的质量不同，用天平最少几次能称出来？</h2><p>不考虑最后得到的乒乓球质量和正常质量相比是大是小，最少需要[log3(2n+1)]；</p>
 <p>考虑最后乒乓球质量的大小，最少需要[log3(2n+3)]；</p>
-<h2 id="40-图灵机相关问题"><a href="#40-图灵机相关问题" class="headerlink" title="40.图灵机相关问题"></a>40.图灵机相关问题</h2><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627213831778.png" alt="image-20230627213831778" style="zoom:50%;" />
-
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627213850389.png" alt="image-20230627213850389" style="zoom:67%;" />
-
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627213943465.png" alt="image-20230627213943465" style="zoom:50%;" />
-
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627214049933.png" alt="image-20230627214049933" style="zoom:50%;" />
-
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627214329899.png" alt="image-20230627214329899" style="zoom:50%;" />
-
+<h2 id="40-图灵机相关问题"><a href="#40-图灵机相关问题" class="headerlink" title="40.图灵机相关问题"></a>40.图灵机相关问题</h2><p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627213831778.png" alt="image-20230627213831778" style="zoom:50%;" /></p>
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627213850389.png" alt="image-20230627213850389" style="zoom:67%;" /></p>
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627213943465.png" alt="image-20230627213943465" style="zoom:50%;" /></p>
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627214049933.png" alt="image-20230627214049933" style="zoom:50%;" /></p>
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627214329899.png" alt="image-20230627214329899" style="zoom:50%;" /></p>
 <p>例题：<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627214558204.png" alt="image-20230627214558204" style="zoom: 50%;" /></p>
 <p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627214910488.png" alt="image-20230627214910488"></p>
 <details>
@@ -571,25 +621,16 @@
 </details>
 
 <p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627214828247.png" alt="image-20230627214828247"></p>
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627215324421.png" alt="image-20230627215324421" style="zoom:67%;" />
-
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627215626212.png" alt="image-20230627215626212" style="zoom:50%;" />
-
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627220346752.png" alt="image-20230627220346752" style="zoom: 67%;" />
-
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627220402800.png" alt="image-20230627220402800" style="zoom:67%;" />
-
-
-
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627215324421.png" alt="image-20230627215324421" style="zoom:67%;" /></p>
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627215626212.png" alt="image-20230627215626212" style="zoom:50%;" /></p>
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627220346752.png" alt="image-20230627220346752" style="zoom: 67%;" /></p>
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627220402800.png" alt="image-20230627220402800" style="zoom:67%;" /></p>
 <h2 id="41-NP问题之间归约？常见的NPC问题？"><a href="#41-NP问题之间归约？常见的NPC问题？" class="headerlink" title="41.NP问题之间归约？常见的NPC问题？"></a>41.NP问题之间归约？常见的NPC问题？</h2><p><font color=pink>NP问题归约</font>：(从上到下)</p>
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627205644167.png" alt="image-20230627205644167" style="zoom: 67%;" />
-
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627205644167.png" alt="image-20230627205644167" style="zoom: 67%;" /></p>
 <p><font color=pink>常见NPC问题</font>：</p>
 <ul>
-<li><p>布尔可满足性问题：是否存在一组变量使得问题可满足。</p>
-</li>
-<li><p>0-1整数规划</p>
-</li>
+<li>布尔可满足性问题：是否存在一组变量使得问题可满足。</li>
+<li>0-1整数规划</li>
 <li><p>分团问题：一个图中是否有大小是k个的团。任意挑出k个点，可判断是不是一个团，所以问题是NP；</p>
 <ul>
 <li>setpacking</li>
@@ -599,20 +640,19 @@
 <li><p>图着色问题</p>
 </li>
 <li><p>背包问题</p>
-<img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627211504443.png" alt="image-20230627211504443" style="zoom: 50%;" /></li>
+<p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627211504443.png" alt="image-20230627211504443" style="zoom: 50%;" /></p>
+</li>
 </ul>
 <h2 id="42-SAT、2SAT、3SAT"><a href="#42-SAT、2SAT、3SAT" class="headerlink" title="42.SAT、2SAT、3SAT"></a>42.SAT、2SAT、3SAT</h2><p><img src="https://qitiantaile.oss-cn-guangzhou.aliyuncs.com/blog/image-20230627212725004.png" alt="image-20230627212725004"></p>
 <h2 id="43-素数判定的递归和非递归算法"><a href="#43-素数判定的递归和非递归算法" class="headerlink" title="43.素数判定的递归和非递归算法"></a>43.素数判定的递归和非递归算法</h2><p>递归：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isPrime</span>(<span class="params">n,i</span>):</span><br><span class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">2</span>): <span class="keyword">return</span> n==<span class="number">2</span></span><br><span class="line">	<span class="keyword">if</span> n%i == <span class="number">0</span>: <span class="keyword">return</span> false</span><br><span class="line">	<span class="keyword">if</span> i*i&gt;n: <span class="keyword">return</span> true</span><br><span class="line">	<span class="keyword">return</span> isPrime(n,i+<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
 <p>非递归：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isPrime</span>(<span class="params">n</span>):</span><br><span class="line">	<span class="keyword">if</span> n&lt;=<span class="number">1</span>: <span class="keyword">return</span> false</span><br><span class="line">	<span class="keyword">for</span>(i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n**<span class="number">0.5</span>)+<span class="number">1</span>):</span><br><span class="line">		ifn%i == <span class="number">0</span>:<span class="keyword">return</span> false</span><br><span class="line">	<span class="keyword">return</span> ture</span><br></pre></td></tr></table></figure>
-
 <h2 id="44-为什么停机问题是不可判定的？"><a href="#44-为什么停机问题是不可判定的？" class="headerlink" title="44.为什么停机问题是不可判定的？"></a>44.为什么停机问题是不可判定的？</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liusiqian0209/article/details/49837447">(118条消息) NP完全性理论简介_np完整性_liusiqian0209的博客-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liusiqian0209/article/details/49837447">(118条消息) NP完全性理论简介_np完整性_liusiqian0209的博客-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/351638078">算法学习笔记(71): 2-SAT - 知乎 (zhihu.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.sciencenet.cn/blog-2322490-933277.html">科学网—什么是“判定问题”？（2）－悖论、停机问题与NP - 柳渝的博文 (sciencenet.cn)</a></p>
-<p><a href="%E5%81%9C%E6%9C%BA%E9%97%AE%E9%A2%98"></a>：<a href="https://link.zhihu.com/?target=https://www.bilibili.com/video/BV1qb41187AG?share_source=copy_web">https://link.zhihu.com/?target=https%3A//www.bilibili.com/video/BV1qb41187AG%3Fshare_source%3Dcopy_web</a></p>
+<p><a href="停机问题"></a>：<a href="https://link.zhihu.com/?target=https%3A//www.bilibili.com/video/BV1qb41187AG%3Fshare_source%3Dcopy_web">https://link.zhihu.com/?target=https%3A//www.bilibili.com/video/BV1qb41187AG%3Fshare_source%3Dcopy_web</a></p>
 
     </div>
 
@@ -695,7 +735,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E5%A4%8D%E4%B9%A0%E7%BB%BC%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">复杂性理论复习综述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%AF%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%8D%E5%8F%AF%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是可计算问题？什么是不可计算问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%EF%BC%9F%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E4%B8%BB%E8%A6%81%E7%A0%94%E7%A9%B6%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2.什么是计算复杂性？计算复杂性理论主要研究什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AF%E7%AE%97%E6%B3%95%EF%BC%9F%E7%AE%97%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">3.什么是算法？算法有哪些特点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8F%8F%E8%BF%B0%E7%AE%97%E6%B3%95%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">4.描述算法的方法有？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95%E7%9A%84%E6%95%88%E7%8E%87%EF%BC%9F"><span class="nav-number">1.5.</span> <span class="nav-text">5.如何分析算法的效率？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%B8%90%E8%BF%9B%E8%A1%A8%E8%BE%BE%E5%BC%8FO-g-n-%EF%BC%8C%CE%98-g-n-%EF%BC%8C%CE%A9-g-n-%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%90%AB%E4%B9%89%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E9%80%92%E5%BD%92%E5%92%8C%E9%9D%9E%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E6%95%88%E7%8E%87%E7%9A%84%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">1.7.</span> <span class="nav-text">7.递归和非递归算法时间效率的数学分析方法区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Fibonacci-numbers-F-N-x3D-F-N-1-F-N-2-%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%9F"><span class="nav-number">1.8.</span> <span class="nav-text">8.Fibonacci numbers F(N) &#x3D; F(N-1) + F(N-2)的时间复杂度表达式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98%E7%9A%84%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8B%E7%95%8C%EF%BC%9F"><span class="nav-number">1.9.</span> <span class="nav-text">9.经典排序问题的算法时间复杂度下界？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E7%AE%97%E6%B3%95%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87%E7%9A%84%E6%9C%AC%E8%B4%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%8F%90%E5%8D%87%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%B1%82%E6%AC%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.10.</span> <span class="nav-text">10.算法性能提升的本质是什么？提升算法效率的四个层次是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B6%85%E8%B6%8A%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95%E4%B8%80%E8%88%AC%E6%98%AF%E4%B8%8D%E5%8F%AF%E6%8E%A5%E5%8F%97%E7%9A%84%EF%BC%9F"><span class="nav-number">1.11.</span> <span class="nav-text">11.为什么超越多项式时间复杂度的精确算法一般是不可接受的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%BE%E7%81%B5%E6%9C%BA%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%BE%E7%81%B5%E6%B5%8B%E8%AF%95%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%BE%E7%81%B5%E5%91%BD%E9%A2%98%EF%BC%9F"><span class="nav-number">1.12.</span> <span class="nav-text">12.什么是图灵机？什么是图灵测试？什么是图灵命题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-%E5%9B%BE%E7%81%B5%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%8F%8A%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E6%A0%BC%E5%B1%80%EF%BC%9F"><span class="nav-number">1.13.</span> <span class="nav-text">13.图灵机的基本原理及组成部分？什么是格局？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E6%89%80%E6%9C%89%E8%AE%A1%E7%AE%97%E6%88%96%E7%AE%97%E6%B3%95%E9%83%BD%E5%8F%AF%E4%BB%A5%E7%94%B1%E4%B8%80%E5%8F%B0%E5%9B%BE%E7%81%B5%E6%9C%BA%E6%9D%A5%E6%89%A7%E8%A1%8C%EF%BC%9F"><span class="nav-number">1.14.</span> <span class="nav-text">14.为什么说所有计算或算法都可以由一台图灵机来执行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-%E5%A6%82%E4%BD%95%E4%BB%8E%E5%9B%BE%E7%81%B5%E6%9C%BA%E8%A7%86%E8%A7%92%E7%9C%8B%E5%BE%85%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9F"><span class="nav-number">1.15.</span> <span class="nav-text">15.如何从图灵机视角看待算法的时间复杂度和空间复杂度？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-%E4%BB%80%E4%B9%88%E6%98%AF%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%9B%BE%E7%81%B5%E6%9C%BA%E3%80%81%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%9B%BE%E7%81%B5%E6%9C%BA%E5%92%8C%E6%A6%82%E7%8E%87%E5%9B%BE%E7%81%B5%E6%9C%BA%EF%BC%9F"><span class="nav-number">1.16.</span> <span class="nav-text">16.什么是确定性图灵机、非确定性图灵机和概率图灵机？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%A4%E5%AE%9A%E9%97%AE%E9%A2%98%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AFPT%E9%AA%8C%E8%AF%81%E5%99%A8%EF%BC%9F"><span class="nav-number">1.17.</span> <span class="nav-text">17.什么是识别问题？什么是判定问题？什么是PT验证器？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-%E4%BB%80%E4%B9%88%E6%98%AFP%EF%BC%8CNP%EF%BC%8CNPC%EF%BC%8CNP-hard%EF%BC%9F"><span class="nav-number">1.18.</span> <span class="nav-text">18.什么是P，NP，NPC，NP-hard？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E7%9A%84%E9%A6%96%E8%A6%81%E9%97%AE%E9%A2%98%E6%98%AFP-x3D-NP%EF%BC%9F%E5%AE%83%E7%9A%84%E5%86%85%E6%B6%B5%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4P-x3D-NP%E4%B8%8D%E5%8F%AF%E6%80%9D%E8%AE%AE%EF%BC%9F"><span class="nav-number">1.19.</span> <span class="nav-text">19.为什么说计算复杂性理论的首要问题是P&#x3D;NP？它的内涵是什么？为什么说P&#x3D;NP不可思议？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-%E7%AE%80%E8%BF%B0Cook-Levin%E5%AE%9A%E7%90%86%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%A5%E5%AE%9A%E7%90%86%E5%A6%82%E6%AD%A4%E9%87%8D%E8%A6%81%EF%BC%9F"><span class="nav-number">1.20.</span> <span class="nav-text">20.简述Cook-Levin定理，为什么该定理如此重要？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-%E4%BB%80%E4%B9%88%E6%98%AF%E5%BD%92%E7%BA%A6%EF%BC%9F%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BD%92%E7%BA%A6%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-number">1.21.</span> <span class="nav-text">21.什么是归约？常见的归约方法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-%E5%A6%82%E4%BD%95%E5%88%A4%E5%AE%9A%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98%E6%98%AFNPC%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.22.</span> <span class="nav-text">22.如何判定一个问题是NPC问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-%E4%BB%80%E4%B9%88%E6%98%AF%E5%81%9C%E6%9C%BA%E5%88%A4%E5%AE%9A%E9%97%AE%E9%A2%98%EF%BC%9F%E5%85%B6%E5%93%B2%E5%AD%A6%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.23.</span> <span class="nav-text">23.什么是停机判定问题？其哲学思想是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-%E6%B1%82%E8%A7%A3NP%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-number">1.24.</span> <span class="nav-text">24.求解NP问题的一般方法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-2SAT%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFP%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.25.</span> <span class="nav-text">25.2SAT为什么是P问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%EF%BC%9F%E4%BD%9C%E7%94%A8%E5%92%8C%E6%84%8F%E4%B9%89%EF%BC%9F%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.26.</span> <span class="nav-text">26.什么是随机算法？作用和意义？举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#27-%E5%8D%95%E5%90%91%E5%87%BD%E6%95%B0%E7%9A%84%E6%84%8F%E4%B9%89%E5%8F%8A%E4%BD%9C%E7%94%A8%EF%BC%9F%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.27.</span> <span class="nav-text">27.单向函数的意义及作用？举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#28-%E4%BA%A4%E4%BA%92%E5%BC%8F%E8%AF%81%E6%98%8E%E6%80%9D%E6%83%B3%E5%92%8C%E6%96%B9%E6%B3%95%EF%BC%9F%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.28.</span> <span class="nav-text">28.交互式证明思想和方法？举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#29-%E5%AF%B9%E8%A7%92%E7%BA%BF%E6%96%B9%E6%B3%95%E6%80%9D%E6%83%B3%EF%BC%9F%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.29.</span> <span class="nav-text">29.对角线方法思想？举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#30-%E4%B8%89%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F"><span class="nav-number">1.30.</span> <span class="nav-text">30.三种基本算法设计范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#31-%E5%89%96%E6%9E%90%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E5%92%8C%E5%AF%86%E7%A0%81%E5%AE%89%E5%85%A8%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.31.</span> <span class="nav-text">31.剖析计算复杂性和密码安全的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32-%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E7%9A%84%E5%93%B2%E5%AD%A6"><span class="nav-number">1.32.</span> <span class="nav-text">32.如何理解：计算复杂性理论是计算机科学的哲学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33-%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%E5%9C%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%9C%B0%E4%BD%8D%EF%BC%9F"><span class="nav-number">1.33.</span> <span class="nav-text">33.如何理解随机算法在密码学中的作用和地位？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#34-%E7%AE%80%E8%BF%B0%E7%B4%A0%E6%95%B0%E9%97%AE%E9%A2%98PRIME%E5%8F%8A%E5%85%B6%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%9F"><span class="nav-number">1.34.</span> <span class="nav-text">34.简述素数问题PRIME及其复杂性分析？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#35-%E7%AE%80%E8%BF%B0%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">1.35.</span> <span class="nav-text">35.简述零知识证明的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#36-%E4%B8%80%E4%B8%AA%E7%AE%97%E6%B3%95%E9%97%AE%E9%A2%98%E4%BA%A4%E7%BB%99%E4%BD%A0%E5%90%8E%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%EF%BC%9F"><span class="nav-number">1.36.</span> <span class="nav-text">36.一个算法问题交给你后，应该怎么处理？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37-%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E7%9A%84%E8%AE%A4%E8%AF%86%EF%BC%9F%E5%AF%B9%E4%BB%8A%E5%90%8E%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%90%AF%E5%8F%91%EF%BC%9F"><span class="nav-number">1.37.</span> <span class="nav-text">37.计算复杂性理论的认识？对今后学习的启发？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#38-%E7%BB%93%E5%90%88%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E6%B5%85%E8%B0%88%E5%AF%B9%E4%BA%91%E8%AE%A1%E7%AE%97%E3%80%81%E5%A4%A7%E6%95%B0%E6%8D%AE%E3%80%81%E7%89%A9%E8%81%94%E7%BD%91%E3%80%81%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E6%80%9D%E8%80%83%EF%BC%9F"><span class="nav-number">1.38.</span> <span class="nav-text">38.结合计算复杂性理论浅谈对云计算、大数据、物联网、人工智能安全思考？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#39-N%E4%B8%AA%E4%B9%92%E4%B9%93%E7%90%83%E4%B8%AD%E6%9C%89%E4%B8%80%E4%B8%AA%E5%92%8C%E5%85%B6%E4%BB%96%E7%9A%84%E8%B4%A8%E9%87%8F%E4%B8%8D%E5%90%8C%EF%BC%8C%E7%94%A8%E5%A4%A9%E5%B9%B3%E6%9C%80%E5%B0%91%E5%87%A0%E6%AC%A1%E8%83%BD%E7%A7%B0%E5%87%BA%E6%9D%A5%EF%BC%9F"><span class="nav-number">1.39.</span> <span class="nav-text">39.N个乒乓球中有一个和其他的质量不同，用天平最少几次能称出来？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#40-%E5%9B%BE%E7%81%B5%E6%9C%BA%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="nav-number">1.40.</span> <span class="nav-text">40.图灵机相关问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#41-NP%E9%97%AE%E9%A2%98%E4%B9%8B%E9%97%B4%E5%BD%92%E7%BA%A6%EF%BC%9F%E5%B8%B8%E8%A7%81%E7%9A%84NPC%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.41.</span> <span class="nav-text">41.NP问题之间归约？常见的NPC问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#42-SAT%E3%80%812SAT%E3%80%813SAT"><span class="nav-number">1.42.</span> <span class="nav-text">42.SAT、2SAT、3SAT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#43-%E7%B4%A0%E6%95%B0%E5%88%A4%E5%AE%9A%E7%9A%84%E9%80%92%E5%BD%92%E5%92%8C%E9%9D%9E%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95"><span class="nav-number">1.43.</span> <span class="nav-text">43.素数判定的递归和非递归算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#44-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%81%9C%E6%9C%BA%E9%97%AE%E9%A2%98%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%88%A4%E5%AE%9A%E7%9A%84%EF%BC%9F"><span class="nav-number">1.44.</span> <span class="nav-text">44.为什么停机问题是不可判定的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.45.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E5%A4%8D%E4%B9%A0%E7%BB%BC%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">复杂性理论复习综述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%AF%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%8D%E5%8F%AF%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是可计算问题？什么是不可计算问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%B8%90%E8%BF%9B%E8%A1%A8%E8%BE%BE%E5%BC%8FO-g-n-%EF%BC%8C%CE%98-g-n-%EF%BC%8C%CE%A9-g-n-%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%90%AB%E4%B9%89%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">6.渐进表达式O(g(n))，Θ(g(n))，Ω(g(n))的定义和表达含义？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Fibonacci-numbers-F-N-F-N-1-F-N-2-%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">8.Fibonacci numbers F(N) &#x3D; F(N-1) + F(N-2)的时间复杂度表达式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-%E5%A6%82%E4%BD%95%E4%BB%8E%E5%9B%BE%E7%81%B5%E6%9C%BA%E8%A7%86%E8%A7%92%E7%9C%8B%E5%BE%85%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">15.如何从图灵机视角看待算法的时间复杂度和空间复杂度？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-%E4%BB%80%E4%B9%88%E6%98%AF%E5%81%9C%E6%9C%BA%E5%88%A4%E5%AE%9A%E9%97%AE%E9%A2%98%EF%BC%9F%E5%85%B6%E5%93%B2%E5%AD%A6%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.5.</span> <span class="nav-text">23.什么是停机判定问题？其哲学思想是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-%E6%B1%82%E8%A7%A3NP%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">24.求解NP问题的一般方法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-2SAT%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFP%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.7.</span> <span class="nav-text">25.2SAT为什么是P问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#30-%E4%B8%89%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F"><span class="nav-number">1.8.</span> <span class="nav-text">30.三种基本算法设计范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#31-%E5%89%96%E6%9E%90%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E5%92%8C%E5%AF%86%E7%A0%81%E5%AE%89%E5%85%A8%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.9.</span> <span class="nav-text">31.剖析计算复杂性和密码安全的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32-%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E7%9A%84%E5%93%B2%E5%AD%A6"><span class="nav-number">1.10.</span> <span class="nav-text">32.如何理解：计算复杂性理论是计算机科学的哲学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33-%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%E5%9C%A8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%9C%B0%E4%BD%8D%EF%BC%9F"><span class="nav-number">1.11.</span> <span class="nav-text">33.如何理解随机算法在密码学中的作用和地位？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#34-%E7%AE%80%E8%BF%B0%E7%B4%A0%E6%95%B0%E9%97%AE%E9%A2%98PRIME%E5%8F%8A%E5%85%B6%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90%EF%BC%9F"><span class="nav-number">1.12.</span> <span class="nav-text">34.简述素数问题PRIME及其复杂性分析？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#35-%E7%AE%80%E8%BF%B0%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">1.13.</span> <span class="nav-text">35.简述零知识证明的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#36-%E4%B8%80%E4%B8%AA%E7%AE%97%E6%B3%95%E9%97%AE%E9%A2%98%E4%BA%A4%E7%BB%99%E4%BD%A0%E5%90%8E%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%EF%BC%9F"><span class="nav-number">1.14.</span> <span class="nav-text">36.一个算法问题交给你后，应该怎么处理？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37-%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E7%9A%84%E8%AE%A4%E8%AF%86%EF%BC%9F%E5%AF%B9%E4%BB%8A%E5%90%8E%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%90%AF%E5%8F%91%EF%BC%9F"><span class="nav-number">1.15.</span> <span class="nav-text">37.计算复杂性理论的认识？对今后学习的启发？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#38-%E7%BB%93%E5%90%88%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA%E6%B5%85%E8%B0%88%E5%AF%B9%E4%BA%91%E8%AE%A1%E7%AE%97%E3%80%81%E5%A4%A7%E6%95%B0%E6%8D%AE%E3%80%81%E7%89%A9%E8%81%94%E7%BD%91%E3%80%81%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E6%80%9D%E8%80%83%EF%BC%9F"><span class="nav-number">1.16.</span> <span class="nav-text">38.结合计算复杂性理论浅谈对云计算、大数据、物联网、人工智能安全思考？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#39-N%E4%B8%AA%E4%B9%92%E4%B9%93%E7%90%83%E4%B8%AD%E6%9C%89%E4%B8%80%E4%B8%AA%E5%92%8C%E5%85%B6%E4%BB%96%E7%9A%84%E8%B4%A8%E9%87%8F%E4%B8%8D%E5%90%8C%EF%BC%8C%E7%94%A8%E5%A4%A9%E5%B9%B3%E6%9C%80%E5%B0%91%E5%87%A0%E6%AC%A1%E8%83%BD%E7%A7%B0%E5%87%BA%E6%9D%A5%EF%BC%9F"><span class="nav-number">1.17.</span> <span class="nav-text">39.N个乒乓球中有一个和其他的质量不同，用天平最少几次能称出来？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#40-%E5%9B%BE%E7%81%B5%E6%9C%BA%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="nav-number">1.18.</span> <span class="nav-text">40.图灵机相关问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#41-NP%E9%97%AE%E9%A2%98%E4%B9%8B%E9%97%B4%E5%BD%92%E7%BA%A6%EF%BC%9F%E5%B8%B8%E8%A7%81%E7%9A%84NPC%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.19.</span> <span class="nav-text">41.NP问题之间归约？常见的NPC问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#42-SAT%E3%80%812SAT%E3%80%813SAT"><span class="nav-number">1.20.</span> <span class="nav-text">42.SAT、2SAT、3SAT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#43-%E7%B4%A0%E6%95%B0%E5%88%A4%E5%AE%9A%E7%9A%84%E9%80%92%E5%BD%92%E5%92%8C%E9%9D%9E%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95"><span class="nav-number">1.21.</span> <span class="nav-text">43.素数判定的递归和非递归算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#44-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%81%9C%E6%9C%BA%E9%97%AE%E9%A2%98%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%88%A4%E5%AE%9A%E7%9A%84%EF%BC%9F"><span class="nav-number">1.22.</span> <span class="nav-text">44.为什么停机问题是不可判定的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.23.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -762,7 +802,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共34k字</span>
+  <span class="post-count">全站共32.2k字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
